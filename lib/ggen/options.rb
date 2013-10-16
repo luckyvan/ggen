@@ -5,8 +5,8 @@ module Ggen
   # understands. Please see the {file:REFERENCE.md#options Ggen Reference} to
   # learn how to set the options.
   class Options
-
     @defaults = {
+      :root                 => Pathname.new('/mnt/Development'),
       :reference_game_id    => '1RG2',
       :game_id              => nil,
       :output               => Pathname.new('./Generate'),
@@ -27,6 +27,7 @@ module Ggen
       @defaults
     end
 
+    attr_accessor :root
     attr_accessor :output
     attr_accessor :reference_game_id
     attr_accessor :game_id

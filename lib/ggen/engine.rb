@@ -31,10 +31,8 @@ module Ggen
       raise "Invalid Game ID:#{options[:game_id]}" unless valid_game_id?(options[:game_id])
       raise "Invalid Reference Game ID:#{options[:reference_game_id]}" unless valid_rgame_id?(options[:reference_game_id])
 
-      p "haha"
       root = RootPathname.new(@options[:root], @options[:game_id])
-      p root.projects
-      output = RootPathname.new(@options[:output])
+      output = RootPathname.new(@options[:output], @options[:game_id])
     end
   end
 end

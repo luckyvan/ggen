@@ -72,6 +72,9 @@ module Ggen
       #
       # @param opts [OptionParser]
       def set_opts(opts)
+        opts.on('--trace', :NONE, 'Show a full traceback on error') do
+          @options[:trace] = true
+        end
         opts.on_tail("-?", "-h", "--help", "Show this message") do
           puts opts
           exit
