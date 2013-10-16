@@ -1,0 +1,2748 @@
+// (c) Copyright 2010 International Game Technology
+
+// $Revision: 3$
+
+// Modifications:
+// Author                                 Date          Explanation
+// ------------------------------------   -----------   -------------------------
+// SlotCalc 2000, user: RWENKER           02 Aug 2010   Created: 09:51:04 AM
+
+// Paytable information
+// Type                 : ML
+// Number of Reels      : 5
+// Payline Set          : 92
+// Win Pattern Quantity : 211
+// Payline Quantity     : 50
+// Percent Payback      : 85.54%
+// Paytable id          : 1423B145
+// Compression          : Smart compression of pay amounts
+
+[paytable]
+{
+   name = AVV038013
+   percentage = 85.54%
+   credit divisor = 1
+}
+
+[base game]
+{
+   [slot]
+   {
+      pay highest line = yes
+      winning start position allowed = no
+   }
+
+   [progressive caps]
+   {
+      Level_0_Default = 0, 1, x15000
+   }
+
+   [symbol defines]
+   {
+      // Define symbols
+      symbol = TT         // TT
+      symbol = DD         // DD
+      symbol = 7A         // 7A
+      symbol = 7B         // 7B
+      symbol = 7C         // 7C
+      symbol = 7D         // 7D
+      symbol = 7E         // 7E
+      symbol = F1         // F1
+      symbol = F2         // F2
+      symbol = F3         // F3
+      symbol = F4         // F4
+      symbol = BN         // BN  - Scatter Symbol (1 of 1)
+   }
+
+   [reel]   // reel 0
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 0
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 11
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = 7D, quantity ( 12 )                        // stop 0 - Virtual Range:  0  -  11 
+      stop = 7D, quantity ( 8 )                        // stop 1 - Virtual Range:  12  -  19 
+      stop = 7D, quantity ( 12 )                        // stop 2 - Virtual Range:  20  -  31 
+      stop = F3, quantity ( 12 )                        // stop 3 - Virtual Range:  32  -  43 
+      stop = F2, quantity ( 6 )                        // stop 4 - Virtual Range:  44  -  49 
+      stop = 7E, quantity ( 6 )                        // stop 5 - Virtual Range:  50  -  55 
+      stop = 7E, quantity ( 5 )                        // stop 6 - Virtual Range:  56  -  60 
+      stop = 7E, quantity ( 6 )                        // stop 7 - Virtual Range:  61  -  66 
+      stop = F4, quantity ( 6 )                        // stop 8 - Virtual Range:  67  -  72 
+      stop = F2, quantity ( 6 )                        // stop 9 - Virtual Range:  73  -  78 
+      stop = 7A, quantity ( 6 )                        // stop 10 - Virtual Range:  79  -  84 
+      stop = 7B, quantity ( 6 )                        // stop 11 - Virtual Range:  85  -  90 
+      stop = 7C, quantity ( 6 )                        // stop 12 - Virtual Range:  91  -  96 
+      stop = F3, quantity ( 6 )                        // stop 13 - Virtual Range:  97  -  102 
+      stop = F2, quantity ( 14 )                        // stop 14 - Virtual Range:  103  -  116 
+      stop = F4, quantity ( 14 )                        // stop 15 - Virtual Range:  117  -  130 
+      stop = F2, quantity ( 14 )                        // stop 16 - Virtual Range:  131  -  144 
+      stop = F3, quantity ( 14 )                        // stop 17 - Virtual Range:  145  -  158 
+      stop = F2, quantity ( 6 )                        // stop 18 - Virtual Range:  159  -  164 
+      stop = F1, quantity ( 6 )                        // stop 19 - Virtual Range:  165  -  170 
+      stop = F3, quantity ( 6 )                        // stop 20 - Virtual Range:  171  -  176 
+      stop = F2, quantity ( 12 )                        // stop 21 - Virtual Range:  177  -  188 
+   }
+
+   [reel]   // reel 1
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 1
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 19
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F3, quantity ( 20 )                        // stop 0 - Virtual Range:  0  -  19 
+      stop = 7A, quantity ( 20 )                        // stop 1 - Virtual Range:  20  -  39 
+      stop = F1, quantity ( 20 )                        // stop 2 - Virtual Range:  40  -  59 
+      stop = F4, quantity ( 20 )                        // stop 3 - Virtual Range:  60  -  79 
+      stop = F1, quantity ( 20 )                        // stop 4 - Virtual Range:  80  -  99 
+      stop = F3, quantity ( 2 )                        // stop 5 - Virtual Range:  100  -  101 
+      stop = TT, quantity ( 2 )                        // stop 6 - Virtual Range:  102  -  103 
+      stop = F1, quantity ( 2 )                        // stop 7 - Virtual Range:  104  -  105 
+      stop = F3, quantity ( 18 )                        // stop 8 - Virtual Range:  106  -  123 
+      stop = BN, quantity ( 18 )                        // stop 9 - Virtual Range:  124  -  141 
+      stop = 7C, quantity ( 18 )                        // stop 10 - Virtual Range:  142  -  159 
+      stop = 7B, quantity ( 18 )                        // stop 11 - Virtual Range:  160  -  177 
+      stop = 7D, quantity ( 18 )                        // stop 12 - Virtual Range:  178  -  195 
+      stop = F1, quantity ( 18 )                        // stop 13 - Virtual Range:  196  -  213 
+      stop = F3, quantity ( 3 )                        // stop 14 - Virtual Range:  214  -  216 
+      stop = 7E, quantity ( 3 )                        // stop 15 - Virtual Range:  217  -  219 
+      stop = 7E, quantity ( 1 )                        // stop 16 - Virtual Range:  220  -  220 
+      stop = 7E, quantity ( 3 )                        // stop 17 - Virtual Range:  221  -  223 
+      stop = F2, quantity ( 3 )                        // stop 18 - Virtual Range:  224  -  226 
+      stop = F3, quantity ( 3 )                        // stop 19 - Virtual Range:  227  -  229 
+      stop = DD, quantity ( 3 )                        // stop 20 - Virtual Range:  230  -  232 
+      stop = F1, quantity ( 3 )                        // stop 21 - Virtual Range:  233  -  235 
+   }
+
+   [reel]   // reel 2
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 2
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 11
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F1, quantity ( 12 )                        // stop 0 - Virtual Range:  0  -  11 
+      stop = F4, quantity ( 12 )                        // stop 1 - Virtual Range:  12  -  23 
+      stop = 7E, quantity ( 12 )                        // stop 2 - Virtual Range:  24  -  35 
+      stop = 7B, quantity ( 12 )                        // stop 3 - Virtual Range:  36  -  47 
+      stop = 7E, quantity ( 12 )                        // stop 4 - Virtual Range:  48  -  59 
+      stop = BN, quantity ( 12 )                        // stop 5 - Virtual Range:  60  -  71 
+      stop = F1, quantity ( 12 )                        // stop 6 - Virtual Range:  72  -  83 
+      stop = 7E, quantity ( 12 )                        // stop 7 - Virtual Range:  84  -  95 
+      stop = F2, quantity ( 12 )                        // stop 8 - Virtual Range:  96  -  107 
+      stop = F1, quantity ( 46 )                        // stop 9 - Virtual Range:  108  -  153 
+      stop = F2, quantity ( 46 )                        // stop 10 - Virtual Range:  154  -  199 
+      stop = F1, quantity ( 3 )                        // stop 11 - Virtual Range:  200  -  202 
+      stop = F2, quantity ( 3 )                        // stop 12 - Virtual Range:  203  -  205 
+      stop = 7D, quantity ( 3 )                        // stop 13 - Virtual Range:  206  -  208 
+      stop = 7A, quantity ( 3 )                        // stop 14 - Virtual Range:  209  -  211 
+      stop = 7E, quantity ( 3 )                        // stop 15 - Virtual Range:  212  -  214 
+      stop = F3, quantity ( 3 )                        // stop 16 - Virtual Range:  215  -  217 
+      stop = F2, quantity ( 3 )                        // stop 17 - Virtual Range:  218  -  220 
+      stop = 7D, quantity ( 3 )                        // stop 18 - Virtual Range:  221  -  223 
+      stop = 7A, quantity ( 3 )                        // stop 19 - Virtual Range:  224  -  226 
+      stop = 7C, quantity ( 3 )                        // stop 20 - Virtual Range:  227  -  229 
+      stop = F2, quantity ( 3 )                        // stop 21 - Virtual Range:  230  -  232 
+   }
+
+   [reel]   // reel 3
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 3
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 11
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F3, quantity ( 12 )                        // stop 0 - Virtual Range:  0  -  11 
+      stop = BN, quantity ( 12 )                        // stop 1 - Virtual Range:  12  -  23 
+      stop = F1, quantity ( 12 )                        // stop 2 - Virtual Range:  24  -  35 
+      stop = F3, quantity ( 26 )                        // stop 3 - Virtual Range:  36  -  61 
+      stop = F2, quantity ( 26 )                        // stop 4 - Virtual Range:  62  -  87 
+      stop = F3, quantity ( 26 )                        // stop 5 - Virtual Range:  88  -  113 
+      stop = F1, quantity ( 26 )                        // stop 6 - Virtual Range:  114  -  139 
+      stop = F3, quantity ( 2 )                        // stop 7 - Virtual Range:  140  -  141 
+      stop = 7A, quantity ( 2 )                        // stop 8 - Virtual Range:  142  -  143 
+      stop = 7B, quantity ( 2 )                        // stop 9 - Virtual Range:  144  -  145 
+      stop = 7C, quantity ( 2 )                        // stop 10 - Virtual Range:  146  -  147 
+      stop = F4, quantity ( 2 )                        // stop 11 - Virtual Range:  148  -  149 
+      stop = 7D, quantity ( 2 )                        // stop 12 - Virtual Range:  150  -  151 
+      stop = TT, quantity ( 2 )                        // stop 13 - Virtual Range:  152  -  153 
+      stop = F4, quantity ( 2 )                        // stop 14 - Virtual Range:  154  -  155 
+      stop = F3, quantity ( 2 )                        // stop 15 - Virtual Range:  156  -  157 
+      stop = DD, quantity ( 2 )                        // stop 16 - Virtual Range:  158  -  159 
+      stop = F4, quantity ( 2 )                        // stop 17 - Virtual Range:  160  -  161 
+      stop = 7E, quantity ( 2 )                        // stop 18 - Virtual Range:  162  -  163 
+      stop = 7E, quantity ( 1 )                        // stop 19 - Virtual Range:  164  -  164 
+      stop = 7E, quantity ( 2 )                        // stop 20 - Virtual Range:  165  -  166 
+      stop = F1, quantity ( 2 )                        // stop 21 - Virtual Range:  167  -  168 
+   }
+
+   [reel]   // reel 4
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 4
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 3
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F1, quantity ( 4 )                        // stop 0 - Virtual Range:  0  -  3 
+      stop = F4, quantity ( 1 )                        // stop 1 - Virtual Range:  4  -  4 
+      stop = F1, quantity ( 1 )                        // stop 2 - Virtual Range:  5  -  5 
+      stop = F3, quantity ( 29 )                        // stop 3 - Virtual Range:  6  -  34 
+      stop = F2, quantity ( 29 )                        // stop 4 - Virtual Range:  35  -  63 
+      stop = F1, quantity ( 29 )                        // stop 5 - Virtual Range:  64  -  92 
+      stop = F3, quantity ( 40 )                        // stop 6 - Virtual Range:  93  -  132 
+      stop = F1, quantity ( 40 )                        // stop 7 - Virtual Range:  133  -  172 
+      stop = F3, quantity ( 1 )                        // stop 8 - Virtual Range:  173  -  173 
+      stop = 7E, quantity ( 1 )                        // stop 9 - Virtual Range:  174  -  174 
+      stop = 7E, quantity ( 6 )                        // stop 10 - Virtual Range:  175  -  180 
+      stop = 7E, quantity ( 1 )                        // stop 11 - Virtual Range:  181  -  181 
+      stop = F1, quantity ( 1 )                        // stop 12 - Virtual Range:  182  -  182 
+      stop = F4, quantity ( 1 )                        // stop 13 - Virtual Range:  183  -  183 
+      stop = 7D, quantity ( 1 )                        // stop 14 - Virtual Range:  184  -  184 
+      stop = 7D, quantity ( 1 )                        // stop 15 - Virtual Range:  185  -  185 
+      stop = 7D, quantity ( 1 )                        // stop 16 - Virtual Range:  186  -  186 
+      stop = F1, quantity ( 1 )                        // stop 17 - Virtual Range:  187  -  187 
+      stop = F4, quantity ( 4 )                        // stop 18 - Virtual Range:  188  -  191 
+      stop = 7C, quantity ( 4 )                        // stop 19 - Virtual Range:  192  -  195 
+      stop = 7A, quantity ( 4 )                        // stop 20 - Virtual Range:  196  -  199 
+      stop = 7B, quantity ( 4 )                        // stop 21 - Virtual Range:  200  -  203 
+   }
+
+   [pay lines]
+   {
+      // Pay line coordinates: "reel number"."reel index"
+      line = 0.1, 1.1, 2.1, 3.1, 4.1             // payline 0
+      line = 0.0, 1.0, 2.0, 3.0, 4.0             // payline 1
+      line = 0.2, 1.2, 2.2, 3.2, 4.2             // payline 2
+      line = 0.0, 1.1, 2.2, 3.1, 4.0             // payline 3
+      line = 0.2, 1.1, 2.0, 3.1, 4.2             // payline 4
+      line = 0.0, 1.0, 2.1, 3.0, 4.0             // payline 5
+      line = 0.2, 1.2, 2.1, 3.2, 4.2             // payline 6
+      line = 0.1, 1.2, 2.2, 3.2, 4.1             // payline 7
+      line = 0.1, 1.0, 2.0, 3.0, 4.1             // payline 8
+      line = 0.0, 1.1, 2.1, 3.1, 4.0             // payline 9
+      line = 0.2, 1.1, 2.1, 3.1, 4.2             // payline 10
+      line = 0.0, 1.1, 2.0, 3.1, 4.0             // payline 11
+      line = 0.2, 1.1, 2.2, 3.1, 4.2             // payline 12
+      line = 0.1, 1.0, 2.1, 3.0, 4.1             // payline 13
+      line = 0.1, 1.2, 2.1, 3.2, 4.1             // payline 14
+      line = 0.1, 1.1, 2.0, 3.1, 4.1             // payline 15
+      line = 0.1, 1.1, 2.2, 3.1, 4.1             // payline 16
+      line = 0.0, 1.2, 2.0, 3.2, 4.0             // payline 17
+      line = 0.2, 1.0, 2.2, 3.0, 4.2             // payline 18
+      line = 0.1, 1.0, 2.2, 3.0, 4.1             // payline 19
+      line = 0.1, 1.2, 2.0, 3.2, 4.1             // payline 20
+      line = 0.0, 1.0, 2.2, 3.0, 4.0             // payline 21
+      line = 0.2, 1.2, 2.0, 3.2, 4.2             // payline 22
+      line = 0.0, 1.2, 2.2, 3.2, 4.0             // payline 23
+      line = 0.2, 1.0, 2.0, 3.0, 4.2             // payline 24
+      line = 0.0, 1.2, 2.1, 3.2, 4.0             // payline 25
+      line = 0.2, 1.0, 2.1, 3.0, 4.2             // payline 26
+      line = 0.0, 1.0, 2.1, 3.2, 4.2             // payline 27
+      line = 0.2, 1.2, 2.1, 3.0, 4.0             // payline 28
+      line = 0.1, 1.0, 2.1, 3.2, 4.1             // payline 29
+      line = 0.1, 1.2, 2.1, 3.0, 4.1             // payline 30
+      line = 0.0, 1.2, 2.1, 3.0, 4.2             // payline 31
+      line = 0.2, 1.0, 2.1, 3.2, 4.0             // payline 32
+      line = 0.1, 1.0, 2.2, 3.1, 4.0             // payline 33
+      line = 0.1, 1.2, 2.0, 3.1, 4.2             // payline 34
+      line = 0.0, 1.1, 2.2, 3.0, 4.1             // payline 35
+      line = 0.2, 1.1, 2.0, 3.2, 4.1             // payline 36
+      line = 0.0, 1.0, 2.0, 3.1, 4.2             // payline 37
+      line = 0.2, 1.2, 2.2, 3.1, 4.0             // payline 38
+      line = 0.1, 1.1, 2.1, 3.0, 4.2             // payline 39
+      line = 0.1, 1.1, 2.1, 3.2, 4.0             // payline 40
+      line = 0.0, 1.2, 2.0, 3.1, 4.0             // payline 41
+      line = 0.2, 1.0, 2.2, 3.1, 4.2             // payline 42
+      line = 0.0, 1.1, 2.0, 3.2, 4.0             // payline 43
+      line = 0.2, 1.1, 2.2, 3.0, 4.2             // payline 44
+      line = 0.0, 1.0, 2.2, 3.1, 4.2             // payline 45
+      line = 0.2, 1.2, 2.0, 3.1, 4.0             // payline 46
+      line = 0.0, 1.1, 2.1, 3.1, 4.2             // payline 47
+      line = 0.2, 1.1, 2.1, 3.1, 4.0             // payline 48
+      line = 0.1, 1.0, 2.0, 3.1, 4.2             // payline 49
+   }
+
+   [masks]
+   {
+   }
+
+   [symbol substitutions]
+   {
+      XX = TT, DD, 7A, 7B, 7C, 7D, 7E, F1, F2, F3, F4, BN
+      A7 = 7A, 7B, 7C, 7D, 7E
+      SS = BN
+   }
+
+   [win evaluation]
+   {
+      // Win category 0
+      {
+         progressive = game bet (max), 0, level0, line (all)
+         win = bet (all), x15000, odds(16888190) 
+         awardname = bet (all), 7ETT7ETT7EPaging_GDC1, default
+         awardname = bet (max), 7ETT7ETT7EInsert_GDC1, level0, INSERT, default
+         line = 7E, TT, 7E, TT, 7E
+      }
+
+      // Win category 1
+      {
+         win = bet (all), x3000
+         line = 7E, TT, 7E, DD, 7E
+         line = 7E, DD, 7E, TT, 7E
+      }
+
+      // Win category 2
+      {
+         win = bet (all), x2250
+         line = 7D, TT, 7D, TT, 7D
+      }
+
+      // Win category 3
+      {
+         win = bet (all), x2025
+         line = 7C, TT, 7C, TT, 7C
+      }
+
+      // Win category 4
+      {
+         win = bet (all), x2000
+         line = 7E, DD, 7E, DD, 7E
+      }
+
+      // Win category 5
+      {
+         win = bet (all), x1800
+         line = 7A, TT, 7A, TT, 7A
+      }
+
+      // Win category 6
+      {
+         win = bet (all), x1500
+         line = 7E, 7E, 7E, TT, 7E
+         line = 7E, TT, 7E, 7E, 7E
+      }
+
+      // Win category 7
+      {
+         win = bet (all), x1500
+         line = 7D, TT, 7D, DD, 7D
+         line = 7D, DD, 7D, TT, 7D
+      }
+
+      // Win category 8
+      {
+         win = bet (all), x1350
+         line = 7B, TT, 7B, TT, 7B
+      }
+
+      // Win category 9
+      {
+         win = bet (all), x1350
+         line = 7C, TT, 7C, DD, 7C
+         line = 7C, DD, 7C, TT, 7C
+      }
+
+      // Win category 10
+      {
+         win = bet (all), x1350
+         line = F4, TT, F4, TT, F4
+      }
+
+      // Win category 11
+      {
+         win = bet (all), x1200
+         line = 7A, TT, 7A, DD, 7A
+         line = 7A, DD, 7A, TT, 7A
+      }
+
+      // Win category 12
+      {
+         win = bet (all), x1125
+         line = F3, TT, F3, TT, F3
+      }
+
+      // Win category 13
+      {
+         win = bet (all), x1000
+         line = 7E, 7E, 7E, DD, 7E
+         line = 7E, DD, 7E, 7E, 7E
+      }
+
+      // Win category 14
+      {
+         win = bet (all), x1000
+         line = 7D, DD, 7D, DD, 7D
+      }
+
+      // Win category 15
+      {
+         win = bet (all), x900
+         line = F2, TT, F2, TT, F2
+      }
+
+      // Win category 16
+      {
+         win = bet (all), x900
+         line = 7B, TT, 7B, DD, 7B
+         line = 7B, DD, 7B, TT, 7B
+      }
+
+      // Win category 17
+      {
+         win = bet (all), x900
+         line = 7C, DD, 7C, DD, 7C
+      }
+
+      // Win category 18
+      {
+         win = bet (all), x900
+         line = F1, TT, F1, TT, F1
+      }
+
+      // Win category 19
+      {
+         win = bet (all), x900
+         line = A7, TT, A7, TT, A7
+      }
+
+      // Win category 20
+      {
+         win = bet (all), x900
+         line = F4, TT, F4, DD, F4
+         line = F4, DD, F4, TT, F4
+      }
+
+      // Win category 21
+      {
+         win = bet (all), x900
+         line = 7E, TT, 7E, TT, XX
+      }
+
+      // Win category 22
+      {
+         win = bet (all), x800
+         line = 7A, DD, 7A, DD, 7A
+      }
+
+      // Win category 23
+      {
+         win = bet (all), x750
+         line = 7D, 7D, 7D, TT, 7D
+         line = 7D, TT, 7D, 7D, 7D
+      }
+
+      // Win category 24
+      {
+         win = bet (all), x750
+         line = F3, TT, F3, DD, F3
+         line = F3, DD, F3, TT, F3
+      }
+
+      // Win category 25
+      {
+         win = bet (all), x675
+         line = 7C, 7C, 7C, TT, 7C
+         line = 7C, TT, 7C, 7C, 7C
+      }
+
+      // Win category 26
+      {
+         win = bet (all), x675
+         line = 7A, TT, 7A, TT, XX
+      }
+
+      // Win category 27
+      {
+         win = bet (all), x675
+         line = 7B, TT, 7B, TT, XX
+      }
+
+      // Win category 28
+      {
+         win = bet (all), x675
+         line = 7D, TT, 7D, TT, XX
+      }
+
+      // Win category 29
+      {
+         win = bet (all), x675
+         line = 7C, TT, 7C, TT, XX
+      }
+
+      // Win category 30
+      {
+         win = bet (all), x600
+         line = F2, TT, F2, DD, F2
+         line = F2, DD, F2, TT, F2
+      }
+
+      // Win category 31
+      {
+         win = bet (all), x600
+         line = 7B, DD, 7B, DD, 7B
+      }
+
+      // Win category 32
+      {
+         win = bet (all), x600
+         line = F1, TT, F1, DD, F1
+         line = F1, DD, F1, TT, F1
+      }
+
+      // Win category 33
+      {
+         win = bet (all), x600
+         line = A7, TT, A7, DD, A7
+         line = A7, DD, A7, TT, A7
+      }
+
+      // Win category 34
+      {
+         win = bet (all), x600
+         line = 7A, 7A, 7A, TT, 7A
+         line = 7A, TT, 7A, 7A, 7A
+      }
+
+      // Win category 35
+      {
+         win = bet (all), x600
+         line = F4, DD, F4, DD, F4
+      }
+
+      // Win category 36
+      {
+         win = bet (all), x600
+         line = 7E, TT, 7E, DD, XX
+         line = 7E, DD, 7E, TT, XX
+      }
+
+      // Win category 37
+      {
+         win = bet (all), x500
+         line = 7E, 7E, 7E, 7E, 7E
+         awardname = bet (all), 7E7E7E7E7E_GDC1, default
+      }
+
+      // Win category 38
+      {
+         win = bet (all), x500
+         line = 7D, 7D, 7D, DD, 7D
+         line = 7D, DD, 7D, 7D, 7D
+      }
+
+      // Win category 39
+      {
+         win = bet (all), x500
+         line = F3, DD, F3, DD, F3
+      }
+
+      // Win category 40
+      {
+         win = bet (all), x450
+         line = 7B, 7B, 7B, TT, 7B
+         line = 7B, TT, 7B, 7B, 7B
+      }
+
+      // Win category 41
+      {
+         win = bet (all), x450
+         line = 7C, 7C, 7C, DD, 7C
+         line = 7C, DD, 7C, 7C, 7C
+      }
+
+      // Win category 42
+      {
+         win = bet (all), x450
+         line = F4, F4, F4, TT, F4
+         line = F4, TT, F4, F4, F4
+      }
+
+      // Win category 43
+      {
+         win = bet (all), x450
+         line = 7A, TT, 7A, DD, XX
+         line = 7A, DD, 7A, TT, XX
+      }
+
+      // Win category 44
+      {
+         win = bet (all), x450
+         line = 7B, TT, 7B, DD, XX
+         line = 7B, DD, 7B, TT, XX
+      }
+
+      // Win category 45
+      {
+         win = bet (all), x450
+         line = 7D, TT, 7D, DD, XX
+         line = 7D, DD, 7D, TT, XX
+      }
+
+      // Win category 46
+      {
+         win = bet (all), x450
+         line = 7C, TT, 7C, DD, XX
+         line = 7C, DD, 7C, TT, XX
+      }
+
+      // Win category 47
+      {
+         win = bet (all), x400
+         line = F2, DD, F2, DD, F2
+      }
+
+      // Win category 48
+      {
+         win = bet (all), x400
+         line = F1, DD, F1, DD, F1
+      }
+
+      // Win category 49
+      {
+         win = bet (all), x400
+         line = A7, DD, A7, DD, A7
+      }
+
+      // Win category 50
+      {
+         win = bet (all), x400
+         line = 7A, 7A, 7A, DD, 7A
+         line = 7A, DD, 7A, 7A, 7A
+      }
+
+      // Win category 51
+      {
+         win = bet (all), x400
+         line = 7E, DD, 7E, DD, XX
+      }
+
+      // Win category 52
+      {
+         win = bet (all), x375
+         line = F3, F3, F3, TT, F3
+         line = F3, TT, F3, F3, F3
+      }
+
+      // Win category 53
+      {
+         win = bet (all), x300
+         line = F2, F2, F2, TT, F2
+         line = F2, TT, F2, F2, F2
+      }
+
+      // Win category 54
+      {
+         win = bet (all), x300
+         line = 7B, 7B, 7B, DD, 7B
+         line = 7B, DD, 7B, 7B, 7B
+      }
+
+      // Win category 55
+      {
+         win = bet (all), x300
+         line = F1, F1, F1, TT, F1
+         line = F1, TT, F1, F1, F1
+      }
+
+      // Win category 56
+      {
+         win = bet (all), x300
+         line = A7, A7, A7, TT, A7
+         line = A7, TT, A7, A7, A7
+      }
+
+      // Win category 57
+      {
+         win = bet (all), x300
+         line = F4, F4, F4, DD, F4
+         line = F4, DD, F4, F4, F4
+      }
+
+      // Win category 58
+      {
+         win = bet (all), x300
+         line = 7A, DD, 7A, DD, XX
+      }
+
+      // Win category 59
+      {
+         win = bet (all), x300
+         line = 7B, DD, 7B, DD, XX
+      }
+
+      // Win category 60
+      {
+         win = bet (all), x300
+         line = 7E, 7E, 7E, TT, XX
+         line = 7E, TT, 7E, 7E, XX
+      }
+
+      // Win category 61
+      {
+         win = bet (all), x300
+         line = 7D, DD, 7D, DD, XX
+      }
+
+      // Win category 62
+      {
+         win = bet (all), x300
+         line = 7C, DD, 7C, DD, XX
+      }
+
+      // Win category 63
+      {
+         win = bet (all), x250
+         line = 7D, 7D, 7D, 7D, 7D
+         awardname = bet (all), 7D7D7D7D7D_GDC1, default
+      }
+
+      // Win category 64
+      {
+         win = bet (all), x250
+         line = F3, F3, F3, DD, F3
+         line = F3, DD, F3, F3, F3
+      }
+
+      // Win category 65
+      {
+         win = bet (all), x225
+         line = 7C, 7C, 7C, 7C, 7C
+         awardname = bet (all), 7C7C7C7C7C_GDC1, default
+      }
+
+      // Win category 66
+      {
+         win = bet (all), x225
+         line = F4, TT, F4, TT, XX
+      }
+
+      // Win category 67
+      {
+         win = bet (all), x225
+         line = F3, TT, F3, TT, XX
+      }
+
+      // Win category 68
+      {
+         win = bet (all), x225
+         line = F2, TT, F2, TT, XX
+      }
+
+      // Win category 69
+      {
+         win = bet (all), x225
+         line = F1, TT, F1, TT, XX
+      }
+
+      // Win category 70
+      {
+         win = bet (all), x225
+         line = 7A, 7A, 7A, TT, XX
+         line = 7A, TT, 7A, 7A, XX
+      }
+
+      // Win category 71
+      {
+         win = bet (all), x225
+         line = 7B, 7B, 7B, TT, XX
+         line = 7B, TT, 7B, 7B, XX
+      }
+
+      // Win category 72
+      {
+         win = bet (all), x225
+         line = 7D, 7D, 7D, TT, XX
+         line = 7D, TT, 7D, 7D, XX
+      }
+
+      // Win category 73
+      {
+         win = bet (all), x225
+         line = 7C, 7C, 7C, TT, XX
+         line = 7C, TT, 7C, 7C, XX
+      }
+
+      // Win category 74
+      {
+         win = bet (all), x200
+         line = F2, F2, F2, DD, F2
+         line = F2, DD, F2, F2, F2
+      }
+
+      // Win category 75
+      {
+         win = bet (all), x200
+         line = F1, F1, F1, DD, F1
+         line = F1, DD, F1, F1, F1
+      }
+
+      // Win category 76
+      {
+         win = bet (all), x200
+         line = A7, A7, A7, DD, A7
+         line = A7, DD, A7, A7, A7
+      }
+
+      // Win category 77
+      {
+         win = bet (all), x200
+         line = 7A, 7A, 7A, 7A, 7A
+         awardname = bet (all), 7A7A7A7A7A_GDC1, default
+      }
+
+      // Win category 78
+      {
+         win = bet (all), x200
+         line = 7E, 7E, 7E, DD, XX
+         line = 7E, DD, 7E, 7E, XX
+      }
+
+      // Win category 79
+      {
+         win = bet (all), x180
+         line = A7, TT, A7, TT, XX
+      }
+
+      // Win category 80
+      {
+         win = bet (all), x150
+         line = 7B, 7B, 7B, 7B, 7B
+         awardname = bet (all), 7B7B7B7B7B_GDC1, default
+      }
+
+      // Win category 81
+      {
+         win = bet (all), x150
+         line = F4, F4, F4, F4, F4
+         awardname = bet (all), F4F4F4F4F4_GDC1, default
+      }
+
+      // Win category 82
+      {
+         win = bet (all), x150
+         line = F4, TT, F4, DD, XX
+         line = F4, DD, F4, TT, XX
+      }
+
+      // Win category 83
+      {
+         win = bet (all), x150
+         line = F3, TT, F3, DD, XX
+         line = F3, DD, F3, TT, XX
+      }
+
+      // Win category 84
+      {
+         win = bet (all), x150
+         line = F2, TT, F2, DD, XX
+         line = F2, DD, F2, TT, XX
+      }
+
+      // Win category 85
+      {
+         win = bet (all), x150
+         line = F1, TT, F1, DD, XX
+         line = F1, DD, F1, TT, XX
+      }
+
+      // Win category 86
+      {
+         win = bet (all), x150
+         line = 7A, 7A, 7A, DD, XX
+         line = 7A, DD, 7A, 7A, XX
+      }
+
+      // Win category 87
+      {
+         win = bet (all), x150
+         line = 7B, 7B, 7B, DD, XX
+         line = 7B, DD, 7B, 7B, XX
+      }
+
+      // Win category 88
+      {
+         win = bet (all), x150
+         line = 7D, 7D, 7D, DD, XX
+         line = 7D, DD, 7D, 7D, XX
+      }
+
+      // Win category 89
+      {
+         win = bet (all), x150
+         line = 7C, 7C, 7C, DD, XX
+         line = 7C, DD, 7C, 7C, XX
+      }
+
+      // Win category 90
+      {
+         win = bet (all), x125
+         line = F3, F3, F3, F3, F3
+         awardname = bet (all), F3F3F3F3F3_GDC1, default
+      }
+
+      // Win category 91
+      {
+         win = bet (all), x120
+         line = A7, TT, A7, DD, XX
+         line = A7, DD, A7, TT, XX
+      }
+
+      // Win category 92
+      {
+         win = bet (all), x100
+         line = F2, F2, F2, F2, F2
+         awardname = bet (all), F2F2F2F2F2_GDC1, default
+      }
+
+      // Win category 93
+      {
+         win = bet (all), x100
+         line = F1, F1, F1, F1, F1
+         awardname = bet (all), F1F1F1F1F1_GDC1, default
+      }
+
+      // Win category 94
+      {
+         win = bet (all), x100
+         line = A7, A7, A7, A7, A7
+         awardname = bet (all), A7A7A7A7A7_GDC1, default
+      }
+
+      // Win category 95
+      {
+         win = bet (all), x100
+         line = F4, DD, F4, DD, XX
+      }
+
+      // Win category 96
+      {
+         win = bet (all), x100
+         line = F3, DD, F3, DD, XX
+      }
+
+      // Win category 97
+      {
+         win = bet (all), x100
+         line = F2, DD, F2, DD, XX
+      }
+
+      // Win category 98
+      {
+         win = bet (all), x100
+         line = F1, DD, F1, DD, XX
+      }
+
+      // Win category 99
+      {
+         win = bet (all), x100
+         line = 7E, 7E, 7E, 7E, XX
+         awardname = bet (all), 7E7E7E7E--_GDC1, default
+      }
+
+      // Win category 100
+      {
+         win = bet (all), x80
+         line = A7, DD, A7, DD, XX
+      }
+
+      // Win category 101
+      {
+         win = bet (all), x75
+         line = F4, F4, F4, TT, XX
+         line = F4, TT, F4, F4, XX
+      }
+
+      // Win category 102
+      {
+         win = bet (all), x75
+         line = F3, F3, F3, TT, XX
+         line = F3, TT, F3, F3, XX
+      }
+
+      // Win category 103
+      {
+         win = bet (all), x75
+         line = F2, F2, F2, TT, XX
+         line = F2, TT, F2, F2, XX
+      }
+
+      // Win category 104
+      {
+         win = bet (all), x75
+         line = F1, F1, F1, TT, XX
+         line = F1, TT, F1, F1, XX
+      }
+
+      // Win category 105
+      {
+         win = bet (all), x75
+         line = 7A, 7A, 7A, 7A, XX
+         awardname = bet (all), 7A7A7A7A--_GDC1, default
+      }
+
+      // Win category 106
+      {
+         win = bet (all), x75
+         line = 7B, 7B, 7B, 7B, XX
+         awardname = bet (all), 7B7B7B7B--_GDC1, default
+      }
+
+      // Win category 107
+      {
+         win = bet (all), x75
+         line = 7D, 7D, 7D, 7D, XX
+         awardname = bet (all), 7D7D7D7D--_GDC1, default
+      }
+
+      // Win category 108
+      {
+         win = bet (all), x75
+         line = 7C, 7C, 7C, 7C, XX
+         awardname = bet (all), 7C7C7C7C--_GDC1, default
+      }
+
+      // Win category 109
+      {
+         win = bet (all), x75
+         line = 7E, TT, 7E, XX, XX
+      }
+
+      // Win category 110
+      {
+         win = bet (all), x75
+         line = 7D, TT, 7D, XX, XX
+      }
+
+      // Win category 111
+      {
+         win = bet (all), x60
+         line = A7, A7, A7, TT, XX
+         line = A7, TT, A7, A7, XX
+      }
+
+      // Win category 112
+      {
+         win = bet (all), x60
+         line = 7C, TT, 7C, XX, XX
+      }
+
+      // Win category 113
+      {
+         win = bet (all), x50
+         line = F4, F4, F4, DD, XX
+         line = F4, DD, F4, F4, XX
+      }
+
+      // Win category 114
+      {
+         win = bet (all), x50
+         line = F3, F3, F3, DD, XX
+         line = F3, DD, F3, F3, XX
+      }
+
+      // Win category 115
+      {
+         win = bet (all), x50
+         line = F2, F2, F2, DD, XX
+         line = F2, DD, F2, F2, XX
+      }
+
+      // Win category 116
+      {
+         win = bet (all), x50
+         line = F1, F1, F1, DD, XX
+         line = F1, DD, F1, F1, XX
+      }
+
+      // Win category 117
+      {
+         win = bet (all), x50
+         line = 7E, DD, 7E, XX, XX
+      }
+
+      // Win category 118
+      {
+         win = bet (all), x50
+         line = 7D, DD, 7D, XX, XX
+      }
+
+      // Win category 119
+      {
+         win = bet (all), x40
+         line = A7, A7, A7, DD, XX
+         line = A7, DD, A7, A7, XX
+      }
+
+      // Win category 120
+      {
+         win = bet (all), x40
+         line = 7C, DD, 7C, XX, XX
+      }
+
+      // Win category 121
+      {
+         win = bet (all), x30
+         line = 7A, TT, 7A, XX, XX
+      }
+
+      // Win category 122
+      {
+         win = bet (all), x30
+         line = 7B, TT, 7B, XX, XX
+      }
+
+      // Win category 123
+      {
+         win = bet (all), x25
+         line = F4, F4, F4, F4, XX
+         awardname = bet (all), F4F4F4F4--_GDC1, default
+      }
+
+      // Win category 124
+      {
+         win = bet (all), x25
+         line = F3, F3, F3, F3, XX
+         awardname = bet (all), F3F3F3F3--_GDC1, default
+      }
+
+      // Win category 125
+      {
+         win = bet (all), x25
+         line = F2, F2, F2, F2, XX
+         awardname = bet (all), F2F2F2F2--F1F1F1F1--_GDC1, default
+      }
+
+      // Win category 126
+      {
+         win = bet (all), x25
+         line = F1, F1, F1, F1, XX
+         awardname = bet (all), F2F2F2F2--F1F1F1F1--_GDC1, default
+      }
+
+      // Win category 127
+      {
+         win = bet (all), x25
+         line = 7E, 7E, 7E, XX, XX
+         awardname = bet (all), 7E7E7E----_GDC1, default
+      }
+
+      // Win category 128
+      {
+         win = bet (all), x25
+         line = 7D, 7D, 7D, XX, XX
+         awardname = bet (all), 7D7D7D----_GDC1, default
+      }
+
+      // Win category 129
+      {
+         win = bet (all), x20
+         line = A7, A7, A7, A7, XX
+         awardname = bet (all), A7A7A7A7--_GDC1, default
+      }
+
+      // Win category 130
+      {
+         win = bet (all), x20
+         line = 7C, 7C, 7C, XX, XX
+         awardname = bet (all), 7C7C7C----_GDC1, default
+      }
+
+      // Win category 131
+      {
+         win = bet (all), x20
+         line = 7A, DD, 7A, XX, XX
+      }
+
+      // Win category 132
+      {
+         win = bet (all), x20
+         line = 7B, DD, 7B, XX, XX
+      }
+
+      // Win category 133
+      {
+         win = bet (all), x15
+         line = A7, TT, A7, XX, XX
+      }
+
+      // Win category 134
+      {
+         win = bet (all), x15
+         line = F4, TT, F4, XX, XX
+      }
+
+      // Win category 135
+      {
+         win = bet (all), x15
+         line = F3, TT, F3, XX, XX
+      }
+
+      // Win category 136
+      {
+         win = bet (all), x15
+         line = F2, TT, F2, XX, XX
+      }
+
+      // Win category 137
+      {
+         win = bet (all), x15
+         line = F1, TT, F1, XX, XX
+      }
+
+      // Win category 138
+      {
+         win = bet (all), x10
+         line = 7A, 7A, 7A, XX, XX
+         awardname = bet (all), 7A7A7A----7B7B7B----_GDC1, default
+      }
+
+      // Win category 139
+      {
+         win = bet (all), x10
+         line = 7B, 7B, 7B, XX, XX
+         awardname = bet (all), 7A7A7A----7B7B7B----_GDC1, default
+      }
+
+      // Win category 140
+      {
+         win = bet (all), x10
+         line = A7, DD, A7, XX, XX
+      }
+
+      // Win category 141
+      {
+         win = bet (all), x10
+         line = F4, DD, F4, XX, XX
+      }
+
+      // Win category 142
+      {
+         win = bet (all), x10
+         line = F3, DD, F3, XX, XX
+      }
+
+      // Win category 143
+      {
+         win = bet (all), x10
+         line = F2, DD, F2, XX, XX
+      }
+
+      // Win category 144
+      {
+         win = bet (all), x10
+         line = F1, DD, F1, XX, XX
+      }
+
+      // Win category 145
+      {
+         win = bet (all), x5
+         line = A7, A7, A7, XX, XX
+         awardname = bet (all), A7A7A7----_GDC1, default
+      }
+
+      // Win category 146
+      {
+         win = bet (all), x5
+         line = F4, F4, F4, XX, XX
+         awardname = bet (all), F4F4F4----F3F3F3----_GDC1, default
+      }
+
+      // Win category 147
+      {
+         win = bet (all), x5
+         line = F3, F3, F3, XX, XX
+         awardname = bet (all), F4F4F4----F3F3F3----_GDC1, default
+      }
+
+      // Win category 148
+      {
+         win = bet (all), x5
+         line = F2, F2, F2, XX, XX
+         awardname = bet (all), F2F2F2----F1F1F1----_GDC1, default
+      }
+
+      // Win category 149
+      {
+         win = bet (all), x5
+         line = F1, F1, F1, XX, XX
+         awardname = bet (all), F2F2F2----F1F1F1----_GDC1, default
+      }
+
+      // Win category 150
+      {
+         win = bet (all), x1, trigger (Stage1, count (15), multiplier (1), max total plays (150)), odds(133)  // Bonus average pay 42.751
+         scatter = XX, SS, SS, SS, XX
+      }
+
+   }
+}
+
+// BN038013
+
+[Stage1]
+{
+   [slot]
+   {
+      pay highest line = yes
+      winning start position allowed = no
+   }
+
+   [progressive caps]
+   {
+      Level_0_Default = 0, 1, x15000
+   }
+
+   [symbol defines]
+   {
+      // Define symbols
+      symbol = TT         // TT
+      symbol = DD         // DD
+      symbol = 7A         // 7A
+      symbol = 7B         // 7B
+      symbol = 7C         // 7C
+      symbol = 7D         // 7D
+      symbol = 7E         // 7E
+      symbol = F1         // F1
+      symbol = F2         // F2
+      symbol = F3         // F3
+      symbol = F4         // F4
+      symbol = BN         // BN  - Scatter Symbol (1 of 1)
+   }
+
+   [reel]   // reel 0
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 0
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 11
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = 7D, quantity ( 12 )                        // stop 0 - Virtual Range:  0  -  11 
+      stop = 7D, quantity ( 8 )                        // stop 1 - Virtual Range:  12  -  19 
+      stop = 7D, quantity ( 12 )                        // stop 2 - Virtual Range:  20  -  31 
+      stop = F3, quantity ( 12 )                        // stop 3 - Virtual Range:  32  -  43 
+      stop = F2, quantity ( 6 )                        // stop 4 - Virtual Range:  44  -  49 
+      stop = 7E, quantity ( 6 )                        // stop 5 - Virtual Range:  50  -  55 
+      stop = 7E, quantity ( 5 )                        // stop 6 - Virtual Range:  56  -  60 
+      stop = 7E, quantity ( 6 )                        // stop 7 - Virtual Range:  61  -  66 
+      stop = F4, quantity ( 6 )                        // stop 8 - Virtual Range:  67  -  72 
+      stop = F2, quantity ( 6 )                        // stop 9 - Virtual Range:  73  -  78 
+      stop = 7A, quantity ( 6 )                        // stop 10 - Virtual Range:  79  -  84 
+      stop = 7B, quantity ( 6 )                        // stop 11 - Virtual Range:  85  -  90 
+      stop = 7C, quantity ( 6 )                        // stop 12 - Virtual Range:  91  -  96 
+      stop = F3, quantity ( 6 )                        // stop 13 - Virtual Range:  97  -  102 
+      stop = F2, quantity ( 14 )                        // stop 14 - Virtual Range:  103  -  116 
+      stop = F4, quantity ( 14 )                        // stop 15 - Virtual Range:  117  -  130 
+      stop = F2, quantity ( 14 )                        // stop 16 - Virtual Range:  131  -  144 
+      stop = F3, quantity ( 14 )                        // stop 17 - Virtual Range:  145  -  158 
+      stop = F2, quantity ( 6 )                        // stop 18 - Virtual Range:  159  -  164 
+      stop = F1, quantity ( 6 )                        // stop 19 - Virtual Range:  165  -  170 
+      stop = F3, quantity ( 6 )                        // stop 20 - Virtual Range:  171  -  176 
+      stop = F2, quantity ( 12 )                        // stop 21 - Virtual Range:  177  -  188 
+   }
+
+   [reel]   // reel 1
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 1
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 19
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F3, quantity ( 20 )                        // stop 0 - Virtual Range:  0  -  19 
+      stop = 7A, quantity ( 20 )                        // stop 1 - Virtual Range:  20  -  39 
+      stop = F1, quantity ( 20 )                        // stop 2 - Virtual Range:  40  -  59 
+      stop = F4, quantity ( 20 )                        // stop 3 - Virtual Range:  60  -  79 
+      stop = F1, quantity ( 20 )                        // stop 4 - Virtual Range:  80  -  99 
+      stop = F3, quantity ( 2 )                        // stop 5 - Virtual Range:  100  -  101 
+      stop = TT, quantity ( 2 )                        // stop 6 - Virtual Range:  102  -  103 
+      stop = F1, quantity ( 2 )                        // stop 7 - Virtual Range:  104  -  105 
+      stop = F3, quantity ( 18 )                        // stop 8 - Virtual Range:  106  -  123 
+      stop = BN, quantity ( 18 )                        // stop 9 - Virtual Range:  124  -  141 
+      stop = 7C, quantity ( 18 )                        // stop 10 - Virtual Range:  142  -  159 
+      stop = 7B, quantity ( 18 )                        // stop 11 - Virtual Range:  160  -  177 
+      stop = 7D, quantity ( 18 )                        // stop 12 - Virtual Range:  178  -  195 
+      stop = F1, quantity ( 18 )                        // stop 13 - Virtual Range:  196  -  213 
+      stop = F3, quantity ( 3 )                        // stop 14 - Virtual Range:  214  -  216 
+      stop = 7E, quantity ( 3 )                        // stop 15 - Virtual Range:  217  -  219 
+      stop = 7E, quantity ( 1 )                        // stop 16 - Virtual Range:  220  -  220 
+      stop = 7E, quantity ( 3 )                        // stop 17 - Virtual Range:  221  -  223 
+      stop = F2, quantity ( 3 )                        // stop 18 - Virtual Range:  224  -  226 
+      stop = F3, quantity ( 3 )                        // stop 19 - Virtual Range:  227  -  229 
+      stop = DD, quantity ( 3 )                        // stop 20 - Virtual Range:  230  -  232 
+      stop = F1, quantity ( 3 )                        // stop 21 - Virtual Range:  233  -  235 
+   }
+
+   [reel]   // reel 2
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 2
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 11
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F1, quantity ( 12 )                        // stop 0 - Virtual Range:  0  -  11 
+      stop = F4, quantity ( 12 )                        // stop 1 - Virtual Range:  12  -  23 
+      stop = 7E, quantity ( 12 )                        // stop 2 - Virtual Range:  24  -  35 
+      stop = 7B, quantity ( 12 )                        // stop 3 - Virtual Range:  36  -  47 
+      stop = 7E, quantity ( 12 )                        // stop 4 - Virtual Range:  48  -  59 
+      stop = BN, quantity ( 12 )                        // stop 5 - Virtual Range:  60  -  71 
+      stop = F1, quantity ( 12 )                        // stop 6 - Virtual Range:  72  -  83 
+      stop = 7E, quantity ( 12 )                        // stop 7 - Virtual Range:  84  -  95 
+      stop = F2, quantity ( 12 )                        // stop 8 - Virtual Range:  96  -  107 
+      stop = F1, quantity ( 46 )                        // stop 9 - Virtual Range:  108  -  153 
+      stop = F2, quantity ( 46 )                        // stop 10 - Virtual Range:  154  -  199 
+      stop = F1, quantity ( 3 )                        // stop 11 - Virtual Range:  200  -  202 
+      stop = F2, quantity ( 3 )                        // stop 12 - Virtual Range:  203  -  205 
+      stop = 7D, quantity ( 3 )                        // stop 13 - Virtual Range:  206  -  208 
+      stop = 7A, quantity ( 3 )                        // stop 14 - Virtual Range:  209  -  211 
+      stop = 7E, quantity ( 3 )                        // stop 15 - Virtual Range:  212  -  214 
+      stop = F3, quantity ( 3 )                        // stop 16 - Virtual Range:  215  -  217 
+      stop = F2, quantity ( 3 )                        // stop 17 - Virtual Range:  218  -  220 
+      stop = 7D, quantity ( 3 )                        // stop 18 - Virtual Range:  221  -  223 
+      stop = 7A, quantity ( 3 )                        // stop 19 - Virtual Range:  224  -  226 
+      stop = 7C, quantity ( 3 )                        // stop 20 - Virtual Range:  227  -  229 
+      stop = F2, quantity ( 3 )                        // stop 21 - Virtual Range:  230  -  232 
+   }
+
+   [reel]   // reel 3
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 3
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 11
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F3, quantity ( 12 )                        // stop 0 - Virtual Range:  0  -  11 
+      stop = BN, quantity ( 12 )                        // stop 1 - Virtual Range:  12  -  23 
+      stop = F1, quantity ( 12 )                        // stop 2 - Virtual Range:  24  -  35 
+      stop = F3, quantity ( 26 )                        // stop 3 - Virtual Range:  36  -  61 
+      stop = F2, quantity ( 26 )                        // stop 4 - Virtual Range:  62  -  87 
+      stop = F3, quantity ( 26 )                        // stop 5 - Virtual Range:  88  -  113 
+      stop = F1, quantity ( 26 )                        // stop 6 - Virtual Range:  114  -  139 
+      stop = F3, quantity ( 2 )                        // stop 7 - Virtual Range:  140  -  141 
+      stop = 7A, quantity ( 2 )                        // stop 8 - Virtual Range:  142  -  143 
+      stop = 7B, quantity ( 2 )                        // stop 9 - Virtual Range:  144  -  145 
+      stop = 7C, quantity ( 2 )                        // stop 10 - Virtual Range:  146  -  147 
+      stop = F4, quantity ( 2 )                        // stop 11 - Virtual Range:  148  -  149 
+      stop = 7D, quantity ( 2 )                        // stop 12 - Virtual Range:  150  -  151 
+      stop = TT, quantity ( 2 )                        // stop 13 - Virtual Range:  152  -  153 
+      stop = F4, quantity ( 2 )                        // stop 14 - Virtual Range:  154  -  155 
+      stop = F3, quantity ( 2 )                        // stop 15 - Virtual Range:  156  -  157 
+      stop = DD, quantity ( 2 )                        // stop 16 - Virtual Range:  158  -  159 
+      stop = F4, quantity ( 2 )                        // stop 17 - Virtual Range:  160  -  161 
+      stop = 7E, quantity ( 2 )                        // stop 18 - Virtual Range:  162  -  163 
+      stop = 7E, quantity ( 1 )                        // stop 19 - Virtual Range:  164  -  164 
+      stop = 7E, quantity ( 2 )                        // stop 20 - Virtual Range:  165  -  166 
+      stop = F1, quantity ( 2 )                        // stop 21 - Virtual Range:  167  -  168 
+   }
+
+   [reel]   // reel 4
+   {
+      // Phys Reel Stops : 22
+
+      // Number of visible symbols for reel 4
+      number of visible symbols = 3
+
+      // Start up reel position
+      start reel = 3
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F1, quantity ( 4 )                        // stop 0 - Virtual Range:  0  -  3 
+      stop = F4, quantity ( 1 )                        // stop 1 - Virtual Range:  4  -  4 
+      stop = F1, quantity ( 1 )                        // stop 2 - Virtual Range:  5  -  5 
+      stop = F3, quantity ( 29 )                        // stop 3 - Virtual Range:  6  -  34 
+      stop = F2, quantity ( 29 )                        // stop 4 - Virtual Range:  35  -  63 
+      stop = F1, quantity ( 29 )                        // stop 5 - Virtual Range:  64  -  92 
+      stop = F3, quantity ( 40 )                        // stop 6 - Virtual Range:  93  -  132 
+      stop = F1, quantity ( 40 )                        // stop 7 - Virtual Range:  133  -  172 
+      stop = F3, quantity ( 1 )                        // stop 8 - Virtual Range:  173  -  173 
+      stop = 7E, quantity ( 1 )                        // stop 9 - Virtual Range:  174  -  174 
+      stop = 7E, quantity ( 6 )                        // stop 10 - Virtual Range:  175  -  180 
+      stop = 7E, quantity ( 1 )                        // stop 11 - Virtual Range:  181  -  181 
+      stop = F1, quantity ( 1 )                        // stop 12 - Virtual Range:  182  -  182 
+      stop = F4, quantity ( 1 )                        // stop 13 - Virtual Range:  183  -  183 
+      stop = 7D, quantity ( 1 )                        // stop 14 - Virtual Range:  184  -  184 
+      stop = 7D, quantity ( 1 )                        // stop 15 - Virtual Range:  185  -  185 
+      stop = 7D, quantity ( 1 )                        // stop 16 - Virtual Range:  186  -  186 
+      stop = F1, quantity ( 1 )                        // stop 17 - Virtual Range:  187  -  187 
+      stop = F4, quantity ( 4 )                        // stop 18 - Virtual Range:  188  -  191 
+      stop = 7C, quantity ( 4 )                        // stop 19 - Virtual Range:  192  -  195 
+      stop = 7A, quantity ( 4 )                        // stop 20 - Virtual Range:  196  -  199 
+      stop = 7B, quantity ( 4 )                        // stop 21 - Virtual Range:  200  -  203 
+   }
+
+   [pay lines]
+   {
+      // Pay line coordinates: "reel number"."reel index"
+      line = 0.1, 1.1, 2.1, 3.1, 4.1             // payline 0
+      line = 0.0, 1.0, 2.0, 3.0, 4.0             // payline 1
+      line = 0.2, 1.2, 2.2, 3.2, 4.2             // payline 2
+      line = 0.0, 1.1, 2.2, 3.1, 4.0             // payline 3
+      line = 0.2, 1.1, 2.0, 3.1, 4.2             // payline 4
+      line = 0.0, 1.0, 2.1, 3.0, 4.0             // payline 5
+      line = 0.2, 1.2, 2.1, 3.2, 4.2             // payline 6
+      line = 0.1, 1.2, 2.2, 3.2, 4.1             // payline 7
+      line = 0.1, 1.0, 2.0, 3.0, 4.1             // payline 8
+      line = 0.0, 1.1, 2.1, 3.1, 4.0             // payline 9
+      line = 0.2, 1.1, 2.1, 3.1, 4.2             // payline 10
+      line = 0.0, 1.1, 2.0, 3.1, 4.0             // payline 11
+      line = 0.2, 1.1, 2.2, 3.1, 4.2             // payline 12
+      line = 0.1, 1.0, 2.1, 3.0, 4.1             // payline 13
+      line = 0.1, 1.2, 2.1, 3.2, 4.1             // payline 14
+      line = 0.1, 1.1, 2.0, 3.1, 4.1             // payline 15
+      line = 0.1, 1.1, 2.2, 3.1, 4.1             // payline 16
+      line = 0.0, 1.2, 2.0, 3.2, 4.0             // payline 17
+      line = 0.2, 1.0, 2.2, 3.0, 4.2             // payline 18
+      line = 0.1, 1.0, 2.2, 3.0, 4.1             // payline 19
+      line = 0.1, 1.2, 2.0, 3.2, 4.1             // payline 20
+      line = 0.0, 1.0, 2.2, 3.0, 4.0             // payline 21
+      line = 0.2, 1.2, 2.0, 3.2, 4.2             // payline 22
+      line = 0.0, 1.2, 2.2, 3.2, 4.0             // payline 23
+      line = 0.2, 1.0, 2.0, 3.0, 4.2             // payline 24
+      line = 0.0, 1.2, 2.1, 3.2, 4.0             // payline 25
+      line = 0.2, 1.0, 2.1, 3.0, 4.2             // payline 26
+      line = 0.0, 1.0, 2.1, 3.2, 4.2             // payline 27
+      line = 0.2, 1.2, 2.1, 3.0, 4.0             // payline 28
+      line = 0.1, 1.0, 2.1, 3.2, 4.1             // payline 29
+      line = 0.1, 1.2, 2.1, 3.0, 4.1             // payline 30
+      line = 0.0, 1.2, 2.1, 3.0, 4.2             // payline 31
+      line = 0.2, 1.0, 2.1, 3.2, 4.0             // payline 32
+      line = 0.1, 1.0, 2.2, 3.1, 4.0             // payline 33
+      line = 0.1, 1.2, 2.0, 3.1, 4.2             // payline 34
+      line = 0.0, 1.1, 2.2, 3.0, 4.1             // payline 35
+      line = 0.2, 1.1, 2.0, 3.2, 4.1             // payline 36
+      line = 0.0, 1.0, 2.0, 3.1, 4.2             // payline 37
+      line = 0.2, 1.2, 2.2, 3.1, 4.0             // payline 38
+      line = 0.1, 1.1, 2.1, 3.0, 4.2             // payline 39
+      line = 0.1, 1.1, 2.1, 3.2, 4.0             // payline 40
+      line = 0.0, 1.2, 2.0, 3.1, 4.0             // payline 41
+      line = 0.2, 1.0, 2.2, 3.1, 4.2             // payline 42
+      line = 0.0, 1.1, 2.0, 3.2, 4.0             // payline 43
+      line = 0.2, 1.1, 2.2, 3.0, 4.2             // payline 44
+      line = 0.0, 1.0, 2.2, 3.1, 4.2             // payline 45
+      line = 0.2, 1.2, 2.0, 3.1, 4.0             // payline 46
+      line = 0.0, 1.1, 2.1, 3.1, 4.2             // payline 47
+      line = 0.2, 1.1, 2.1, 3.1, 4.0             // payline 48
+      line = 0.1, 1.0, 2.0, 3.1, 4.2             // payline 49
+   }
+
+   [masks]
+   {
+   }
+
+   [symbol substitutions]
+   {
+      XX = TT, DD, 7A, 7B, 7C, 7D, 7E, F1, F2, F3, F4, BN
+      A7 = 7A, 7B, 7C, 7D, 7E
+      SS = BN
+   }
+
+   [win evaluation]
+   {
+      // Win category 0
+      {
+         progressive = game bet (max), 0, level0, line (all)
+         win = bet (all), x15000, odds(16888190) 
+         line = 7E, TT, 7E, TT, 7E
+      }
+
+      // Win category 1
+      {
+         win = bet (all), x3000
+         line = 7E, TT, 7E, DD, 7E
+         line = 7E, DD, 7E, TT, 7E
+      }
+
+      // Win category 2
+      {
+         win = bet (all), x2250
+         line = 7D, TT, 7D, TT, 7D
+      }
+
+      // Win category 3
+      {
+         win = bet (all), x2025
+         line = 7C, TT, 7C, TT, 7C
+      }
+
+      // Win category 4
+      {
+         win = bet (all), x2000
+         line = 7E, DD, 7E, DD, 7E
+      }
+
+      // Win category 5
+      {
+         win = bet (all), x1800
+         line = 7A, TT, 7A, TT, 7A
+      }
+
+      // Win category 6
+      {
+         win = bet (all), x1500
+         line = 7E, 7E, 7E, TT, 7E
+         line = 7E, TT, 7E, 7E, 7E
+      }
+
+      // Win category 7
+      {
+         win = bet (all), x1500
+         line = 7D, TT, 7D, DD, 7D
+         line = 7D, DD, 7D, TT, 7D
+      }
+
+      // Win category 8
+      {
+         win = bet (all), x1350
+         line = 7B, TT, 7B, TT, 7B
+      }
+
+      // Win category 9
+      {
+         win = bet (all), x1350
+         line = 7C, TT, 7C, DD, 7C
+         line = 7C, DD, 7C, TT, 7C
+      }
+
+      // Win category 10
+      {
+         win = bet (all), x1350
+         line = F4, TT, F4, TT, F4
+      }
+
+      // Win category 11
+      {
+         win = bet (all), x1200
+         line = 7A, TT, 7A, DD, 7A
+         line = 7A, DD, 7A, TT, 7A
+      }
+
+      // Win category 12
+      {
+         win = bet (all), x1125
+         line = F3, TT, F3, TT, F3
+      }
+
+      // Win category 13
+      {
+         win = bet (all), x1000
+         line = 7E, 7E, 7E, DD, 7E
+         line = 7E, DD, 7E, 7E, 7E
+      }
+
+      // Win category 14
+      {
+         win = bet (all), x1000
+         line = 7D, DD, 7D, DD, 7D
+      }
+
+      // Win category 15
+      {
+         win = bet (all), x900
+         line = F2, TT, F2, TT, F2
+      }
+
+      // Win category 16
+      {
+         win = bet (all), x900
+         line = 7B, TT, 7B, DD, 7B
+         line = 7B, DD, 7B, TT, 7B
+      }
+
+      // Win category 17
+      {
+         win = bet (all), x900
+         line = 7C, DD, 7C, DD, 7C
+      }
+
+      // Win category 18
+      {
+         win = bet (all), x900
+         line = F1, TT, F1, TT, F1
+      }
+
+      // Win category 19
+      {
+         win = bet (all), x900
+         line = A7, TT, A7, TT, A7
+      }
+
+      // Win category 20
+      {
+         win = bet (all), x900
+         line = F4, TT, F4, DD, F4
+         line = F4, DD, F4, TT, F4
+      }
+
+      // Win category 21
+      {
+         win = bet (all), x900
+         line = 7E, TT, 7E, TT, XX
+      }
+
+      // Win category 22
+      {
+         win = bet (all), x800
+         line = 7A, DD, 7A, DD, 7A
+      }
+
+      // Win category 23
+      {
+         win = bet (all), x750
+         line = 7D, 7D, 7D, TT, 7D
+         line = 7D, TT, 7D, 7D, 7D
+      }
+
+      // Win category 24
+      {
+         win = bet (all), x750
+         line = F3, TT, F3, DD, F3
+         line = F3, DD, F3, TT, F3
+      }
+
+      // Win category 25
+      {
+         win = bet (all), x675
+         line = 7C, 7C, 7C, TT, 7C
+         line = 7C, TT, 7C, 7C, 7C
+      }
+
+      // Win category 26
+      {
+         win = bet (all), x675
+         line = 7A, TT, 7A, TT, XX
+      }
+
+      // Win category 27
+      {
+         win = bet (all), x675
+         line = 7B, TT, 7B, TT, XX
+      }
+
+      // Win category 28
+      {
+         win = bet (all), x675
+         line = 7D, TT, 7D, TT, XX
+      }
+
+      // Win category 29
+      {
+         win = bet (all), x675
+         line = 7C, TT, 7C, TT, XX
+      }
+
+      // Win category 30
+      {
+         win = bet (all), x600
+         line = F2, TT, F2, DD, F2
+         line = F2, DD, F2, TT, F2
+      }
+
+      // Win category 31
+      {
+         win = bet (all), x600
+         line = 7B, DD, 7B, DD, 7B
+      }
+
+      // Win category 32
+      {
+         win = bet (all), x600
+         line = F1, TT, F1, DD, F1
+         line = F1, DD, F1, TT, F1
+      }
+
+      // Win category 33
+      {
+         win = bet (all), x600
+         line = A7, TT, A7, DD, A7
+         line = A7, DD, A7, TT, A7
+      }
+
+      // Win category 34
+      {
+         win = bet (all), x600
+         line = 7A, 7A, 7A, TT, 7A
+         line = 7A, TT, 7A, 7A, 7A
+      }
+
+      // Win category 35
+      {
+         win = bet (all), x600
+         line = F4, DD, F4, DD, F4
+      }
+
+      // Win category 36
+      {
+         win = bet (all), x600
+         line = 7E, TT, 7E, DD, XX
+         line = 7E, DD, 7E, TT, XX
+      }
+
+      // Win category 37
+      {
+         win = bet (all), x500
+         line = 7E, 7E, 7E, 7E, 7E
+      }
+
+      // Win category 38
+      {
+         win = bet (all), x500
+         line = 7D, 7D, 7D, DD, 7D
+         line = 7D, DD, 7D, 7D, 7D
+      }
+
+      // Win category 39
+      {
+         win = bet (all), x500
+         line = F3, DD, F3, DD, F3
+      }
+
+      // Win category 40
+      {
+         win = bet (all), x450
+         line = 7B, 7B, 7B, TT, 7B
+         line = 7B, TT, 7B, 7B, 7B
+      }
+
+      // Win category 41
+      {
+         win = bet (all), x450
+         line = 7C, 7C, 7C, DD, 7C
+         line = 7C, DD, 7C, 7C, 7C
+      }
+
+      // Win category 42
+      {
+         win = bet (all), x450
+         line = F4, F4, F4, TT, F4
+         line = F4, TT, F4, F4, F4
+      }
+
+      // Win category 43
+      {
+         win = bet (all), x450
+         line = 7A, TT, 7A, DD, XX
+         line = 7A, DD, 7A, TT, XX
+      }
+
+      // Win category 44
+      {
+         win = bet (all), x450
+         line = 7B, TT, 7B, DD, XX
+         line = 7B, DD, 7B, TT, XX
+      }
+
+      // Win category 45
+      {
+         win = bet (all), x450
+         line = 7D, TT, 7D, DD, XX
+         line = 7D, DD, 7D, TT, XX
+      }
+
+      // Win category 46
+      {
+         win = bet (all), x450
+         line = 7C, TT, 7C, DD, XX
+         line = 7C, DD, 7C, TT, XX
+      }
+
+      // Win category 47
+      {
+         win = bet (all), x400
+         line = F2, DD, F2, DD, F2
+      }
+
+      // Win category 48
+      {
+         win = bet (all), x400
+         line = F1, DD, F1, DD, F1
+      }
+
+      // Win category 49
+      {
+         win = bet (all), x400
+         line = A7, DD, A7, DD, A7
+      }
+
+      // Win category 50
+      {
+         win = bet (all), x400
+         line = 7A, 7A, 7A, DD, 7A
+         line = 7A, DD, 7A, 7A, 7A
+      }
+
+      // Win category 51
+      {
+         win = bet (all), x400
+         line = 7E, DD, 7E, DD, XX
+      }
+
+      // Win category 52
+      {
+         win = bet (all), x375
+         line = F3, F3, F3, TT, F3
+         line = F3, TT, F3, F3, F3
+      }
+
+      // Win category 53
+      {
+         win = bet (all), x300
+         line = F2, F2, F2, TT, F2
+         line = F2, TT, F2, F2, F2
+      }
+
+      // Win category 54
+      {
+         win = bet (all), x300
+         line = 7B, 7B, 7B, DD, 7B
+         line = 7B, DD, 7B, 7B, 7B
+      }
+
+      // Win category 55
+      {
+         win = bet (all), x300
+         line = F1, F1, F1, TT, F1
+         line = F1, TT, F1, F1, F1
+      }
+
+      // Win category 56
+      {
+         win = bet (all), x300
+         line = A7, A7, A7, TT, A7
+         line = A7, TT, A7, A7, A7
+      }
+
+      // Win category 57
+      {
+         win = bet (all), x300
+         line = F4, F4, F4, DD, F4
+         line = F4, DD, F4, F4, F4
+      }
+
+      // Win category 58
+      {
+         win = bet (all), x300
+         line = 7A, DD, 7A, DD, XX
+      }
+
+      // Win category 59
+      {
+         win = bet (all), x300
+         line = 7B, DD, 7B, DD, XX
+      }
+
+      // Win category 60
+      {
+         win = bet (all), x300
+         line = 7E, 7E, 7E, TT, XX
+         line = 7E, TT, 7E, 7E, XX
+      }
+
+      // Win category 61
+      {
+         win = bet (all), x300
+         line = 7D, DD, 7D, DD, XX
+      }
+
+      // Win category 62
+      {
+         win = bet (all), x300
+         line = 7C, DD, 7C, DD, XX
+      }
+
+      // Win category 63
+      {
+         win = bet (all), x250
+         line = 7D, 7D, 7D, 7D, 7D
+      }
+
+      // Win category 64
+      {
+         win = bet (all), x250
+         line = F3, F3, F3, DD, F3
+         line = F3, DD, F3, F3, F3
+      }
+
+      // Win category 65
+      {
+         win = bet (all), x225
+         line = 7C, 7C, 7C, 7C, 7C
+      }
+
+      // Win category 66
+      {
+         win = bet (all), x225
+         line = F4, TT, F4, TT, XX
+      }
+
+      // Win category 67
+      {
+         win = bet (all), x225
+         line = F3, TT, F3, TT, XX
+      }
+
+      // Win category 68
+      {
+         win = bet (all), x225
+         line = F2, TT, F2, TT, XX
+      }
+
+      // Win category 69
+      {
+         win = bet (all), x225
+         line = F1, TT, F1, TT, XX
+      }
+
+      // Win category 70
+      {
+         win = bet (all), x225
+         line = 7A, 7A, 7A, TT, XX
+         line = 7A, TT, 7A, 7A, XX
+      }
+
+      // Win category 71
+      {
+         win = bet (all), x225
+         line = 7B, 7B, 7B, TT, XX
+         line = 7B, TT, 7B, 7B, XX
+      }
+
+      // Win category 72
+      {
+         win = bet (all), x225
+         line = 7D, 7D, 7D, TT, XX
+         line = 7D, TT, 7D, 7D, XX
+      }
+
+      // Win category 73
+      {
+         win = bet (all), x225
+         line = 7C, 7C, 7C, TT, XX
+         line = 7C, TT, 7C, 7C, XX
+      }
+
+      // Win category 74
+      {
+         win = bet (all), x200
+         line = F2, F2, F2, DD, F2
+         line = F2, DD, F2, F2, F2
+      }
+
+      // Win category 75
+      {
+         win = bet (all), x200
+         line = F1, F1, F1, DD, F1
+         line = F1, DD, F1, F1, F1
+      }
+
+      // Win category 76
+      {
+         win = bet (all), x200
+         line = A7, A7, A7, DD, A7
+         line = A7, DD, A7, A7, A7
+      }
+
+      // Win category 77
+      {
+         win = bet (all), x200
+         line = 7A, 7A, 7A, 7A, 7A
+      }
+
+      // Win category 78
+      {
+         win = bet (all), x200
+         line = 7E, 7E, 7E, DD, XX
+         line = 7E, DD, 7E, 7E, XX
+      }
+
+      // Win category 79
+      {
+         win = bet (all), x180
+         line = A7, TT, A7, TT, XX
+      }
+
+      // Win category 80
+      {
+         win = bet (all), x150
+         line = 7B, 7B, 7B, 7B, 7B
+      }
+
+      // Win category 81
+      {
+         win = bet (all), x150
+         line = F4, F4, F4, F4, F4
+      }
+
+      // Win category 82
+      {
+         win = bet (all), x150
+         line = F4, TT, F4, DD, XX
+         line = F4, DD, F4, TT, XX
+      }
+
+      // Win category 83
+      {
+         win = bet (all), x150
+         line = F3, TT, F3, DD, XX
+         line = F3, DD, F3, TT, XX
+      }
+
+      // Win category 84
+      {
+         win = bet (all), x150
+         line = F2, TT, F2, DD, XX
+         line = F2, DD, F2, TT, XX
+      }
+
+      // Win category 85
+      {
+         win = bet (all), x150
+         line = F1, TT, F1, DD, XX
+         line = F1, DD, F1, TT, XX
+      }
+
+      // Win category 86
+      {
+         win = bet (all), x150
+         line = 7A, 7A, 7A, DD, XX
+         line = 7A, DD, 7A, 7A, XX
+      }
+
+      // Win category 87
+      {
+         win = bet (all), x150
+         line = 7B, 7B, 7B, DD, XX
+         line = 7B, DD, 7B, 7B, XX
+      }
+
+      // Win category 88
+      {
+         win = bet (all), x150
+         line = 7D, 7D, 7D, DD, XX
+         line = 7D, DD, 7D, 7D, XX
+      }
+
+      // Win category 89
+      {
+         win = bet (all), x150
+         line = 7C, 7C, 7C, DD, XX
+         line = 7C, DD, 7C, 7C, XX
+      }
+
+      // Win category 90
+      {
+         win = bet (all), x125
+         line = F3, F3, F3, F3, F3
+      }
+
+      // Win category 91
+      {
+         win = bet (all), x120
+         line = A7, TT, A7, DD, XX
+         line = A7, DD, A7, TT, XX
+      }
+
+      // Win category 92
+      {
+         win = bet (all), x100
+         line = F2, F2, F2, F2, F2
+      }
+
+      // Win category 93
+      {
+         win = bet (all), x100
+         line = F1, F1, F1, F1, F1
+      }
+
+      // Win category 94
+      {
+         win = bet (all), x100
+         line = A7, A7, A7, A7, A7
+      }
+
+      // Win category 95
+      {
+         win = bet (all), x100
+         line = F4, DD, F4, DD, XX
+      }
+
+      // Win category 96
+      {
+         win = bet (all), x100
+         line = F3, DD, F3, DD, XX
+      }
+
+      // Win category 97
+      {
+         win = bet (all), x100
+         line = F2, DD, F2, DD, XX
+      }
+
+      // Win category 98
+      {
+         win = bet (all), x100
+         line = F1, DD, F1, DD, XX
+      }
+
+      // Win category 99
+      {
+         win = bet (all), x100
+         line = 7E, 7E, 7E, 7E, XX
+      }
+
+      // Win category 100
+      {
+         win = bet (all), x80
+         line = A7, DD, A7, DD, XX
+      }
+
+      // Win category 101
+      {
+         win = bet (all), x75
+         line = F4, F4, F4, TT, XX
+         line = F4, TT, F4, F4, XX
+      }
+
+      // Win category 102
+      {
+         win = bet (all), x75
+         line = F3, F3, F3, TT, XX
+         line = F3, TT, F3, F3, XX
+      }
+
+      // Win category 103
+      {
+         win = bet (all), x75
+         line = F2, F2, F2, TT, XX
+         line = F2, TT, F2, F2, XX
+      }
+
+      // Win category 104
+      {
+         win = bet (all), x75
+         line = F1, F1, F1, TT, XX
+         line = F1, TT, F1, F1, XX
+      }
+
+      // Win category 105
+      {
+         win = bet (all), x75
+         line = 7A, 7A, 7A, 7A, XX
+      }
+
+      // Win category 106
+      {
+         win = bet (all), x75
+         line = 7B, 7B, 7B, 7B, XX
+      }
+
+      // Win category 107
+      {
+         win = bet (all), x75
+         line = 7D, 7D, 7D, 7D, XX
+      }
+
+      // Win category 108
+      {
+         win = bet (all), x75
+         line = 7C, 7C, 7C, 7C, XX
+      }
+
+      // Win category 109
+      {
+         win = bet (all), x75
+         line = 7E, TT, 7E, XX, XX
+      }
+
+      // Win category 110
+      {
+         win = bet (all), x75
+         line = 7D, TT, 7D, XX, XX
+      }
+
+      // Win category 111
+      {
+         win = bet (all), x60
+         line = A7, A7, A7, TT, XX
+         line = A7, TT, A7, A7, XX
+      }
+
+      // Win category 112
+      {
+         win = bet (all), x60
+         line = 7C, TT, 7C, XX, XX
+      }
+
+      // Win category 113
+      {
+         win = bet (all), x50
+         line = F4, F4, F4, DD, XX
+         line = F4, DD, F4, F4, XX
+      }
+
+      // Win category 114
+      {
+         win = bet (all), x50
+         line = F3, F3, F3, DD, XX
+         line = F3, DD, F3, F3, XX
+      }
+
+      // Win category 115
+      {
+         win = bet (all), x50
+         line = F2, F2, F2, DD, XX
+         line = F2, DD, F2, F2, XX
+      }
+
+      // Win category 116
+      {
+         win = bet (all), x50
+         line = F1, F1, F1, DD, XX
+         line = F1, DD, F1, F1, XX
+      }
+
+      // Win category 117
+      {
+         win = bet (all), x50
+         line = 7E, DD, 7E, XX, XX
+      }
+
+      // Win category 118
+      {
+         win = bet (all), x50
+         line = 7D, DD, 7D, XX, XX
+      }
+
+      // Win category 119
+      {
+         win = bet (all), x40
+         line = A7, A7, A7, DD, XX
+         line = A7, DD, A7, A7, XX
+      }
+
+      // Win category 120
+      {
+         win = bet (all), x40
+         line = 7C, DD, 7C, XX, XX
+      }
+
+      // Win category 121
+      {
+         win = bet (all), x30
+         line = 7A, TT, 7A, XX, XX
+      }
+
+      // Win category 122
+      {
+         win = bet (all), x30
+         line = 7B, TT, 7B, XX, XX
+      }
+
+      // Win category 123
+      {
+         win = bet (all), x25
+         line = F4, F4, F4, F4, XX
+      }
+
+      // Win category 124
+      {
+         win = bet (all), x25
+         line = F3, F3, F3, F3, XX
+      }
+
+      // Win category 125
+      {
+         win = bet (all), x25
+         line = F2, F2, F2, F2, XX
+      }
+
+      // Win category 126
+      {
+         win = bet (all), x25
+         line = F1, F1, F1, F1, XX
+      }
+
+      // Win category 127
+      {
+         win = bet (all), x25
+         line = 7E, 7E, 7E, XX, XX
+      }
+
+      // Win category 128
+      {
+         win = bet (all), x25
+         line = 7D, 7D, 7D, XX, XX
+      }
+
+      // Win category 129
+      {
+         win = bet (all), x20
+         line = A7, A7, A7, A7, XX
+      }
+
+      // Win category 130
+      {
+         win = bet (all), x20
+         line = 7C, 7C, 7C, XX, XX
+      }
+
+      // Win category 131
+      {
+         win = bet (all), x20
+         line = 7A, DD, 7A, XX, XX
+      }
+
+      // Win category 132
+      {
+         win = bet (all), x20
+         line = 7B, DD, 7B, XX, XX
+      }
+
+      // Win category 133
+      {
+         win = bet (all), x15
+         line = A7, TT, A7, XX, XX
+      }
+
+      // Win category 134
+      {
+         win = bet (all), x15
+         line = F4, TT, F4, XX, XX
+      }
+
+      // Win category 135
+      {
+         win = bet (all), x15
+         line = F3, TT, F3, XX, XX
+      }
+
+      // Win category 136
+      {
+         win = bet (all), x15
+         line = F2, TT, F2, XX, XX
+      }
+
+      // Win category 137
+      {
+         win = bet (all), x15
+         line = F1, TT, F1, XX, XX
+      }
+
+      // Win category 138
+      {
+         win = bet (all), x10
+         line = 7A, 7A, 7A, XX, XX
+      }
+
+      // Win category 139
+      {
+         win = bet (all), x10
+         line = 7B, 7B, 7B, XX, XX
+      }
+
+      // Win category 140
+      {
+         win = bet (all), x10
+         line = A7, DD, A7, XX, XX
+      }
+
+      // Win category 141
+      {
+         win = bet (all), x10
+         line = F4, DD, F4, XX, XX
+      }
+
+      // Win category 142
+      {
+         win = bet (all), x10
+         line = F3, DD, F3, XX, XX
+      }
+
+      // Win category 143
+      {
+         win = bet (all), x10
+         line = F2, DD, F2, XX, XX
+      }
+
+      // Win category 144
+      {
+         win = bet (all), x10
+         line = F1, DD, F1, XX, XX
+      }
+
+      // Win category 145
+      {
+         win = bet (all), x5
+         line = A7, A7, A7, XX, XX
+      }
+
+      // Win category 146
+      {
+         win = bet (all), x5
+         line = F4, F4, F4, XX, XX
+      }
+
+      // Win category 147
+      {
+         win = bet (all), x5
+         line = F3, F3, F3, XX, XX
+      }
+
+      // Win category 148
+      {
+         win = bet (all), x5
+         line = F2, F2, F2, XX, XX
+      }
+
+      // Win category 149
+      {
+         win = bet (all), x5
+         line = F1, F1, F1, XX, XX
+      }
+
+      // Win category 150
+      {
+         win = bet (all), x1, trigger (Stage1, count (2)), odds(133)  // Bonus average pay 1.000
+         scatter = XX, SS, SS, SS, XX
+      }
+
+   }
+}
+[ItemValues]
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+
+   [win evaluation]
+   {
+      // Win category 0
+      {
+      win = bet (all), 1   // Units = Credits
+      weight = 125
+      }
+
+      // Win category 1
+      {
+      win = bet (all), 2   // Units = Credits
+      weight = 148
+      }
+
+      // Win category 2
+      {
+      win = bet (all), 3   // Units = Credits
+      weight = 152
+      }
+
+      // Win category 3
+      {
+      win = bet (all), 4   // Units = Credits
+      weight = 155
+      }
+
+      // Win category 4
+      {
+      win = bet (all), 5   // Units = Credits
+      weight = 145
+      }
+
+      // Win category 5
+      {
+      win = bet (all), 6   // Units = Credits
+      weight = 110
+      }
+
+      // Win category 6
+      {
+      win = bet (all), 7   // Units = Credits
+      weight = 52
+      }
+
+      // Win category 7
+      {
+      win = bet (all), 8   // Units = Credits
+      weight = 46
+      }
+
+      // Win category 8
+      {
+      win = bet (all), 9   // Units = Credits
+      weight = 23
+      }
+
+      // Win category 9
+      {
+      win = bet (all), 10   // Units = Credits
+      weight = 16
+      }
+
+      // Win category 10
+      {
+      win = bet (all), 11   // Units = Credits
+      weight = 5
+      }
+
+      // Win category 11
+      {
+      win = bet (all), 12   // Units = Credits
+      weight = 4
+      }
+
+      // Win category 12
+      {
+      win = bet (all), 13   // Units = Credits
+      weight = 3
+      }
+
+      // Win category 13
+      {
+      win = bet (all), 14   // Units = Credits
+      weight = 2
+      }
+
+      // Win category 14
+      {
+      win = bet (all), 15   // Units = Credits
+      weight = 2
+      }
+
+      // Win category 15
+      {
+      win = bet (all), 20   // Units = Credits
+      weight = 3
+      }
+
+      // Win category 16
+      {
+      win = bet (all), 25   // Units = Credits
+      weight = 1
+      }
+
+      // Win category 17
+      {
+      win = bet (all), 30   // Units = Credits
+      weight = 1
+      }
+
+      // Win category 18
+      {
+      win = bet (all), 35   // Units = Credits
+      weight = 1
+      }
+
+      // Win category 19
+      {
+      win = bet (all), 40   // Units = Credits
+      weight = 1
+      }
+
+      // Win category 20
+      {
+      win = bet (all), 50   // Units = Credits
+      weight = 1
+      }
+
+   }
+}
+
+[Multipliers]
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+
+   [win evaluation]
+   {
+      // Win category 0
+      {
+      win = bet (all), 1   // Units = Multiplier
+      weight = 4
+      }
+
+      // Win category 1
+      {
+      win = bet (all), 2   // Units = Multiplier
+      weight = 8
+      }
+
+      // Win category 2
+      {
+      win = bet (all), 3   // Units = Multiplier
+      weight = 8
+      }
+
+      // Win category 3
+      {
+      win = bet (all), 4   // Units = Multiplier
+      weight = 11
+      }
+   }
+}
+
