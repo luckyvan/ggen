@@ -1,3 +1,5 @@
+require 'pathname'
+
 module Ggen
   # This class encapsulates all of the configuration options that Ggen
   # understands. Please see the {file:REFERENCE.md#options Ggen Reference} to
@@ -5,22 +7,18 @@ module Ggen
   class Options
 
     @defaults = {
-      :reference_game_id    => '1RG2'
+      :reference_game_id    => '1RG2',
       :game_id              => nil,
+      :output               => Pathname.new('./Generate'),
       :game_output          => nil,                      #output directory of generated game resource
       :proj_output          => nil,                      #output directory of generated game project
+
       :base_symbols         => nil,                      #symbols of base game
       :bonus_symbols        => nil,                      #symbols of bonus game
       :resources            => nil,                      #Array of directories in which *tga, *movies are contained.
       :stages               => nil,                      #Object handle which contains all stage related information, normally retrieved from a PaytableScanner
       :paytable             => nil,                      #Paytable
       :paytable_config      => nil,                      #Configure file for specific paytable
-
-      :new_game             => false,
-      :merge_resource       => false,
-      :symbol_scripts       => false,
-      :configuration_files  => false,
-      :rmlp                 => false,
     }
 
     # The default option values.
@@ -29,37 +27,7 @@ module Ggen
       @defaults
     end
 
-    # The flag to determine whether or not  generate new_game based on
-    #    :reference_game_id
-    #    :game_id
-    attr_accessor:new_game
-
-    # The flag to determine whether merge resources in the process, depending on
-    #     :resources
-    #     :game_output
-    attr_accessor :merge_resource
-
-    # The flag to determine whether or not generate symbol reference scripts only, depending on
-    #     :game_output       #Unlike following :configuration_files, symbol scripts generation need further
-    #                        #validation for the resources files.
-    #     :base_symbols
-    #     :bonus_symbols
-    attr_accessor :symbol_scripts
-
-
-    # The flag to determine whether or not generate Configuration scripts only, depending on
-    #     :game_output
-    #     :stages
-    #     :rmlp
-    attr_accessor :configuration_files
-
-
-    # The flag to determine whether or not generate RMLP related C++ and scripts only, depending on
-    #     :game_output
-    #     :proj_output
-    attr_accessor :rmlp
-
-
+    attr_accessor :output
     attr_accessor :reference_game_id
     attr_accessor :game_id
     attr_accessor :game_output
@@ -88,11 +56,6 @@ module Ggen
     # @param value The value to set for the key.
     def []=(key, value)
       send "#{key}=", value
-    end
-
-    undef :cdata
-    def cdata
-      xhtml? || @cdata
     end
 
     private

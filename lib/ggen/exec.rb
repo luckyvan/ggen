@@ -72,10 +72,6 @@ module Ggen
       #
       # @param opts [OptionParser]
       def set_opts(opts)
-        opts.on('-s', '--stdin', :NONE, 'Read input from standard input instead of an input file') do
-          @options[:input] = $stdin
-        end
-
         opts.on_tail("-?", "-h", "--help", "Show this message") do
           puts opts
           exit
@@ -85,24 +81,6 @@ module Ggen
           puts("Ggen #{::Ggen::VERSION}")
           exit
         end
-      end
-
-      # Processes the options set by the command-line arguments.
-      # In particular, sets `@options[:input]` to get input parameters
-      #
-      # This is meant to be overridden by subclasses
-      # so they can run their respective programs.
-      def process_result
-        input = @options[:input]
-        args = @args.dup
-        input ||=
-          begin
-            filename = args.shift
-            p "filename"
-            @options[:filename] = filename
-            open_file(filename) || $stdin
-          end
-        @options[:input] = input
       end
 
 
@@ -160,6 +138,18 @@ END
           @options[:new_game] = true
         end
 
+        opts.on('--game-id ID', "Generated Game ID") do |id|
+          @options[:for_engine][:game_id] = id
+        end
+
+        opts.on('--reference-game-id ID',  "Game Id for the reference game") do |id|
+          @options[:for_engine][:reference_game_id] = id
+        end
+
+        opts.on('--output DIR',  "Output Root directory, default is './Generate'") do |dir|
+          @options[:for_engine][:output] = dir
+        end
+
         opts.on('-m', '--merge-resource', "Merge resources") do
           @options[:merge_resource] = true
         end
@@ -172,8 +162,8 @@ END
           @options[:configuration_files] = true
         end
 
-        opts.on('-r', '--rmlp', "Add rmlp feature to the game") do
-          @options[:rmlp] = true
+        opts.on('--rmlp', "Add rmlp feature to the game") do
+          @options[:for_engine][:rmlp] = true
         end
 
         opts.on('-A', '--All', "Perform all generation tasks sequentially") do
@@ -181,35 +171,19 @@ END
           @options[:merge_resource] = true
           @options[:symbol_scripts] = true
           @options[:configuration_files] = true
-          @options[:rmlp] = true
         end
       end
 
       # Processes the options set by the command-line arguments,
       # and runs the Ggen compiler appropriately.
       def process_result
-        super
-        @options[:for_engine][:filename] = @options[:filename]
-        input = @options[:input]
-
-        parameters = input.read()
-        input.close() if input.is_a? File
-
-        @options[:requires].each {|f| require f}
-
         begin
-          engine = ::Ggen::Engine.new(parameters, @options[:for_engine])
-          if @options[:check_syntax]
-            puts "Syntax OK"
-            return
+          engine = ::Ggen::Engine.new(@options[:for_engine])
+
+          if @options[:new_game]
+            engine.new_game
           end
 
-          if @options[:parse]
-            pp engine.parser.root
-            return
-          end
-
-          result = engine.to_html
         rescue Exception => e
           raise e if @options[:trace]
 
