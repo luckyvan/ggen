@@ -1,0 +1,134 @@
+--[[ AVP Lua Script File
+   (c) Copyright 2009 International Game Technology
+
+   $Revision: 7$
+
+   Purpose:
+      Creates the functions that configures the symbols
+
+   Modifications:
+      Author            Date          Explanation
+      ---------------   ------------  ------------
+      Nicholas Mayne    Feb 13, 2009  Created
+]]
+require "libSymbol"
+
+local pre_bonus = false
+local symbol_table
+-- define local functions
+local animateBonusSymbol
+local pop
+
+--[[!
+   @name symbol_scale_by_count
+   @class table
+   @description A list of scale values corresponding to the IntelliSymbol count.<br>
+   @member List of scale values representing x,y,z: {0, 1, 2}
+--]]
+local symbol_scale_by_count =
+{
+   [1] = {1.04, 1.04, 1},
+   [2] = {1.07, 1.07, 1},
+   [3] = {1.10, 1.10, 1},
+}
+-- default the return value to {1,1,1}
+setmetatable (symbol_scale_by_count, {__index = function (self, member) return {1, 1, 1} end})
+
+--[[============================================================================
+-- Define Custom Symbol Configuration functions
+--============================================================================]]
+--[[!
+   @description This function configures a symbol with MLD pop functionality
+   @private
+   @param symbol This parameter is just a handle to the Actor (or ActorContainer) that will be
+      configured as a symbol
+   @param symbol_name String name of the symbol being configured
+   @param reel_index Integer reel index this symbol is being configured on (from 0 to (config.reels.count - 1))
+   @requires libSymbol for access to functions
+--]]
+local function configureMLDBonusSymbol (symbol, symbol_name, reel_index)
+
+   symbol_table = libSymbol.configureSymbol (symbol, symbol_name, reel_index)
+   local texture_attribute = symbol:getAttribute ("TextureAttribute")
+
+   -- pop the symbols when receiving the local IntelliSymbol:ON event posted by IntelliSymbolsController.lua
+   symbol:registerCallback ("IntelliSymbol:ON",  pop, {pop = true})
+   -- restore symbol to back screen
+   symbol:registerCallback ("IntelliSymbol:OFF", pop, {pop = false})
+
+   symbol_table.animateSymbolFunction = animateBonusSymbol
+   
+   symbol:registerCallback ("PreBonusBaseRollupState:Enter",             function () pre_bonus = true  end)
+   symbol:registerCallback ("PreBonusBaseRollupState:CommonExitSuspend", function () pre_bonus = false end)
+end
+
+--[[============================================================================
+-- Define Custom Symbol Configuration Table
+--============================================================================]]
+-- Define the list of functions to call per symbol per reel. Note: these are only needed if custom functions need to be called (defined in this file).
+--  If a symbol function is omitted here, it will fall back on the default_symbol_function defined in libReel, which can be overriden here
+--    Note: This table MUST come after the symbol functions it refers to in this file.
+local custom_symbol_functions =
+{
+   default_symbol_function = libSymbol.configureSymbol,
+   SC = configureMLDBonusSymbol,
+   --[[===========================================================================
+   -- Per Reel Override Settings List
+   --===========================================================================]]
+   -- Define the list of overrides per reel. (If not specified, the values from the parent table will be used)
+   -- This is for symbols that have different setups between reels]]
+   list =
+   {
+   },
+}
+
+--[[!
+   @description Animate the bonus symbol based on the pre_bonus flag
+      If we're not in the PreBonusRollupState, play the bonus_in_idle movie declaration from SymbolVariables
+       otherwise, play the movie declaration from SymbolVariables indexed by the passed in string
+   @private
+   @callback
+   @param symbol The symbol in question for this animation
+   @param movie_type String containing the movie section to play for this symbol
+   @param symbol_config Table containing the configuration parameters of the symbol
+   @param texture_attribute Handle to the symbol's TextureAttribute
+   @requires symbol_table Configuration table returned by libSymbol.configureSymbol
+   @return True or false, indicating if the symbol animated or not
+--]]
+function animateBonusSymbol (symbol, movie_type, symbol_config, texture_attribute)
+
+   if not pre_bonus then
+      movie_type = "bonus_in_idle"
+   end
+
+   symbol_config.dirty = true
+
+   local movie = symbol_table.movies [movie_type]
+   local will_animate = libSymbol.setSymbolImage (texture_attribute, movie)
+
+   return will_animate
+end
+
+--[[!
+   @description Pops a symbol to the front screen/back screen and applies an optional scale
+   @private
+   @callback
+   @param symbol Handle to the object this callback was registered to
+   @param event Payload data for this event
+   @event_member pop Flag indicating to pop (moveToFront ()) or not (moveToBack ())
+   @event_member count <i>(optional)</i> Number defining the IntelliSymbol count
+   @requires symbol_scale_by_count A list of scale values corresponding to the IntelliSymbol count. The scale values representing x,y,z: {0, 1, 2}
+--]]
+function pop (symbol, event)
+
+   if event.pop then
+      symbol:moveToFront ()
+   else
+      symbol:moveToBack ()
+   end
+
+   symbol:setScale (unpack (symbol_scale_by_count [event.count]))
+end
+
+-- return the custom_symbol_functions table
+return custom_symbol_functions

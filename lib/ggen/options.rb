@@ -6,12 +6,16 @@ module Ggen
   # learn how to set the options.
   class Options
     @defaults = {
-      :root                 => Pathname.new('/mnt/Development'),
+      :resource_paths        => nil,
+      :reference_root       => Pathname.new('/mnt'),
+      :template             => Pathname.new(File.dirname(File.realdirpath(__FILE__))) + 'template',
       :reference_game_id    => '1RG2',
       :game_id              => nil,
-      :output               => Pathname.new('./Generate'),
-      :game_output          => nil,                      #output directory of generated game resource
-      :proj_output          => nil,                      #output directory of generated game project
+      :base_symbols         => nil,
+      :bonus_symbols        => nil,
+      :output_root               => Pathname.new('./Generate'),
+      :game_output_root          => nil,                      #output_root directory of generated game resource
+      :proj_output_root          => nil,                      #output_root directory of generated game project
 
       :base_symbols         => nil,                      #symbols of base game
       :bonus_symbols        => nil,                      #symbols of bonus game
@@ -27,12 +31,16 @@ module Ggen
       @defaults
     end
 
-    attr_accessor :root
-    attr_accessor :output
+    attr_accessor :template
+    attr_accessor :base_symbols
+    attr_accessor :bonus_symbols
+    attr_accessor :resource_paths
+    attr_accessor :reference_root
+    attr_accessor :output_root
     attr_accessor :reference_game_id
     attr_accessor :game_id
-    attr_accessor :game_output
-    attr_accessor :proj_output
+    attr_accessor :game_output_root
+    attr_accessor :proj_output_root
     attr_accessor :base_symbols
     attr_accessor :bonus_symbols
     attr_accessor :resources

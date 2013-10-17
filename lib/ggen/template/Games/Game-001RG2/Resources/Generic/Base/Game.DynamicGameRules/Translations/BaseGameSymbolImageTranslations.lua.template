@@ -1,0 +1,78 @@
+--[[ AVP Lua Script File
+   (c) Copyright 2008 International Game Technology
+
+   $Revision: 2$
+
+   Purpose:
+      Translation string tables for meters
+
+   Modifications:
+      Author            Date          Explanation
+      ---------------   ------------  ------------
+      Wei Liu           Sept 25,2009  Created
+]]
+
+require "libTranslation"
+
+-- This table sets up the symbol image translations used to display symbols on pages that are type "dynamic" in the Base Game.
+-- This works like any other libTranslation table.  In the following example, "WW" and "SC" are translated in Spanish
+
+-- local symbol_image_translations =
+-- {
+--    ["English"] =
+--    {
+--       ["WW"] = "WW.tga",
+--       ["SC"] = "SC.tga",
+--       ["M1"] = "M1.tga",
+--       ["M2"] = "M2.tga",
+--       ["M3"] = "M3.tga",
+--       ["M4"] = "M4.tga",
+--       ["F5"] = "F5.tga",
+--       ["F6"] = "F6.tga",
+--       ["F7"] = "F7.tga",
+--       ["F8"] = "F8.tga",
+--       ["F9"] = "F9.tga",
+--       ["F0"] = "F0.tga",
+--    },
+--    ["Spanish"] =
+--    {
+--       ["WW"] = "WW_ES.tga",
+--       ["SC"] = "SC_ES.tga",
+--    },
+-- }
+
+local symbol_image_translations =
+{
+   ["English"] =
+   {
+      <% symbols.each do |s| %>
+      ["<%= s%>"] = "<%= symbol2tgas[:basegame][s][:tga][-1]%>",
+      <% end %>
+   },
+   
+   -- Provide hooks for all supported languages and dialects.
+   ["French"] = 
+   {
+   },
+   ["Spanish"] = 
+   {
+   },
+   ["Spanish(Mexico)"] = 
+   {
+   },
+   ["Portuguese"] = 
+   {
+   },
+   ["Russian"] = 
+   {
+   },
+   ["Chinese"] = 
+   {
+   },
+}
+
+-- SetMetaTable for language translation table
+libTranslation.initializeTableForTranx (symbol_image_translations)
+
+-- Return the textures translation table
+return symbol_image_translations

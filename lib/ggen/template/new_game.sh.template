@@ -1,17 +1,15 @@
 #!/bin/bash -x
 
-RG_GAME_ID=<%= rgid %>
-GAME_ID=<%= gid %>
-ROOT=<%= root %>
-GAME_ROOT=<%= output %>/Development/Games/Game-00${GAME_ID}
-PROJ_ROOT=<%= output %>/Development/projects/Game-00${GAME_ID}
-RG_GAME_ROOT=${ROOT}/Games/Game-00${RG_GAME_ID}
-RG_PROJ_ROOT=${ROOT}/projects/Game-00${RG_GAME_ID}
-
+RG_GAME_ID=<%= options.reference_game_id %>
+GAME_ID=<%= options.game_id %>
+GAME_ROOT=<%= output_game.game_path%>
+PROJ_ROOT=<%= output_game.proj_path%>
+RG_GAME_ROOT=<%= reference_game.game_path%>
+RG_PROJ_ROOT=<%= reference_game.proj_path%>
 
 # new Game Package
-mkdir -p <%= output %>/Development/Games
-mkdir -p <%= output %>/Development/projects
+mkdir -p ${GAME_ROOT}
+mkdir -p ${PROJ_ROOT}
 
 # rm already exist output game
 rm -rf ${GAME_ROOT}

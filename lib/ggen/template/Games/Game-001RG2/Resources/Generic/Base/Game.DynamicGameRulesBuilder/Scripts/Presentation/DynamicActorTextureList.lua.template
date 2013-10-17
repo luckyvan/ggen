@@ -1,0 +1,35 @@
+--[[ AVP Lua Script File
+   (c) Copyright 2012 International Game Technology
+
+   $Revision: 4$
+
+   Purpose:
+      Language look up for wheel bonus image resources
+
+   Modifications:
+      Author            Date           Explanation
+      ---------------   ------------   ------------
+      David Orvis       Jun 01, 2012   Created
+]]
+
+local dynamic_actors_texture_list = 
+{
+   {
+      image_path = "Game.DynamicGameRules/Images/StaticPages/",
+      image_file = "DoubleUpText.png",
+   },
+<% symbols.each do |s| %>
+   {
+      image_path = "Game.Main/Images/Symbols/",
+      image_file = "<%= symbol2tgas[:basegame][s][:tga][-1]%>",
+   },
+<% end %>
+   {
+      image_path = "Game.DynamicGameRules/Images/",
+      image_file = "SpinsplosionLogo.movie",
+      section = "SpinsplosionLogo",
+   },
+}
+
+-- Return the translations table
+return dynamic_actors_texture_list

@@ -150,15 +150,27 @@ END
         end
 
         opts.on('--output DIR',  "Output Root directory, default is './Generate'") do |dir|
-          @options[:for_engine][:output] = dir
+          @options[:for_engine][:output_root] = dir
         end
 
         opts.on('-m', '--merge-resource', "Merge resources") do
           @options[:merge_resource] = true
         end
 
-        opts.on('-y', '--symbol-scripts', "Generate Symbol related lua scripts") do
+        opts.on('--resource-paths LIST', "Comma separated paths in which all resouce files are stored") do |paths|
+          @options[:for_engine][:resource_paths] = paths.split(/,/)
+        end
+
+        opts.on('-s', '--symbol-scripts', "Generate Symbol related lua scripts") do
           @options[:symbol_scripts] = true
+        end
+
+        opts.on('--base-symbols LIST', "Comma separated symbol list of base game") do |symbols|
+          @options[:for_engine][:base_symbols] = symbols.split(/,/)
+        end
+
+        opts.on('--bonus-symbols LIST', "Comma separated symbol list of base game") do |symbols|
+          @options[:for_engine][:bonus_symbols] = symbols.split(/,/)
         end
 
         opts.on('-c', '--configuation-scripts', "Generate Configuration Files based on Stage Information") do
@@ -185,6 +197,14 @@ END
 
           if @options[:new_game]
             engine.new_game
+          end
+
+          if @options[:merge_resource]
+            engine.merge
+          end
+
+          if @options[:symbol_scripts]
+            engine.generate_symbol_scripts
           end
 
         rescue Exception => e

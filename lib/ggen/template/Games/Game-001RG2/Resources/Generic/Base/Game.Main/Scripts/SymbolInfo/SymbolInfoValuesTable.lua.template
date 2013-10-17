@@ -1,0 +1,89 @@
+--[[ AVP Lua Script File
+   (c) Copyright 2008 International Game Technology
+
+   $Revision: 2$
+
+   Purpose:
+      Define the tables used to generate See Pays
+
+   Modifications:
+      Author            Date            Explanation
+      ---------------   ------------    ------------
+      Will Kusiek       April 21, 2011  Created
+]]
+
+-- 
+-- Define the pages
+local symbol_info = 
+{
+<% symbols.each do |s| %>
+   -- <%= s %>
+   ["<%= s %>"] =
+   {
+      enable_symbol_touch = true,
+      display_symbol_graphic = true,
+      display_pay_values = true,
+      
+      dynamic_actors = 
+      {
+         -- Game Rules Description
+         {
+            image_path = "Game.Main/Images/SymbolInfo/",
+            image_file = "GameOptionsGameRules.png",
+            position_x = -0.097,
+            position_y = -0.090,
+            width = 0.3432,
+            height = 0.0199,
+         },
+         -- GAME OPTIONS
+         {
+            image_path = "Game.Main.MeterPanel/Images/MeterPanel/Buttons/",
+            image_file = "GameOptionsButton.movie",
+            position_x = -0.182,
+            position_y = -0.087,
+            width = 0.0434,
+            height = 0.0382,
+         },
+         -- GAME RULES
+         {
+            image_path = "Game.PlayerMenu/Images/Buttons/",
+            image_file = "GameRulesButton.tga",
+            position_x = -0.064,
+            position_y = -0.093,
+            width = 0.0792,
+            height = 0.0201,
+         },
+         -- Bet scaling description
+         {
+            image_path = "Game.Main/Images/SymbolInfo/",
+            image_file = "BetMultiplierCurrent.tga",
+            position_x = -0.146,
+            position_y = -0.11,
+            width = 0.24,
+            height = 0.01875,
+            
+            -- Enable / Disable functionality (Enabled by default)
+            enabled = false,
+            enable_event = "Enable:BetScalingSeePaysElements",
+            disable_event = "Disable:BetScalingSeePaysElements",
+         },
+         -- Static bet description
+         {
+            image_path = "Game.Main/Images/SymbolInfo/",
+            image_file = "BetMultiplier1.tga",
+            position_x = -0.146,
+            position_y = -0.11,
+            width = 0.24,
+            height = 0.01875,
+            
+            -- Enable / Disable functionality (Enabled by default)
+            enabled = false,
+            enable_event = "Enable:StaticBetSeePaysElements",
+            disable_event = "Disable:StaticBetSeePaysElements",
+         },
+      },
+   },
+<% end %>
+}
+
+return symbol_info

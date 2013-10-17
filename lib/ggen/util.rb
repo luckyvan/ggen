@@ -6,21 +6,40 @@ module Ggen
   module Util
     extend self
 
-    def valid_game_id?(gid)
-      /\A\d\w\w\d\Z/.match(gid) != nil
+    def check_game_id(gid)
+      raise "Invalid Game Id #{gid}" unless /\A\d\w\w\d\Z/.match(gid) != nil
     end
 
-    def valid_rgame_id?(rgid)
+    def check_rgame_id(rgid)
       [/1RG2/, /1RG4/].each do |r|
-        return true if r.match(rgid)
+        return if r.match(rgid)
       end
-      false
+      raise "Invalid Reference Game Id: #{rgid}"
     end
 
-    class RootPathname < Pathname
-      def initialize(p, id)
+    def check_dir(pn)
+      raise "Invalid Path: #{pn}" unless pn.directory?
+    end
+
+    def resources(path)
+      ["tga", "movie", "sound"].inject([]) do |r, s|
+          pattern = File.join(path, "**", "*.#{s}")
+          r << Dir.glob(pattern)
+          r.flatten
+      end
+    end
+
+    def templates(root)
+      Dir.glob(File.join(root, "**", "*.template")).map {|d| Pathname.new(d)}
+    end
+
+    def symbol_scripts(gid)
+      {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInforImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[gid]
+    end
+
+    class Workspace < Pathname
+      def initialize(p)
         super(p)
-        @id = id
       end
 
       def development
@@ -34,14 +53,30 @@ module Ggen
       def projects
         development + 'projects'
       end
+    end
 
-      def game_output
-        games + "/Game-00#{@id}"
+    class GamePath < Workspace
+      def initialize(p, id)
+        super(p)
+        @id = "Game-00#{id}"
       end
 
+      def game_path
+        games + @id
+      end
 
-      def proj_output
-        projects + "/Game-00#{@id}"
+      def proj_path
+        projects + @id
+      end
+    end
+
+    class TemplatePath < Pathname
+      def initialize(pn)
+        super(pn)
+      end
+
+      def to_output_path(output_root)
+        Pathname.new(output_root) + basename().sub('.template','')
       end
     end
   end

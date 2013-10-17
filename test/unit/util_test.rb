@@ -5,14 +5,23 @@ module Ggen
     include Ggen::Util
 
     must "game id has valid formate such as '1RG2'" do
-      assert_equal true, valid_game_id?('1RG2')
-      assert_equal false, valid_game_id?('1RG2has')
+      assert_nothing_raised do
+        check_game_id('1RG2')
+      end
+      assert_raise RuntimeError do
+        check_game_id('1RG2has')
+      end
     end
 
     must "reference game id only has 1RG2, 1RG4" do
-      assert_equal true, valid_rgame_id?('1RG2')
-      assert_equal true, valid_rgame_id?('1RG4')
-      assert_equal false, valid_rgame_id?('2RG4')
+      assert_nothing_raised do
+        check_rgame_id('1RG2')
+        check_rgame_id('1RG4')
+      end
+
+      assert_raise RuntimeError do
+        check_rgame_id('2RG4')
+      end
     end
 
   end

@@ -1,6 +1,7 @@
 require 'ggen/paytable_scanner'
 require 'ggen/options'
 require 'fileutils'
+require 'erb'
 
 module Ggen
   # This is the frontend for using Ggen programmatically.
@@ -28,11 +29,72 @@ module Ggen
     end
 
     def new_game
-      raise "Invalid Game ID:#{options[:game_id]}" unless valid_game_id?(options[:game_id])
-      raise "Invalid Reference Game ID:#{options[:reference_game_id]}" unless valid_rgame_id?(options[:reference_game_id])
+      check_game_id(@options.game_id)
+      check_rgame_id(@options.reference_game_id)
 
-      root = RootPathname.new(@options[:root], @options[:game_id])
-      output = RootPathname.new(@options[:output], @options[:game_id])
+      reference_game = GamePath.new(@options.reference_root,
+                                   @options.reference_game_id)
+      check_dir(reference_game)
+
+      output_game = GamePath.new(@options.output_root,
+                                @options.game_id)
+
+      tp = TemplatePath.new(@options.template+'new_game.sh.template')
+      erb = ERB.new(File.open(tp).read)
+      content = erb.result( binding )
+
+      script = tp.to_output_path("./")
+      script.dirname.mkpath
+      print "Creating #{tp}\n"
+      File.open(script, "w") do |f|
+        f.write( content )
+      end
+
+      system("sh -x ./#{script}")
+    end
+
+    def merge
+      check_game_id(options[:game_id])
+      output_game = GamePath.new(@options.output_root,
+                                @options.game_id)
+      check_dir(output_game)
+
+      #delete existing Symbol tgas and movies
+      symbol_resouces = resources(output_game).select {|f| f =~ /Symbols/}
+      symbol_resouces.each do |f|
+        puts "rm #{f}"
+        FileUtils.rm(f)
+      end
+
+      exclusion = ["Messages.movie", "TransitionMessages.movie", "OverReelsMessages.movie", "MathBoxMessages.movie", "RetriggerMessages.movie"]
+
+      # merge resources
+      resource_paths = options.resource_paths
+      resource_paths.each do |root|
+        root_pn = Pathname.new(root)
+        resources(root).each do |resource|
+          pn = Pathname.new(resource)
+          unless exclusion.include?(pn.basename.to_s) then
+            src = pn
+            dst = output_game.game_path + pn.relative_path_from(root_pn)
+            FileUtils.mkdir_p dst.dirname.to_s unless dst.dirname.directory?
+            FileUtils.cp src, dst, :verbose => true
+          end
+        end
+      end
+    end
+
+    def generate_symbol_scripts
+      symbol_scripts = symbol_scripts(options.reference_game_id)
+
+      symbol_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}/Resources/Generic/Base"
+      symbol_script_templates = templates(symbol_scripts_root).select do |t|
+        symbol_scripts.include?(t.basename.sub(".template", "").to_s)
+      end
+      p symbol_script_templates
+      p options.bonus_symbols
+      p options.base_symbols
+
     end
   end
 end
