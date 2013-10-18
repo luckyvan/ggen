@@ -85,6 +85,7 @@ module Ggen
     end
 
     def generate_symbol_scripts
+      puts "generate symbol scripts"
       check_game_id(options[:game_id])
       game_path = GamePath.new(@options.output_root,
                                @options.game_id).game_path
@@ -113,10 +114,27 @@ module Ggen
         dst = base_path + t.relative_path_from(symbol_scripts_root)
         dst = dst.sub(".template", "")
 
-        p dst
         erb = ERB.new(File.open(t).read).result(binding)
         File.open(dst, "w").write(erb)
       end
+    end
+
+    def parse_paytable
+      puts "parse paytable"
+      check_nil(:paytable, options)
+      paytable_path = Pathname.new(options.paytable)
+      check_file(paytable_path)
+
+
+      tokenizer = PaytableTokenizer.new()
+      tokenizer.parse(File.open(paytable_path).read)
+      scanner = PaytableScanner.new()
+      scanner.parse(tokenizer.tokens)
+      p scanner.methods()
+
+      options.base_symbols = scanner.base.symbols if scanner.respond_to?(:base)
+      options.bonus_symbols = scanner.bonus.symbols if scanner.respond_to?(:bonus)
+      options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.respond_to?(:bonus_symbol)
     end
 
     def generate_config_scripts

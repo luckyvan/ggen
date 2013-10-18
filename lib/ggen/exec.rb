@@ -189,6 +189,14 @@ END
           @options[:configuration_files] = true
         end
 
+        opts.on('-p', '--parse-paytable', "") do
+          @options[:parse_paytable] = true
+        end
+
+        opts.on('--paytable PAYTABLE')  do |paytable|
+          @options[:for_engine][:paytable] = paytable
+        end
+
         opts.on('--rmlp', "Add rmlp feature to the game") do
           @options[:for_engine][:rmlp] = true
         end
@@ -209,6 +217,10 @@ END
 
           if @options[:new_game]
             engine.new_game
+          end
+
+          if @options[:parse_paytable]
+            engine.parse_paytable
           end
 
           if @options[:merge_resource]

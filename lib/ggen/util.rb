@@ -21,6 +21,10 @@ module Ggen
       raise "Invalid Path: #{pn}" unless pn.directory?
     end
 
+    def check_file(pn)
+      raise "Invalid Path: #{pn}" unless pn.file?
+    end
+
     def check_nil(key, options)
       raise "No values for #{key}" unless options[key]
     end
