@@ -16,7 +16,7 @@
 -- Define the pages
 local symbol_info = 
 {
-<% symbols.each do |s| %>
+<% options.base_symbols.each do |s| %>
    -- <%= s %>
    ["<%= s %>"] =
    {
