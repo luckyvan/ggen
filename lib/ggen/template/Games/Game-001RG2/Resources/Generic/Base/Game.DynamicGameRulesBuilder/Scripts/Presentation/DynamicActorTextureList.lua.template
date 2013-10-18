@@ -18,10 +18,10 @@ local dynamic_actors_texture_list =
       image_path = "Game.DynamicGameRules/Images/StaticPages/",
       image_file = "DoubleUpText.png",
    },
-<% symbols.each do |s| %>
+<% options.base_symbols.each do |s| %>
    {
       image_path = "Game.Main/Images/Symbols/",
-      image_file = "<%= symbol2tgas[:basegame][s][:tga][-1]%>",
+      image_file = "<%= base_resources[:tga][s][-1]%>",
    },
 <% end %>
    {

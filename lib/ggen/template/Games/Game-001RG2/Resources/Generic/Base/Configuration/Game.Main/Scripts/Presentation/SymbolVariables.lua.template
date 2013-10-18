@@ -43,33 +43,32 @@ end
 -- Define the special symbols here
 symbols.special =
 {
-   wild    = "<%= wild%>",
-   scatter = "<%= scatter%>",
-   bonus   = "<%= bonus%>",
+   wild    = "<%= options.wild%>",
+   scatter = "<%= options.scatter%>",
+   bonus   = "<%= options.bonus_symbol%>",
 }
 -- To define a custom script, sound, movie for a symbol, simply add that member to the table defined in the symbols.list below
 --   if ommited, the defaults used are simply the symbol name with .script/.sound/.tga/.movie appended respectively
 symbols.list =
 {
-   <%= wild %> =
+   symbols.special.wild =
    {
-      image = "<%= symbol2tga[wild][:tga][-1]%>",
+      image = "<%= base_resources[:tga][options.wild][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
       background = false,
       -- Note defining the same movie for multiple uses will load the movie only once
       movies =
       {
-         intro          = {image = "<%= wild_movies[0] %>", loops = 1 , pop = false},
-         win_cycle      = {image = "<%= wild_movies[1] %>", pop = true},
-         pure_win_cycle = {image = "<%= wild_movies[2] %>",},
+         intro          = {image = "<%= base_resources[:movie][options.wild][0] %>", loops = 1 , pop = false},
+         win_cycle      = {image = "<%= base_resources[:movie][options.wild][1] %>", pop = true},
+         -- pure_win_cycle = {image = },
       },
       -- Set the sound member for this symbol to have a symbol sound configured
       sound = true,
    },
-<%if symbols.include?(bonus) then%>
-   <%= bonus%> =
+   symbols.special.bonus =
    {
-      image = "<%= symbol2tga[bonus][:tga][-1]%>",
+      image = "<%= base_resources[:tga][options.bonus_symbol][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
       background = false,
       -- Hold on the last frame instead of restoring the symbol
@@ -77,35 +76,36 @@ symbols.list =
       win_cycle_elements = { "win_box" },
       movies =
       {
-         bonus_init           = {image = "<%= bonus_movies[0] %>",} ,
-         bonus_init_win_cycle = {image = "<%= bonus_movies[1] %>",} ,
-         bonus_in_idle        = {image = "<%= bonus_movies[2] %>",} ,
+         bonus_init           = {image = "<%= base_resources[:movie][options.bonus_symbol][0] %>",} ,
+         bonus_init_win_cycle = {image = "<%= base_resources[:movie][options.bonus_symbol][1] %>",} ,
+         -- bonus_in_idle        = {image = },
       },
       sound = true,
    },
-<%end%>
 
-<% movie_symbols.each do |s| %>
-   <%= s[:name]%> =
+<% other_symbols = options.base_symbols - [ options.wild, options.bonus_symbol, options.scatter ] %>
+<% other_symbols.each do |s| %>
+   <% if base_resources[:movie][s] %>
+   <%= s%> =
    {
-      image = "<%= symbol2tga[s[:name]][:tga][-1]%>",
+      image = "<%= base_resources[:tga][s][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
       background = false,
       -- Note defining the same movie for multiple uses will load the movie only once
       movies =
       {
-         intro          = {image = "<%= s[:movies][0]%>", loops = 1 , pop = false},
-         win_cycle      = {image = "<%= s[:movies][1]%>", pop = true},
+         intro          = {image = "<%= base_resources[:movie][s][0]%>", loops = 1 , pop = false},
+         win_cycle      = {image = "<%= base_resources[:movie][s][-1]%>", pop = true},
       },
       -- Set the sound member for this symbol to have a symbol sound configured
       sound = true,
    },
-<% end %>
-<% normal_symbols.each do |s| %>
+   <%else%>
    <%= s%> = 
    { 
-      image = "<%= symbol2tga[s][:tga][-1]%>",
+      image = "<%= base_resources[:tga][s][-1]%>",
       flash = "FlashTile" 
     },
+   <% end %>
 <% end %>
 }

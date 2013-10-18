@@ -71,7 +71,7 @@ end
 local custom_symbol_functions =
 {
    default_symbol_function = libSymbol.configureSymbol,
-   SC = configureMLDBonusSymbol,
+   <%= options.bonus_symbol%> = configureMLDBonusSymbol,
    --[[===========================================================================
    -- Per Reel Override Settings List
    --===========================================================================]]

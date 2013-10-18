@@ -18,6 +18,9 @@ module Ggen
       :proj_output_root          => nil,                      #output_root directory of generated game project
 
       :base_symbols         => nil,                      #symbols of base game
+      :bonus_symbol         => "B1",
+      :wild                 => "WW",
+      :scatter              => "B1",
       :bonus_symbols        => nil,                      #symbols of bonus game
       :resources            => nil,                      #Array of directories in which *tga, *movies are contained.
       :stages               => nil,                      #Object handle which contains all stage related information, normally retrieved from a PaytableScanner
@@ -33,6 +36,9 @@ module Ggen
 
     attr_accessor :template
     attr_accessor :base_symbols
+    attr_accessor :bonus_symbol
+    attr_accessor :wild
+    attr_accessor :scatter
     attr_accessor :bonus_symbols
     attr_accessor :resource_paths
     attr_accessor :reference_root
