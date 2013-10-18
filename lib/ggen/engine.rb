@@ -85,16 +85,41 @@ module Ggen
     end
 
     def generate_symbol_scripts
-      symbol_scripts = symbol_scripts(options.reference_game_id)
+      check_game_id(options[:game_id])
+      game_path = GamePath.new(@options.output_root,
+                               @options.game_id).game_path
+      base_path = game_path + "Resources/Generic/Base"
+      check_dir(base_path)
 
+      check_nil(:base_symbols, options)
+      check_nil(:bonus_symbols, options) unless options.reference_game_id == '1RG4'
+
+      base_resources, bonus_resources = nil, nil
+      # collect resources
+      if options.base_symbols
+        base_resources = find_resources_by_symbols(base_path+"Game.Main", options.base_symbols)
+      end
+      if options.bonus_symbols
+        bonus_resources = find_resources_by_symbols(base_path+"Game.FreeSpinBonus", options.bonus_symbols)
+      end
+
+      symbol_scripts = symbol_scripts(options.reference_game_id)
       symbol_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}/Resources/Generic/Base"
       symbol_script_templates = templates(symbol_scripts_root).select do |t|
         symbol_scripts.include?(t.basename.sub(".template", "").to_s)
       end
-      p symbol_script_templates
-      p options.bonus_symbols
-      p options.base_symbols
 
+      symbol_script_templates.each do |t|
+        dst = base_path + t.relative_path_from(symbol_scripts_root)
+        dst = dst.sub(".template", "")
+
+        p dst
+        erb = ERB.new(File.open(t).read).result(binding)
+        File.open(dst, "w").write(erb)
+      end
+    end
+
+    def generate_config_scripts
     end
   end
 end

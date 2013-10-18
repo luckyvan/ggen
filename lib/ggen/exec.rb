@@ -173,6 +173,18 @@ END
           @options[:for_engine][:bonus_symbols] = symbols.split(/,/)
         end
 
+        opts.on('--bonus-symbol SYMBOL', "Bonus symbol which can trigger into bonus stage") do |symbol|
+          @options[:for_engine][:bonus_symbol] = symbol
+        end
+
+        opts.on('--wild-symbol SYMBOL', "Wild symbol") do |symbol|
+          @options[:for_engine][:wild] = symbol
+        end
+
+        opts.on('--scatter-symbol SYMBOL', "scatter symbol") do |symbol|
+          @options[:for_engine][:scatter] = symbol
+        end
+
         opts.on('-c', '--configuation-scripts', "Generate Configuration Files based on Stage Information") do
           @options[:configuration_files] = true
         end

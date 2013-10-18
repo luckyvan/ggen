@@ -21,6 +21,10 @@ module Ggen
       raise "Invalid Path: #{pn}" unless pn.directory?
     end
 
+    def check_nil(key, options)
+      raise "No values for #{key}" unless options[key]
+    end
+
     def resources(path)
       ["tga", "movie", "sound"].inject([]) do |r, s|
           pattern = File.join(path, "**", "*.#{s}")
@@ -34,7 +38,30 @@ module Ggen
     end
 
     def symbol_scripts(gid)
-      {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInforImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[gid]
+      {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInfoImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[gid]
+    end
+
+    def find_resources_by_symbols(stage_path, symbols)
+      hash = {:tga => "Images/Symbols/*.tga",
+              :movie => "Images/Symbols/*.movie",
+              :sound => "Sounds/Symbols/*.sound"}
+      result = {}
+      hash.each_pair do |k,suffix|
+        result[k] = {}
+        Dir.glob(stage_path + suffix).each do |res|
+          pn = Pathname.new(res)
+          symbol = pn.basename.to_s[0..1]
+          if symbols.include?(symbol)
+            (result[k][symbol] ||= []) << Pathname.new(res).basename
+          else
+            puts"Warning: Redundant Symbol Resources: #{res}"
+          end
+        end
+      end
+      result[:tga].each_pair do |s,r|
+        raise "symbol #{s} has no image resources" unless r
+      end
+      result
     end
 
     class Workspace < Pathname
@@ -69,6 +96,7 @@ module Ggen
         projects + @id
       end
     end
+
 
     class TemplatePath < Pathname
       def initialize(pn)

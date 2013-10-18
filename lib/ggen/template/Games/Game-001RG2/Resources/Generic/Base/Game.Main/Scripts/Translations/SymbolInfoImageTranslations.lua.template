@@ -14,39 +14,13 @@
 
 require "libTranslation"
 
--- This table sets up the symbol image translations used to display symbols on the "Pop Up Game Rules" (aka Symbol Info).
--- This works like any other libTranslation table.  In the following example, "WW" and "SC" are translated in Spanish
-
--- local symbol_image_translations =
--- {
---    ["English"] =
---    {
---       ["WW"] = "WW.tga",
---       ["SC"] = "SC.tga",
---       ["M1"] = "M1.tga",
---       ["M2"] = "M2.tga",
---       ["M3"] = "M3.tga",
---       ["M4"] = "M4.tga",
---       ["F5"] = "F5.tga",
---       ["F6"] = "F6.tga",
---       ["F7"] = "F7.tga",
---       ["F8"] = "F8.tga",
---       ["F9"] = "F9.tga",
---       ["F0"] = "F0.tga",
---    },
---    ["Spanish"] =
---    {
---       ["WW"] = "WW_ES.tga",
---       ["SC"] = "SC_ES.tga",
---    },
--- }
 
 local symbol_image_translations =
 {
    ["English"] =
    {
-      <% symbols.each do |s| %>
-      ["<%= s%>"] = "<%= symbol2tgas[:basegame][s][:tga][-1]%>",
+      <% options.base_symbols.each do |s| %>
+      ["<%= s%>"] = "<%= base_resources[:tga][s][-1]%>",
       <% end %>
    },
    

@@ -17,40 +17,12 @@ require "libTranslation"
 -- Get language specific page tables here.
 local symbol_info_translation_table = dofile ("Game.Main/Scripts/SymbolInfo/SymbolInfoValuesTable.lua")
 
--- Translations for Symbol Info are handled here at a symbol level.  All symbols must be defined in the dafault language (English)
--- but can be overwritten via libTranslation by languages in the inheritance tree.  For example, if Enlish is the default language, but only 
--- "WW" needs to be translated in Spanish, the translation tables would look something like this (where "symbol_info_translation_table_ES" is brought in via a 
--- dofile above):
-
--- local translations =
--- {
---    ["English"] =
---    {
---       ["M1"] = symbol_info_translation_table["M1"],
---       ["M2"] = symbol_info_translation_table["M2"],
---       ["M3"] = symbol_info_translation_table["M3"],
---       ["M4"] = symbol_info_translation_table["M4"],
---       ["F5"] = symbol_info_translation_table["F5"],
---       ["F6"] = symbol_info_translation_table["F6"],
---       ["F7"] = symbol_info_translation_table["F7"],
---       ["F8"] = symbol_info_translation_table["F8"],
---       ["F9"] = symbol_info_translation_table["F9"],
---       ["F0"] = symbol_info_translation_table["F0"],
---       ["SC"] = symbol_info_translation_table["SC"],
---       ["WW"] = symbol_info_translation_table["WW"],
---    },
---    ["Spanish"] =
---    {
---       ["WW"] = symbol_info_translation_table_ES["WW"],
---    },
--- }
-
 
 local translations =
 {
    ["English"] =
    {
-      <% symbols.each do |s| %>
+      <% options.base_symbols.each do |s| %>
       ["<%= s.to_s %>"] = symbol_info_translation_table["<%= s.to_s %>"],
       <% end %>
    },
