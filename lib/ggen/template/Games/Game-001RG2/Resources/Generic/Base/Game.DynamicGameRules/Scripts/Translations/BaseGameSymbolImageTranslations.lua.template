@@ -14,7 +14,7 @@
 
 require "libTranslation"
 
--- This table sets up the symbol image translations used to display symbols on pages that are type "dynamic" in the Free Spins.
+-- This table sets up the symbol image translations used to display symbols on pages that are type "dynamic" in the Base Game.
 -- This works like any other libTranslation table.  In the following example, "WW" and "SC" are translated in Spanish
 
 -- local symbol_image_translations =
@@ -45,8 +45,8 @@ local symbol_image_translations =
 {
    ["English"] =
    {
-      <% symbols.each do |s| %>
-      ["<%= s%>"] = "<%= symbol2tgas[:bonus][s][:tga][-1]%>",
+      <% options.base_symbols.each do |s| %>
+      ["<%= s%>"] = "<%= base_resources[:tga][s][-1]%>",
       <% end %>
    },
    
