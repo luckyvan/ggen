@@ -130,14 +130,30 @@ module Ggen
       tokenizer.parse(File.open(paytable_path).read)
       scanner = PaytableScanner.new()
       scanner.parse(tokenizer.tokens)
-      p scanner.methods()
 
       options.base_symbols = scanner.base.symbols if scanner.respond_to?(:base)
       options.bonus_symbols = scanner.bonus.symbols if scanner.respond_to?(:bonus)
       options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.respond_to?(:bonus_symbol)
     end
 
-    def generate_config_scripts
+    def generate_stages
+      check_game_id(options[:game_id])
+      game_path = GamePath.new(@options.output_root,
+                               @options.game_id).game_path
+      check_dir(game_path)
+
+      # generate config files
+      config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
+      config_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}"
+      config_scripts_templates = templates(config_scripts_root).select do |t|
+        config_scripts_basenames.include?(t.basename.sub(".template", "").to_s)
+      end
+
+      ## rm original config files
+      config_scripts_templates.map {|t| t.dirname }.uniq.each do |dir|
+        FileUtils.rm_rf game_path + dir
+      end
+
     end
   end
 end

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BetLoaderConfig xmlns="http://www.igt.com/worldgame/common/xml/gamedata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <LegacyBetVariableNames>
+       <BetItemsSelectedVariableName>BetItems</BetItemsSelectedVariableName>
+       <BetPerItemVariableName>BetPerItem</BetPerItemVariableName>
+       <MaxBetItemsVariableName>MaxBetItems</MaxBetItemsVariableName>
+       <MaxBetPerItemVariableName>MaxBetPerItem</MaxBetPerItemVariableName>
+       <MaxBetVariableName>MaximumTotalBet</MaxBetVariableName>
+       <MinBetVariableName>MinimumTotalBet</MinBetVariableName>
+       <TotalBetVariableName>TotalBet</TotalBetVariableName>
+       <MinBetInCurButtonMapVariableName>MinimumTotalBetInCurButtonMap</MinBetInCurButtonMapVariableName>
+   </LegacyBetVariableNames>
+
+   <RuleBasedBetConfigurationFile>Resources/Generic/Base/Configuration/Themes/RuleBasedGameBetConfig.xml</RuleBasedBetConfigurationFile>
+
+</BetLoaderConfig>

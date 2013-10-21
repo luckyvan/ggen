@@ -1,0 +1,23 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2008 International Game Technology */
+
+/*
+   $Revision: 1$
+
+   Purpose:
+      Configuration script file for a presentation.
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------- ------------
+      Lukas Blake       03 Nov 2008 Initial.
+*/
+
+RMLPFlashPresentation ()
+{
+   // Define the theme specific resource key for DoubleUp stage.
+   string resource_key = "Game.RMLPFlash";
+
+   //  configure DoubleUpPresentation from "DoubleUp.script" after resource key is set in this script.
+   configureFromScript ("Game.RMLPFlash/Scripts/Presentation/RMLPFlash.script");
+}

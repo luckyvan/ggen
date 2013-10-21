@@ -1,0 +1,71 @@
+// (c) Copyright 2006 International Game Technology
+
+// $Revision: 7$
+
+// Modifications:
+// Author                                 Date          Explanation
+// ------------------------------------   -----------   -------------------------
+// Paul W Bolton                          17 May 2006   Created
+
+//  Purpose:
+//    Defines theme configuration items.
+
+// ID         - Name or title of item.
+// Type       - Data item, list of data, numeric value, or boolean.
+// Data       - Value of config item.
+// Reference  - Range of values, or name of list.
+// Determiner - Who can change data.
+// E-Squared  - Store this item in E2.
+
+//  Note on WAP/WAMM SYSTEM ID
+//    This decimal number (base10) is sent by the game to the CCOM during communications to ensure that
+//    both are configured for the same WAP.  All non-WAP games are, by default, WAMM games and must have
+//    a 40 in this field.
+"WAP/WAMM SYSTEM ID"             NUMERIC 40 0 255 UNMODIFIABLE
+
+// Theme-specific denominations.
+"THEME ENABLED PLAYER DENOMINATIONS" BITFIELD NONE "GAME DENOMINATION LIST" REMOTELY_CONFIGURABLE+OPERATOR_OR_GREATER_ON_COLD_PU+SYSTEM_SETUP_KEY
+
+// Flag indicating if the game theme is enabled
+"ENABLED"                        BOOLEAN FALSE REMOTELY_CONFIGURABLE+OPERATOR_OR_GREATER_ON_COLD_PU+SYSTEM_SETUP_KEY
+
+// Item indicating how maximum bet is configured
+"MAXIMUM BET CONFIGURATION RESOLUTION" ITEM "PER DENOMINATION" "MAXIMUM TOTAL BET RESOLUTION LIST" UNMODIFIABLE
+// Flag indicating whether minimum bet for max bonus is allowed
+"ALLOW MINIMUM BET FOR MAX BONUS" BOOLEAN FALSE UNMODIFIABLE
+
+// Allow player to slam games current rollup and auto start next game with a single button press. 
+"AUTO START GAME ON ROLLUP SLAM" BOOLEAN FALSE UNMODIFIABLE
+
+// Easy bet configuration
+"EASY BET ENABLED LIST"         LIST "Easy Bet Disabled, Easy Bet 5 Button, Easy Bet 10 Button"
+"EASY BET ENABLED"              ITEM "Easy Bet Disabled" "EASY BET ENABLED LIST" REMOTELY_CONFIGURABLE+OPERATOR_OR_GREATER_ON_COLD_PU+SYSTEM_SETUP_KEY
+
+// Used to record the time the game was installed
+"INSTALL TIME STAMP" NUMERIC64 0 0 0xFFFFFFFFFFFFFFFF MODIFIABLE FALSE
+
+// Operator configurable flag to enable/disable new game attracts for this theme
+"NEW GAME ATTRACT ENABLED" BOOLEAN TRUE REMOTELY_CONFIGURABLE+OPERATOR_OR_GREATER_ON_COLD_PU+SYSTEM_SETUP_KEY FALSE
+
+// Set the Digital Glass default value to Theme. 
+"STATIC PAYTABLE DIGITAL GLASS ENABLED" BOOLEAN FALSE MODIFIABLE+REMOTELY_CONFIGURABLE TRUE
+
+// Set up the dynamic game rules
+"DYNAMIC_GAME_RULES"                    BOOLEAN TRUE UNMODIFIABLE
+"GAME_RULES_SCALED_BY_BET"              BOOLEAN FALSE OPERATOR_OR_GREATER
+"GAME_RULES_ALLOW_CASH_CREDIT_TOGGLING" BOOLEAN FALSE OPERATOR_OR_GREATER
+
+////////////////////////////////////////////////////
+//  INTL Licensing configuration
+////////////////////////////////////////////////////
+// Flag indicating if max bet button will be available without available credits.
+"MAX BET WITHOUT AVAILABLE CREDITS"    BOOLEAN FALSE REMOTELY_CONFIGURABLE+OPERATOR_OR_GREATER
+
+// Flag indicating if licensing is required
+"LICENSE REQUIRED" BOOLEAN FALSE REMOTELY_CONFIGURABLE+OPERATOR_OR_GREATER
+
+// Licensed languages.
+"LICENSED LANGUAGE TYPES SUPPORTED LIST"     LIST "English,Chinese,Spanish"
+
+"LICENSED LANGUAGE" BITFIELD "English" "LICENSED LANGUAGE TYPES SUPPORTED LIST" REMOTELY_CONFIGURABLE+EKEY_OR_GREATER
+

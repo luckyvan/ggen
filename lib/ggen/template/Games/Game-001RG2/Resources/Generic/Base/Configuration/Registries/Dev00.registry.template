@@ -1,0 +1,88 @@
+## (c) Copyright 2006 International Game Technology */
+##
+##   $Revision: 3$
+##
+##   Purpose:
+##      Game configuration file.
+##
+##   Modifications:
+##      Author            Date          Explanation
+##      ---------------   ------------  ------------
+##      Nicole Beaulieu   Apr 09, 2002  Created
+##
+
+[General]
+Theme=Resources/Generic/Base/Configuration/Themes/<%= themereg %>
+StageCount=<%= stage_count %>
+Paytable=Resources/Generic/Base/Configuration/Paytables/<%= paytable %>
+Config=Resources/Generic/Base/Configuration/Paytables/<%= paytable_config %>
+
+## The first stage is always the base game
+[Stage0]
+Name=Lua Ref Game 2
+Description=Lua Ref Game 2, Main
+UtilityMode=enable
+
+## Presentation specific items
+PresentationScript=Game.Main/Scripts/Presentation/Main.lua
+
+## Presentation game switch script
+##PresentationGameSwitchScript=Game.Main/Scripts/Presentation/PresentationGameSwitch.lua
+
+## Flow-specific items
+## add your game specific file here if needed
+FlowScript=Game.Main/Scripts/Flow/FlowMain.lua
+
+<% if bonus then %>
+## #######################
+## Bonus stage definition.
+## #######################
+[Stage<%= bonus_index %>]
+Name=Free Games Feature
+Description=Lua Ref Game 2, Free Games Feature
+UtilityMode=enable
+
+## Flow-specific items
+## add your game specific file here if needed
+FlowScript=Game.FreeSpinBonus/Scripts/Flow/FlowMain.lua
+
+## Presentation specific items
+PresentationScript=Game.FreeSpinBonus/Scripts/Presentation/FreeSpinBonus.lua
+
+## Presentation game switch script
+##PresentationGameSwitchScript=Game.FreeSpinBonus/Scripts/Presentation/PresentationGameSwitch.script
+<% end %>
+
+<% if doubleup then %>
+## #######################
+## DoubleUp stage definition.
+## #######################
+[Stage<%= doubleup_index %>]
+Name=INTERNATIONAL
+Description=INTERNATIONAL
+UtilityMode=disable
+Type=DoubleUp
+
+## Flow-specific items
+FlowScript=Game.DoubleUp/Scripts/Flow/FlowMain.lua
+
+## Presentation specific items
+PresentationScript=Game.DoubleUp/Scripts/Presentation/DoubleUp.lua
+<% end %>
+
+<% if rmlp then %>
+## #######################
+## RMLP stage definition.
+## #######################
+[Stage<%= rmlp_index %>]
+Name=RMLPFlash Bonus
+Description=RMLPFlash
+UtilityMode=disable
+Type=Bonus
+
+## Flow-specific items
+FlowScript=Game.RMLPFlash/Scripts/Flow/FlowMain.script
+
+## Presentation specific items
+PresentationScript=Game.RMLPFlash/Scripts/Presentation/RMLPFlashSetResourceKey.script
+<% end %>

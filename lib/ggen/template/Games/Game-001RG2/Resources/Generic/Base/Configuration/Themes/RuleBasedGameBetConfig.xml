@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BetObject xmlns="http://www.igt.com/worldgame/common/xml/gamedata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Bet Configuration">
+  <PluginBetFunctionList>
+    <PluginBetFunction>
+      <PluginModuleName>SumBetFunction</PluginModuleName>
+      <PluginObjectName>Sum</PluginObjectName>
+    </PluginBetFunction>
+  </PluginBetFunctionList>
+  <BetVariableSetList>
+    <BetVariableSet>
+      <BetVariableSetName>unique_variable_set</BetVariableSetName>
+      <CalculatedVariableList>
+        <CalculatedVariable>
+          <VariableName>TotalBet</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <Equation>BetItems * BetPerItem</Equation>
+        </CalculatedVariable>
+        <CalculatedVariable>
+          <VariableName>MaxBetPerItem</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <Equation>MaximumTotalBet / MaxBetItems</Equation>
+        </CalculatedVariable>
+      </CalculatedVariableList>
+      <ConstantVariableList>
+        <ConstantVariable>
+          <VariableName>MaxBetItems</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <ConstantVariableValue>
+            <ConfigItem>
+              <ItemName>NUMBER OF SUBBETS</ItemName>
+              <ItemLocation>Stage</ItemLocation>
+            </ConfigItem>
+          </ConstantVariableValue>
+        </ConstantVariable>
+        <ConstantVariable>
+          <VariableName>MaximumTotalBet</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <ConstantVariableValue>
+            <ConfigItem>
+              <ItemName>MAXIMUM TOTAL BET</ItemName>
+              <ItemLocation>Game</ItemLocation>
+            </ConfigItem>
+          </ConstantVariableValue>
+        </ConstantVariable>
+        <ConstantVariable>
+          <VariableName>MinimumTotalBet</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <ConstantVariableValue>
+            <ConfigItem>
+              <ItemName>MINIMUM TOTAL BET</ItemName>
+              <ItemLocation>Stage</ItemLocation>
+            </ConfigItem>
+          </ConstantVariableValue>
+        </ConstantVariable>
+      </ConstantVariableList>
+      <DynamicVariableList>
+        <DynamicVariable>
+          <VariableName>BetItems</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <DefaultValue>0</DefaultValue>
+          <WillNotifyPresentation>false</WillNotifyPresentation>
+        </DynamicVariable>
+        <DynamicVariable>
+          <VariableName>BetPerItem</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <DefaultValue>0</DefaultValue>
+          <WillNotifyPresentation>false</WillNotifyPresentation>
+        </DynamicVariable>
+        <DynamicVariable>
+          <VariableName>MinimumTotalBetInCurButtonMap</VariableName>
+          <VariableType>UnsignedInteger</VariableType>
+          <DefaultValue>0</DefaultValue>
+          <WillNotifyPresentation>false</WillNotifyPresentation>
+        </DynamicVariable>
+      </DynamicVariableList>
+    </BetVariableSet>
+  </BetVariableSetList>
+  <BetRuleList>
+    <BetRule>
+      <BetCondition>TotalBet &lt;= MaximumTotalBet</BetCondition>
+      <BetCondition>TotalBet &gt;= MinimumTotalBet</BetCondition>
+      <BetCondition>BetItems &lt;= MaxBetItems</BetCondition>
+      <BetCondition>BetPerItem &lt;= MaxBetPerItem</BetCondition>
+    </BetRule>
+  </BetRuleList>
+</BetObject>

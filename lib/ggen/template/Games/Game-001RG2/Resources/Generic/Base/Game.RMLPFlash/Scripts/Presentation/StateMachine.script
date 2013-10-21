@@ -1,0 +1,192 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2002 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Configure the presentation states used by this presentation.
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------  ------------
+      jnolz             12/10/03    Created
+
+   StateMachine Help:
+      The StateMachine object contains a list of all presentation states
+      in this presentation. Each presentation state is a substate of a
+      Flow state. Flow states are defined in GameStateValue.hpp. The
+      StateMachine object supports the creation of objects derived from
+      PresentationState.
+
+   PresentationState Help:
+      Presentation states are waypoints in the execution of a game. When
+      an interruption occurs in a game, the game continues execution from
+      the last way point crossed.
+
+      Objects derived from PresentationState must be declared public in
+      SlotPresentationMain.cpp so the ResourceManager is able to created
+      them out of this script. These objects are coded in
+      GamePresentationStates.cpp, SlotPresentationStates.cpp, etc.
+
+      The transitions between presentation states within a
+      Flow state can be configured here.
+
+      Generic Events:
+         PresentationStates post generic multimedia events as their methods are executed.
+         They have the form StateName:Method where StateName is the parameter to the
+         PresentationState script object and Method is one of the following:
+            Enter                   - State was entered normally (no interruption).
+            Synchronize             - State is recovering from an interruption.
+            CommonEnterSynchronize  - Executed after either Enter or Synchronize.
+            Exit                    - State completed normally.
+            Suspend                 - State interrupted before completing.
+            CommonExitSuspend       - Executed after either Exit or Suspend.
+
+      Script Commands Are Executed In This Order:
+         For the method currently being executed:
+            1) Post the generic event.
+            2) Post any configured postEvents (in the order they were scripted).
+            3) Execute scriptable functions on the game presentation (in the order they were scripted).
+
+   StateMachine Configuration Options:
+
+      configureFromScript (const char *name).
+         name           = relative path and filename of the script to continue parsing at.
+
+   PresentationState Configuration Options:
+
+      configureFromScript (const char *name).
+         name           = relative path and filename of the script to continue parsing at.
+      default (void)
+         Set this presentation state to be executed by default when its flow state is executed.
+      executeCommand (const char *method, const char *conditions, const char *command, ...parameters).
+         method         = select which method in the state will execute the command. Valid strings are "ENTER", "SYNCHRONIZE", "COMMON_ENTER_SYNCHRONIZE", "EXIT", "SUSPEND", and "COMMON_EXIT_SUSPEND".
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+         command        = name of the scriptable function in the game presentation to execute.
+         parameters     = any number of parameters you with to supply to the command.
+      flowState (const char *flow_state_name)
+         flow_state_name   = name of a game flow state defined in GameStateValue.hpp.
+      goTo (const char *next_state).
+         next_state     = name of the next presentation state to execute.
+      postEvent (const char *event, const char *method = "COMMON_ENTER_SYNCHRONIZE", const char *conditions = 0)
+      postEvent (uint32 delay, const char *event, const char *method = "COMMON_ENTER_SYNCHRONIZE", const char *conditions = 0).
+         delay          = milliseconds to wait before posting.
+         event          = multimedia event string to post to this Stage.
+         method         = select which method in the state will post the event. Valid strings are "ENTER", "SYNCHRONIZE", "COMMON_ENTER_SYNCHRONIZE", "EXIT", "SUSPEND", and "COMMON_EXIT_SUSPEND".
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+      postEventAll (const char *event, const char *method = "COMMON_ENTER_SYNCHRONIZE", const char *conditions = 0).
+      postEventAll (uint32 delay, const char *event, const char *method = "COMMON_ENTER_SYNCHRONIZE", const char *conditions = 0).
+         delay          = milliseconds to wait before posting.
+         event          = multimedia event string to post to all Stages.
+         method         = select which method in the state will post the event. Valid strings are "ENTER", "SYNCHRONIZE", "COMMON_ENTER_SYNCHRONIZE", "EXIT", "SUSPEND", and "COMMON_EXIT_SUSPEND".
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+      translateEvent (const char *event_in, const char *event_out, uint32 delay = 0, const char *conditions = 0).
+      translateEventAll (const char *event_in, const char *event_out, uint32 delay = 0, const char *conditions = 0).
+         event_in       = multimedia event string to listen for.
+         event_out      = multimedia event string to post.
+         delay          = milliseconds to wait before posting event_out.
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+      waitEvenIfNoWaitEvents (void).
+         Force state to wait for the code to transition states. Useful for states that only the GameFlow knows the next state (COLD_START_STATE).
+      waitEvent (const char *event, const char *next_state = "END_FLOW_STATE", const char *conditions = 0).
+         event          = multimedia event that triggers the end of this state.
+         next_state     = name of the next presentation state to execute.
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+      waitEventReturnToPrevious (const char *event, const char *conditions = 0).
+         event          = multimedia event that triggers the previous state.
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+
+   SlotPresentationState Configuration Options:
+
+      postLosingSymbolEvents (const char *event_trunk, const char *method = "COMMON_ENTER_SYNCHRONIZE", const char *conditions = 0).
+         event_trunk    = multimedia event string header to post.
+         method         = select which method in the state will post the event. Valid strings are "ENTER", "SYNCHRONIZE", "COMMON_ENTER_SYNCHRONIZE", "EXIT", "SUSPEND", and "COMMON_EXIT_SUSPEND".
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+      postWinningSymbolEvents (const char *event_trunk, const char *method = "COMMON_ENTER_SYNCHRONIZE", const char *conditions = 0).
+         event_trunk    = multimedia event string header to post.
+         method         = select which method in the state will post the event. Valid strings are "ENTER", "SYNCHRONIZE", "COMMON_ENTER_SYNCHRONIZE", "EXIT", "SUSPEND", and "COMMON_EXIT_SUSPEND".
+         conditions     = a list of string tokens representing conditions coded in the presentation that must be true to do this command. Example, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+
+   Conditions Parameter:
+
+      The "conditions" parameter can contain an unlimited number of string tokens separated by the '&' character.
+      For example, this is a valid condition string, "FIRST_GAME & WIN_CATEGORY:1,2 & NOT_WIN_CATEGORY:5,7".
+
+      GamePresentation Conditions Supported:
+         FIRST_GAME           - True if it's the first game play.
+         NOT_FIRST_GAME       - True if it's NOT the first game play.
+         GAMES_REMAINING:     - True if the games remaining matches. Example: "GAMES_REMAINING:4,5,6".
+         LAST_GAME            - True if it's the last game play.
+         NOT_LAST_GAME        - True if it's NOT the last game play.
+         WIN_THIS_ACT         - True if a win amount for this act.
+         NOT_WIN_THIS_ACT     - True if NOT a win amount for this act.
+         WIN_CATEGORY:        - True if one of the categories is hit. Example: "WIN_CATEGORY:1,2,3".
+         NOT_WIN_CATEGORY:    - True if none of the categories are currently hit. Example: "NOT_WIN_CATEGORY:1,2,3".
+
+      Other Conditions Supported:
+         Derived classes add many other conditions. To see what they are, look for the checkPostWaitEventConditions
+         method in your presentation.
+*/
+
+StateMachine ()
+{
+   new PresentationState ("PreStartState")
+   {
+      flowState ("STATE_PRESTART");
+      default ();
+   }
+   
+   new PresentationState ("PlayState")
+   {
+      flowState ("STATE_PLAY");
+      default ();
+
+      executeCommand ("COMMON_ENTER_SYNCHRONIZE", "", "abortEBGCheck");
+      executeCommand ("COMMON_ENTER_SYNCHRONIZE", "", "rmlpLoadContent");
+
+      postEvent("Rmlp:DButtons:Show");
+      postEventAll("RMLP:Base:TouchArea:Show");
+      postEventAll("RMLP:Base:Show");
+      
+      postEventAll("HideDigitalGlass");
+
+      translateEventAll ("Flash.Bonus:Completed", "RMLP:Base:TouchArea:Hide");
+      translateEventAll ("Flash.Bonus:Completed", "ShowDigitalGlass");
+      translateEvent("Flash.Bonus:Completed", "Rmlp:DButtons:Hide");
+      waitEvent ("Flash.Bonus:Completed");
+   }
+
+   new PresentationState ("EvaluateState")
+   {
+      // Parent flow state. These strings are defined in GameStateValue.hpp.
+      flowState ("STATE_EVALUATE");
+      default ();
+   }
+
+   new PresentationState ("EvaluateCompleteState")
+   {
+      // Parent flow state. These strings are defined in GameStateValue.hpp.
+      flowState ("STATE_EVALUATE_COMPLETE");
+      default ();
+   }
+
+   new PresentationState ("AwardCompleteState")
+   {
+      // Parent flow state. These strings are defined in GameStateValue.hpp.
+      flowState ("STATE_AWARD_COMPLETE");
+      default ();
+   }
+
+   new PresentationState ("HistoryState")
+   {
+      // Parent flow state. These strings are defined in GameStateValue.hpp.
+      flowState ("STATE_HISTORY");
+
+      postEventAll("RMLP:Base:Show");
+
+      // First substate executed in the given flow state.
+      default ();
+      // GameFlow ends this state.
+      waitEvenIfNoWaitEvents ();
+   }
+}

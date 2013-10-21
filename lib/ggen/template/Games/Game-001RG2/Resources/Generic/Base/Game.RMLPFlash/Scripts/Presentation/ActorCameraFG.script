@@ -1,0 +1,68 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2008 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+
+
+   Modifications:
+      Author            Date          Explanation
+      ---------------   ------------  ------------
+      zwilson           Jan 31, 2008  Created
+*/
+
+ActorCameraContainer()
+{
+   setName("MLDFrontContainer");
+
+   new ActorCamera ("MLDFrontCam")
+   {
+      // Configure the default camera.
+      CameraAttribute ()
+      {
+         // Set the video mode for the camera. ("Perspective" or "Orthographic")
+         setCameraMode ("MLD Manual");
+         // Set the field of view in degrees
+         setFieldOfView (28.8541f);
+         // Set Aspect Ratio
+         setAspectRatio (1.6f);
+         // Set the axis scale that matches LightWave's Camera.
+         setAxisScale (1.0f, 1.0f, -0.625f);
+         // Set position (x, y, z)
+         setPosition (0f, 0f, -6.2194f);
+         // Set rotation (x, y, z)
+         setRotation (0f, 0f, 0f);
+         // Set Clipping planes (near, far).
+         setClippingPlanes (0.1f, 100f);
+         // set the view port  (x, y, width, height) in percentages, monitor index (default 0)
+         setViewport (0.0f, 0.0f, 1.0f, 0.5f);
+
+         //set Default viewport
+         new Actuator ()
+         {
+            addStartEvent ("SetDefaultViewport");
+            // set the view port  (x, y, width, height) in percentages
+            setViewport (0.0f, 0.0f, 1.0f, 0.5f);
+         }
+         //set History viewport
+         new Actuator ()
+         {
+            addStartEvent ("SetHistoryViewport");
+            // set the view port  (x, y, width, height) in percentages
+            setViewport (0.01875f, 0.01875f, 0.81625f, 0.408125f);
+         }
+         //set Utility viewport
+         new Actuator ()
+         {
+            addStartEvent ("SetUtilityViewport");
+            // set the view port  (x, y, width, height) in percentages
+            setViewport (0.01875f, 0.01875f, 0.81625f, 0.408125f);
+         }
+
+      }
+   }
+
+   setActiveCamera("MLDFrontCam");
+   show(true);
+}
