@@ -21,6 +21,10 @@ module Ggen
       raise "Invalid Path: #{pn}" unless pn.directory?
     end
 
+    def check_file(pn)
+      raise "Invalid Path: #{pn}" unless pn.file?
+    end
+
     def check_nil(key, options)
       raise "No values for #{key}" unless options[key]
     end
@@ -37,8 +41,22 @@ module Ggen
       Dir.glob(File.join(root, "**", "*.template")).map {|d| Pathname.new(d)}
     end
 
-    def symbol_scripts(gid)
-      {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInfoImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[gid]
+    def symbol_scripts(rgid)
+      {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInfoImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[rgid]
+    end
+
+    def config_scripts_basenames(rgid)
+      {
+        '1RG2' => ["G001RG2.binreg", "Dev00.registry",
+                   "100L1RG2.themereg", "100L1RG2-000.config",
+                   "100L1RG2-00-000.config",
+                   "100L1RG2-01-000.config",
+                   "100L1RG2-02-000.config",
+                   "100L1RG2-03-000.config",
+                   "RuleBasedGameBetConfig.xml",
+                   "RuleBasedGameBetLoaderConfig.xml",
+                  ],
+      }[rgid]
     end
 
     def find_resources_by_symbols(stage_path, symbols)

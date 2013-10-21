@@ -1,0 +1,28 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2006 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Configure the resource plugins used by this game.
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------  ------------
+      Nicole Beaulieu   02 Dec 2002 Created
+*/
+
+// Configure the resource plugins for this game.
+ActorStage ()
+{
+   configurePiece ("Game.RMLPFlash/Models/MLD_RMLP_Back.model", "MLD_RMLP_Back", "Default", false, false);
+   configurePiece ("Game.RMLPFlash/Models/MLD_RMLP_Front.model", "MLD_RMLP_Front", "Default", false, false);
+   //This is for the dynamic buttons
+   configurePiece ("Game.RMLPFlash/Models/RMLPDynamicButton.model", "DButtonContainer", "Default", false, false);
+
+   // Background Elements
+   insertActor ("MLD_RMLP_Back", "ActorCameraContainer", "Game.RMLPFlash/Scripts/Presentation/ActorCameraBG.script", "Default");
+   // Foreground Elements
+   insertActor ("MLD_RMLP_Front", "ActorCameraContainer","Game.RMLPFlash/Scripts/Presentation/ActorCameraFG.script", "Default");
+   show (false);
+}

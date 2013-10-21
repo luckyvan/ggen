@@ -1,0 +1,22 @@
+## (c) Copyright 2012 International Game Technology */
+##
+##   $Revision: $
+##
+##   Purpose:
+##      EBG registry file.
+##
+##   Modifications:
+##      Author            Date          Explanation
+##      ---------------   ------------  ------------
+##      Michael Jepson    Oct 25, 2012  Created
+##
+[Base]
+BaseFlow=SlotFlow.so
+BasePresentation=SlotPresentationWG.so
+
+[EBG]
+StageName=EBG.Main
+GameTiltManager=GameTiltManager.so
+
+[Scripts]
+PresentationScript=Game.EBG/Scripts/Presentation/EBG.script

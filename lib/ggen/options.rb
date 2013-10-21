@@ -17,6 +17,7 @@ module Ggen
       :game_output_root          => nil,                      #output_root directory of generated game resource
       :proj_output_root          => nil,                      #output_root directory of generated game project
 
+      :paytable_scanner     => nil,
       :base_symbols         => nil,                      #symbols of base game
       :bonus_symbol         => "B1",
       :wild                 => "WW",
@@ -34,6 +35,7 @@ module Ggen
       @defaults
     end
 
+    attr_accessor :paytable_scanner
     attr_accessor :template
     attr_accessor :base_symbols
     attr_accessor :bonus_symbol

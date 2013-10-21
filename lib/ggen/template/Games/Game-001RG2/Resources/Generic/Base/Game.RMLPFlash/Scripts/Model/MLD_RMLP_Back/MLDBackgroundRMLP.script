@@ -1,0 +1,79 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2009 International Game Technology */
+
+/*
+$Revision: 1$
+
+Purpose:
+
+
+Modifications:
+    Author             Date                    Explanation
+    ---------------    -----------             ------------
+              13-Feb-2009                 Created
+*/
+
+ActorFlash ("MLDBackgroundRMLP")
+{
+   enableFlashTransparency(true);
+
+   // tell the importer that this is not a system portal
+   setIsPortal (false);
+
+   // start playback of the SWF movie
+   play (true);
+   show (true);
+   setOpacity(0.99f);
+
+   // Flash Event: Load Content
+   new Actuator ()
+   {
+      addStartEvent ("FlashPlayer:FlashEvent:LoadContent:Success");
+      // execute loaded content
+      executeContent ();
+   }
+
+   new Actuator ()
+   {
+      addStartEvent ("FlashPlayer:FlashEvent:LoadContent:Failure");
+      // TODO: content failed to load... handle here.
+      addEventToPost ("LoadContent:Failure");
+   }
+
+   // Flash Event: Execute Content
+   new Actuator ()
+   {
+      addStartEvent ("FlashPlayer:FlashEvent:ExecuteContent:Success");
+      // TODO: content is now executing... handle here.
+      addEventToPost ("ExecuteContent:Success");
+   }
+
+   new Actuator ()
+   {
+      addStartEvent ("FlashPlayer:FlashEvent:ExecuteContent:Failure");
+      // TODO: content failed to execute... handle here.
+      addEventToPost ("ExecuteContent:Failure");
+   }
+   // Flash Event: Content Error
+   new Actuator ()
+   {
+      addStartEvent ("FlashPlayer:FlashEvent:ContentError");
+      // TODO: runtime error in content... handle here.
+      addEventToPost ("FlashEvent:ContentError");
+   }
+
+   new Actuator ()
+   {
+      addStartEvent ("RMLP:Base:Show");
+      show (true);
+      play (true);
+   }
+
+   new Actuator ()
+   {
+      addStartEvent ("RMLP:Base:Hide");
+      addStartEvent ("HistoryState:Exit");
+      play (false);
+      show (false);
+   }
+}

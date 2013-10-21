@@ -1,0 +1,31 @@
+//AVP_SEQUENCE_FILE 1.1
+/* (c) Copyright 2001 International Game Technology
+
+   $Revision: 1$
+*/
+
+FadeInSequence () 
+{
+   new PropertyAnimation ()
+   {
+      new Opacity ()
+      {
+         setDuration (300);
+         setFrame (0.0f);
+         setFrame (1.0f);
+      }
+   }
+}
+
+FadeOutSequence () 
+{
+   new PropertyAnimation ()
+   {
+      new Opacity ()
+      {
+         setDuration (300);
+         setFrame (1.0f);
+         setFrame (0.0f);
+      }
+   }
+}

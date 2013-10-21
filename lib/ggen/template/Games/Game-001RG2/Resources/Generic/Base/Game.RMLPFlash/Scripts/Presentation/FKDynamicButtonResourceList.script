@@ -1,0 +1,24 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2007 International Game Technology */
+
+/*
+   $Revision: 1$
+
+   Purpose:
+      Configuration script file for dynamic button panel image
+
+   Modifications:
+      Author                  Date           Explanation
+      -------------------     -----------    --------------------
+      Rex Lam                 15 Oct 07      New.
+*/
+
+ResourceList ()
+{
+   // Define the image set that goes with this resource.
+   new ButtonPanelData ()
+   {
+      // Initialize the data with the image file name and an alias.
+      initialize ("Game.RMLPFlash/Images/DynamicButtons/FortKnox.dbuttons", "FortKnoxButtonPanel");
+   }
+}

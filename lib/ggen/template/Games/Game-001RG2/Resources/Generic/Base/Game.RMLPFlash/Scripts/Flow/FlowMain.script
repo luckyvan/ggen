@@ -1,0 +1,37 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2006 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------  ------------
+      Jason Kremer      May 04, 06  Created
+*/
+
+RMLPFlashFlow ()
+{
+   // Configure the game play order:  Stack or Queue.  Stacked implies that the bonus game will return
+   // to the game which initiated it after it has been played.  Queued refers to the concept of playing many
+   // games in order and upon completion of all games, control is returned to the game that initiated the
+   // sequence.
+   gamePlayOrder ("Stack");
+   // Configure the stage display type:  OnScreen or FullScreen.
+   stageDisplayType ("OnScreen");
+
+   supportPaytableSection ("RMLPFlash");
+   
+   AlternateBetConfig ()
+   {
+      setSubBet ("ALL_BETS", 1);
+   }
+
+   // Specify how to initialize the game award on start
+   AwardInitializer ()
+   {
+      cloneAwardNames ("*");  // produce award that has the same name and the summary of these
+                              // summarizes all awards from this stage
+   }
+}
