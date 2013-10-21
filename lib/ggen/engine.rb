@@ -134,24 +134,67 @@ module Ggen
       options.base_symbols = scanner.base.symbols if scanner.respond_to?(:base)
       options.bonus_symbols = scanner.bonus.symbols if scanner.respond_to?(:bonus)
       options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.respond_to?(:bonus_symbol)
+      options.paytable_scanner = scanner
     end
 
     def generate_stages
       check_game_id(options[:game_id])
-      game_path = GamePath.new(@options.output_root,
-                               @options.game_id).game_path
+      game = GamePath.new(@options.output_root,
+                               @options.game_id)
+      game_path = game.game_path
+      proj_path = game.proj_path
+
+      reference_game = GamePath.new(options.template, options.reference_game_id)
       check_dir(game_path)
 
-      # generate config files
+      # get config files templates
       config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
       config_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}"
       config_scripts_templates = templates(config_scripts_root).select do |t|
         config_scripts_basenames.include?(t.basename.sub(".template", "").to_s)
       end
 
-      ## rm original config files
+      # rm game original config files
       config_scripts_templates.map {|t| t.dirname }.uniq.each do |dir|
-        FileUtils.rm_rf game_path + dir
+        output_dir = game_path + dir.relative_path_from(config_scripts_root)
+        FileUtils.rm_rf output_dir
+      end
+
+      # generate config files
+      rgid    = options.reference_game_id
+      gid     = options.game_id
+      scanner = options.paytable_scanner
+      stages = scanner.stages
+      stage_count = stages.length
+      rmlp = options.paytable_scanner.respond_to?(:rmlp)
+      paylines = scanner.base.paylines
+      payline_num = (paylines)? paylines.length : 100
+      paytable = Pathname.new(options.paytable).basename
+      paytable_config = Pathname.new(options.paytable_config).basename
+      themereg = "#{payline_num}L#{gid}.themereg"
+
+      config_scripts_templates.each do |t|
+        dst = game_path + t.relative_path_from(config_scripts_root)
+        FileUtils.mkdir_p dst.dirname
+
+        dst = dst.to_s.sub(".template", "").gsub(rgid, gid).gsub("100L", "#{payline_num}L")
+
+        erb = ERB.new(File.open(t).read).result(binding)
+        File.open(dst, "w").write(erb)
+      end
+
+
+      #rmlp
+      if rmlp then
+        ebgreg_src = Pathname.new(Dir.glob(File.join(config_scripts_root, "**", "*.ebgreg"))[0])
+        ebgreg_dst = game_path + ebgreg_src.relative_path_from(config_scripts_root)
+        ["Resources/Generic/Base/Game.RMLPFlash",
+         "../../projects/Game-00#{rgid}/RMLPFlashFlow",
+         "../../projects/Game-00#{rgid}/RMLPFlashPresentation"].each do |path|
+           FileUtils.cp_r config_scripts_root + path, game_path + path.sub(rgid, gid)
+         end
+
+        FileUtils.cp ebgreg_src, ebgreg_dst
       end
 
     end

@@ -48,7 +48,14 @@ module Ggen
     def config_scripts_basenames(rgid)
       {
         '1RG2' => ["G001RG2.binreg", "Dev00.registry",
-                   "100L1RG2.themereg", "100L1RG2-000.config", "100L1RG2-00-000.config"],
+                   "100L1RG2.themereg", "100L1RG2-000.config",
+                   "100L1RG2-00-000.config",
+                   "100L1RG2-01-000.config",
+                   "100L1RG2-02-000.config",
+                   "100L1RG2-03-000.config",
+                   "RuleBasedGameBetConfig.xml",
+                   "RuleBasedGameBetLoaderConfig.xml",
+                  ],
       }[rgid]
     end
 

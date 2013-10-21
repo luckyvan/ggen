@@ -26,29 +26,25 @@ Presentation=SlotPresentationWG.so
 Bet=RuleBasedGameBetLoader.so
 Type=Slot
 
-<% if bonus then %>
 ##################################
-[StageControl<%= bonus_index %>]
+[StageControl1]
 Name=Free Games Feature
 Flow=FreeSpinSlotFlow.so
 Presentation=SlotPresentationWG.so
 Bet=RuleBasedGameBetLoader.so
 Type=Slot
-<% end %>
 
-<% if doubleup then %>
 ##################################
-[StageControl<%= doubleup_index %>]
+[StageControl2]
 Name=INTERNATIONAL
 Flow=DoubleUpIntlFlow.so
 Presentation=DoubleUpIntlPresentation.so
 Bet=RuleBasedGameBetLoader.so
 Type=DoubleUp
-<% end %>
 
 <% if rmlp then %>
 ##################################
-[StageControl<%= rmlp_index %>]
+[StageControl3]
 Name=RMLPFlash
 Flow=RMLPFlashFlow.so
 Presentation=RMLPFlashPresentation.so

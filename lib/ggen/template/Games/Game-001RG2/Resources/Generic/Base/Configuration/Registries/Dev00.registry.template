@@ -33,11 +33,10 @@ PresentationScript=Game.Main/Scripts/Presentation/Main.lua
 ## add your game specific file here if needed
 FlowScript=Game.Main/Scripts/Flow/FlowMain.lua
 
-<% if bonus then %>
 ## #######################
 ## Bonus stage definition.
 ## #######################
-[Stage<%= bonus_index %>]
+[Stage1]
 Name=Free Games Feature
 Description=Lua Ref Game 2, Free Games Feature
 UtilityMode=enable
@@ -51,13 +50,12 @@ PresentationScript=Game.FreeSpinBonus/Scripts/Presentation/FreeSpinBonus.lua
 
 ## Presentation game switch script
 ##PresentationGameSwitchScript=Game.FreeSpinBonus/Scripts/Presentation/PresentationGameSwitch.script
-<% end %>
 
-<% if doubleup then %>
+
 ## #######################
 ## DoubleUp stage definition.
 ## #######################
-[Stage<%= doubleup_index %>]
+[Stage2]
 Name=INTERNATIONAL
 Description=INTERNATIONAL
 UtilityMode=disable
@@ -68,13 +66,12 @@ FlowScript=Game.DoubleUp/Scripts/Flow/FlowMain.lua
 
 ## Presentation specific items
 PresentationScript=Game.DoubleUp/Scripts/Presentation/DoubleUp.lua
-<% end %>
 
 <% if rmlp then %>
 ## #######################
 ## RMLP stage definition.
 ## #######################
-[Stage<%= rmlp_index %>]
+[Stage3]
 Name=RMLPFlash Bonus
 Description=RMLPFlash
 UtilityMode=disable

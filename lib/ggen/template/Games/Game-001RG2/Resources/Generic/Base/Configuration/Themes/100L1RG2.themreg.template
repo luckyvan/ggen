@@ -34,28 +34,24 @@ Type=Slot
 Description=Lua Ref Game 2, Main
 Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-00-000.config
 
-<% if bonus then %>
-[Stage<%= bonus_index %>]
+[Stage1]
 Name=Free Games Feature
 Type=Slot
 Description=Lua Ref Game 2, Free Games Feature
-Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-0<%= bonus_index %>-000.config
-<% end %>
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-01-000.config
 
-<% if doubleup then %>
-[Stage<%= doubleup_index %>]
+[Stage2]
 Name=INTERNATIONAL
 Type=DoubleUp
 Description=INTERNATIONAL
-Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-0<%= doubleup_index%>-000.config
-<% end %>
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-02-000.config
 
 <% if rmlp then %>
-[Stage<%= rmlp_index %>]
+[Stage3]
 Name=RMLPFlash Bonus
 Type=Bonus
 Description=RMLPFlash
-Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-0<%= rmlp_index %>-000.config
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-03-000.config
 <% end %>
 
 [OptionalFeatures]
