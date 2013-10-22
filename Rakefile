@@ -13,5 +13,5 @@ desc "Install ggen as a softlink under /usr/bin"
 task :install do |install|
   dst = File.dirname(__FILE__) + '/bin/ggen'
   puts "Creating softlink /usr/bin/ggen to #{dst}"
-  FileUtils.ln_s dst, '/usr/bin/ggen', :force => true
+  sh "sudo ln -s #{dst} /usr/bin/ggen"
 end
