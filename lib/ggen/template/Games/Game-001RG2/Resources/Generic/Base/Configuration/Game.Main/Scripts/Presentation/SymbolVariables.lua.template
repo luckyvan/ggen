@@ -51,7 +51,7 @@ symbols.special =
 --   if ommited, the defaults used are simply the symbol name with .script/.sound/.tga/.movie appended respectively
 symbols.list =
 {
-   symbols.special.wild =
+   <%= options.wild %> =
    {
       image = "<%= base_resources[:tga][options.wild][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
@@ -66,7 +66,7 @@ symbols.list =
       -- Set the sound member for this symbol to have a symbol sound configured
       sound = true,
    },
-   symbols.special.bonus =
+   <%= options.bonus_symbol %> =
    {
       image = "<%= base_resources[:tga][options.bonus_symbol][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded

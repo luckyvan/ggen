@@ -50,7 +50,7 @@ symbols.special =
 --   if ommited, the defaults used are simply the symbol name with .script/.sound/.tga/.movie appended respectively
 symbols.list =
 {
-   symbols.special.wild =
+   <%= options.wild %> =
    {
       image = "<%= bonus_resources[:tga][options.wild][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
