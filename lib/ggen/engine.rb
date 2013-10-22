@@ -69,6 +69,7 @@ module Ggen
     end
 
     def merge
+      puts "merge resources"
       check_game_id(options[:game_id])
       output_game = GamePath.new(@options.output_root,
                                 @options.game_id)

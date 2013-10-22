@@ -1,0 +1,1 @@
+ggen -m --resource-paths /mnt/Development/Download/DiamondReflections/Game-REFLCT,/mnt/Development/Download/DiamondReflections/RequiredUpdates --trace --output /mnt/Development/temp/ggentest/ --game-id 1DR3

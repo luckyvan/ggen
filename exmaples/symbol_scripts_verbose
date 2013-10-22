@@ -1,0 +1,1 @@
+ggen -s --trace --output /mnt/Development/temp/ggentest/ --game-id 1DR3 --base-symbols WW,M1,M2,M3,M4,F5,F6,F7,F8,D1,B1 --bonus-symbols WW,M1,M2,M3,M4,F5,F6,F7,F8,D1,B1
