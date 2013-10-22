@@ -51,6 +51,21 @@ module Ggen
       end
 
       system("sh -x ./#{script}")
+
+      #libShared
+      config_scripts_root = options.template + "projects/Game-00#{options.reference_game_id}"
+      config_scripts_templates = templates(config_scripts_root).select do |t|
+        proj_specific_configurations(options.reference_game_id).include?(t.basename.sub(".template", "").to_s)
+      end
+      game = GamePath.new(@options.output_root,
+                               @options.game_id)
+      proj_path = game.proj_path
+      check_dir(proj_path)
+      config_scripts_templates.each do |t|
+        dst = proj_path+Pathname.new(t).relative_path_from(config_scripts_root).sub(".template","")
+        FileUtils.cp t, dst
+      end
+
     end
 
     def merge
@@ -97,6 +112,7 @@ module Ggen
 
       base_resources, bonus_resources = nil, nil
       # collect resources
+      p options.base_symbols
       if options.base_symbols
         base_resources = find_resources_by_symbols(base_path+"Game.Main", options.base_symbols)
       end
@@ -135,9 +151,11 @@ module Ggen
       options.bonus_symbols = scanner.bonus.symbols if scanner.respond_to?(:bonus)
       options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.respond_to?(:bonus_symbol)
       options.paytable_scanner = scanner
+      options.wild = scanner.base.symbols[0]
     end
 
     def generate_stages
+      puts "generate stages"
       check_game_id(options[:game_id])
       game = GamePath.new(@options.output_root,
                                @options.game_id)
@@ -155,8 +173,8 @@ module Ggen
       end
 
       # rm game original config files
-      config_scripts_templates.map {|t| t.dirname }.uniq.each do |dir|
-        output_dir = game_path + dir.relative_path_from(config_scripts_root)
+      ["Registries", "Themes", "Bins"].each do |dir|
+        output_dir = game_path + "Resources/Generic/Base/Configuration" + dir
         FileUtils.rm_rf output_dir
       end
 
@@ -168,10 +186,14 @@ module Ggen
       stage_count = stages.length
       rmlp = options.paytable_scanner.respond_to?(:rmlp)
       paylines = scanner.base.paylines
+      bonus_trigger = scanner.base.trigger_index
+      visible_symbols = scanner.base.visible_symbols
       payline_num = (paylines)? paylines.length : 100
       paytable = Pathname.new(options.paytable).basename
       paytable_config = Pathname.new(options.paytable_config).basename
       themereg = "#{payline_num}L#{gid}.themereg"
+      theme_config = "#{payline_num}L#{gid}-000.config"
+      binreg = "G00#{gid}.binreg"
 
       config_scripts_templates.each do |t|
         dst = game_path + t.relative_path_from(config_scripts_root)
@@ -183,6 +205,18 @@ module Ggen
         File.open(dst, "w").write(erb)
       end
 
+      #payline file name modification
+      payline_num_r = reference_game_payline_num(rgid)
+      Dir.glob(File.join(game_path, "**", "#{payline_num_r}L*")).each do |src|
+        dst = src.gsub("#{payline_num_r}", "#{payline_num}")
+
+        FileUtils.mv src, dst
+      end
+
+      #paytable
+      paytable_dir = game_path + "Resources/Generic/Base/Configuration/Paytables"
+      FileUtils.cp options.paytable, paytable_dir
+      FileUtils.cp options.paytable_config, paytable_dir
 
       #rmlp
       if rmlp then

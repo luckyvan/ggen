@@ -60,7 +60,7 @@ symbols.list =
       {
          intro          = {image = "<%= bonus_resources[:movie][options.wild][0] %>", loops = 1 , pop = false},
          win_cycle      = {image = "<%= bonus_resources[:movie][options.wild][1] %>", pop = true},
-         -- pure_win_cycle = {image = },
+         pure_win_cycle = {image = "<%= bonus_resources[:movie][options.wild][1] %>"},
       },
       -- Set the sound member for this symbol to have a symbol sound configured
       sound = true,

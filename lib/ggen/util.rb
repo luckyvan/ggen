@@ -45,6 +45,13 @@ module Ggen
       {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInfoImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[rgid]
     end
 
+    def proj_specific_configurations(rgid)
+      {
+        '1RG2' => [ "CommonConfigProps.props",
+        ]
+      }[rgid]
+    end
+
     def config_scripts_basenames(rgid)
       {
         '1RG2' => ["G001RG2.binreg", "Dev00.registry",
@@ -55,7 +62,14 @@ module Ggen
                    "100L1RG2-03-000.config",
                    "RuleBasedGameBetConfig.xml",
                    "RuleBasedGameBetLoaderConfig.xml",
+                   "GameVariables.lua",
                   ],
+      }[rgid]
+    end
+
+    def reference_game_payline_num(rgid)
+      {
+        '1RG2' => "100"
       }[rgid]
     end
 

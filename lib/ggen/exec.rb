@@ -204,6 +204,7 @@ END
 
         opts.on('-A', '--All', "Perform all generation tasks sequentially") do
           @options[:new_game] = true
+          @options[:parse_paytable] = true
           @options[:merge_resource] = true
           @options[:symbol_scripts] = true
           @options[:add_stages] = true
