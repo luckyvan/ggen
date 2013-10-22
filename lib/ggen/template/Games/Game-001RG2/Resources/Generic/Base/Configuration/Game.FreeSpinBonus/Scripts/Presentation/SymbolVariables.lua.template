@@ -66,6 +66,24 @@ symbols.list =
       -- Set the sound member for this symbol to have a symbol sound configured
       sound = true,
    },
+   <% if options.bonus_symbols.include?(options.bonus_symbol) then%>
+   <%= options.bonus_symbol %> =
+   {
+      image = "<%= base_resources[:tga][options.bonus_symbol][-1]%>",
+      -- Set tbe background member to false if you don't want any background to be loaded
+      background = false,
+      -- Hold on the last frame instead of restoring the symbol
+      hold_last_frame = true,
+      win_cycle_elements = { "win_box" },
+      movies =
+      {
+         bonus_init           = {image = "<%= base_resources[:movie][options.bonus_symbol][0] %>",} ,
+         bonus_init_win_cycle = {image = "<%= base_resources[:movie][options.bonus_symbol][1] %>",} ,
+         bonus_in_idle = {image = "<%= base_resources[:movie][options.bonus_symbol][1] %>",} ,
+      },
+      sound = true,
+   },
+   <%end%>
 
 <% other_symbols = options.bonus_symbols - [ options.wild, options.scatter ] %>
 <% other_symbols.each do |s| %>

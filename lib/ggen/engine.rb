@@ -210,7 +210,7 @@ module Ggen
       Dir.glob(File.join(game_path, "**", "#{payline_num_r}L*")).each do |src|
         dst = src.gsub("#{payline_num_r}", "#{payline_num}")
 
-        FileUtils.mv src, dst
+        FileUtils.mv src, dst if (src != dst)
       end
 
       #paytable
