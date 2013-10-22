@@ -45,6 +45,7 @@ symbols.special =
 {
    wild    = "<%= options.wild%>",
    scatter = "<%= options.scatter%>",
+   bonus   = "<%= options.bonus_symbol%>",
 }
 -- To define a custom script, sound, movie for a symbol, simply add that member to the table defined in the symbols.list below
 --   if ommited, the defaults used are simply the symbol name with .script/.sound/.tga/.movie appended respectively
