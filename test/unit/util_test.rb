@@ -24,5 +24,12 @@ module Ggen
       end
     end
 
+    must "get correct dst directory for certain template file" do
+      output_dir = "/test"
+      template_dir = "/template"
+      file_path = "/template/a/b/c/d.template"
+
+      assert_equal Pathname.new("/test/a/b/c"), get_dst_dir(file_path,template_dir,output_dir)
+    end
   end
 end
