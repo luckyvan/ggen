@@ -51,9 +51,7 @@ module Ggen
       script = "ng.sh"
       begin
         print "Creating #{script}\n"
-        generate_by_template(sh_template, script)
-
-        # system("sh -x ./#{script}")
+        generate_by_template(sh_template, script, binding())
       ensure
         FileUtils.rm script
       end
@@ -98,10 +96,7 @@ module Ggen
 
     def generate_symbol_scripts
       puts "generate symbol scripts"
-      game_path = GamePath.new(@options.output_root,
-                               @options.game_id).game_path
-      base_path = game_path + "Resources/Generic/Base"
-      check_dir(base_path)
+      base_path = options.output_game.game_base
 
       check_nil(:base_symbols, options)
       check_nil(:bonus_symbols, options) unless options.reference_game_id == '1RG4'
@@ -115,22 +110,10 @@ module Ggen
         bonus_resources = find_resources_by_symbols(base_path+"Game.FreeSpinBonus", options.bonus_symbols)
       end
 
-      # scope_door("haha", "hehe", "gaga")
-      self.send(:scope_door, "haha", "hehe", "gaga", binding())
 
-      # symbol_scripts = symbol_scripts(options.reference_game_id)
-      # symbol_scripts_root = options.template_root + "Games/Game-00#{options.reference_game_id}/Resources/Generic/Base"
-      # symbol_script_templates = templates(symbol_scripts_root).select do |t|
-        # symbol_scripts.include?(t.basename.sub(".template", "").to_s)
-      # end
-
-      # symbol_script_templates.each do |t|
-        # dst = base_path + t.relative_path_from(symbol_scripts_root)
-        # dst = dst.sub(".template", "")
-
-        # erb = ERB.new(File.open(t).read).result(binding)
-        # File.open(dst, "w").write(erb)
-      # end
+      symbol_scripts = symbol_scripts(options.reference_game_id)
+      generate_by_template_file_names(symbol_scripts, options.template_game.game_path,
+                                      options.output_game.game_path, binding())
     end
 
     def parse_paytable
