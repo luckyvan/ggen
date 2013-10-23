@@ -1,0 +1,2140 @@
+// (c) Copyright 2013 International Game Technology
+
+// $Revision: 2$
+
+// Modifications:
+// Author                                 Date          Explanation
+// ------------------------------------   -----------   -------------------------
+// SlotCalc 2000, user: JGOHDE            25 Mar 2013   Created: 03:06:42 PM
+
+// Paytable information
+// Type                 : ML
+// Number of Reels      : 5
+// Payline Set          : 66
+// Win Pattern Quantity : 28
+// Payline Quantity     : 40
+// Percent Payback      : 89.89%
+// Paytable id          : 8974A168
+// Compression          : Smart compression of pay amounts
+
+[paytable]
+{
+   name = AVV040974
+   percentage = 89.89%
+   credit divisor = 1
+}
+
+[responsible gaming data]
+{
+   first coin min bet percentage = 89.89%
+   committal min bet percentage  = 89.89%
+   maximum bet percentage = 89.89%
+}
+
+
+[base game]
+{
+   [slot]
+   {
+      pay highest line = yes
+      winning start position allowed = no
+   }
+
+   [symbol defines]
+   {
+      // Define symbols
+      symbol = WW         // WW
+      symbol = M1         // M1
+      symbol = M2         // M2
+      symbol = M3         // M3
+      symbol = M4         // M4
+      symbol = F5         // F5
+      symbol = F6         // F6
+      symbol = F7         // F7
+      symbol = F8         // F8
+      symbol = F9         // F9
+      symbol = B1         // B1
+   }
+
+   [reel]   // reel 0
+   {
+      // Phys Reel Stops : 79
+
+      // Number of visible symbols for reel 0
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F8, quantity ( 1 )                        // stop 0
+      stop = M3, quantity ( 1 )                        // stop 1
+      stop = F6, quantity ( 1 )                        // stop 2
+      stop = M4, quantity ( 1 )                        // stop 3
+      stop = F7, quantity ( 1 )                        // stop 4
+      stop = F5, quantity ( 1 )                        // stop 5
+      stop = M1, quantity ( 1 )                        // stop 6
+      stop = F9, quantity ( 1 )                        // stop 7
+      stop = F6, quantity ( 1 )                        // stop 8
+      stop = F7, quantity ( 1 )                        // stop 9
+      stop = M2, quantity ( 1 )                        // stop 10
+      stop = F8, quantity ( 1 )                        // stop 11
+      stop = M3, quantity ( 1 )                        // stop 12
+      stop = F9, quantity ( 1 )                        // stop 13
+      stop = M4, quantity ( 1 )                        // stop 14
+      stop = F6, quantity ( 1 )                        // stop 15
+      stop = F7, quantity ( 1 )                        // stop 16
+      stop = M4, quantity ( 1 )                        // stop 17
+      stop = F5, quantity ( 1 )                        // stop 18
+      stop = M2, quantity ( 1 )                        // stop 19
+      stop = F6, quantity ( 1 )                        // stop 20
+      stop = F9, quantity ( 1 )                        // stop 21
+      stop = M1, quantity ( 1 )                        // stop 22
+      stop = F8, quantity ( 1 )                        // stop 23
+      stop = F7, quantity ( 1 )                        // stop 24
+      stop = F9, quantity ( 1 )                        // stop 25
+      stop = M2, quantity ( 1 )                        // stop 26
+      stop = F5, quantity ( 1 )                        // stop 27
+      stop = M4, quantity ( 1 )                        // stop 28
+      stop = F8, quantity ( 1 )                        // stop 29
+      stop = F7, quantity ( 1 )                        // stop 30
+      stop = M1, quantity ( 1 )                        // stop 31
+      stop = F5, quantity ( 1 )                        // stop 32
+      stop = F7, quantity ( 1 )                        // stop 33
+      stop = F8, quantity ( 1 )                        // stop 34
+      stop = M3, quantity ( 1 )                        // stop 35
+      stop = F9, quantity ( 1 )                        // stop 36
+      stop = F6, quantity ( 1 )                        // stop 37
+      stop = M3, quantity ( 1 )                        // stop 38
+      stop = F7, quantity ( 1 )                        // stop 39
+      stop = F9, quantity ( 1 )                        // stop 40
+      stop = M4, quantity ( 1 )                        // stop 41
+      stop = F5, quantity ( 1 )                        // stop 42
+      stop = M1, quantity ( 1 )                        // stop 43
+      stop = F8, quantity ( 1 )                        // stop 44
+      stop = F7, quantity ( 1 )                        // stop 45
+      stop = F9, quantity ( 1 )                        // stop 46
+      stop = F6, quantity ( 1 )                        // stop 47
+      stop = M1, quantity ( 1 )                        // stop 48
+      stop = F9, quantity ( 1 )                        // stop 49
+      stop = M3, quantity ( 1 )                        // stop 50
+      stop = F9, quantity ( 1 )                        // stop 51
+      stop = M1, quantity ( 1 )                        // stop 52
+      stop = F8, quantity ( 1 )                        // stop 53
+      stop = F6, quantity ( 1 )                        // stop 54
+      stop = M2, quantity ( 1 )                        // stop 55
+      stop = F7, quantity ( 1 )                        // stop 56
+      stop = F9, quantity ( 1 )                        // stop 57
+      stop = M1, quantity ( 1 )                        // stop 58
+      stop = F5, quantity ( 1 )                        // stop 59
+      stop = M4, quantity ( 1 )                        // stop 60
+      stop = F8, quantity ( 1 )                        // stop 61
+      stop = M3, quantity ( 1 )                        // stop 62
+      stop = F7, quantity ( 1 )                        // stop 63
+      stop = F6, quantity ( 1 )                        // stop 64
+      stop = M4, quantity ( 1 )                        // stop 65
+      stop = F8, quantity ( 1 )                        // stop 66
+      stop = F7, quantity ( 1 )                        // stop 67
+      stop = M2, quantity ( 1 )                        // stop 68
+      stop = F9, quantity ( 1 )                        // stop 69
+      stop = M4, quantity ( 1 )                        // stop 70
+      stop = F8, quantity ( 1 )                        // stop 71
+      stop = F5, quantity ( 1 )                        // stop 72
+      stop = M2, quantity ( 1 )                        // stop 73
+      stop = F6, quantity ( 1 )                        // stop 74
+      stop = M3, quantity ( 1 )                        // stop 75
+      stop = F7, quantity ( 1 )                        // stop 76
+      stop = F9, quantity ( 1 )                        // stop 77
+      stop = M2, quantity ( 1 )                        // stop 78
+   }
+
+   [reel]   // reel 1
+   {
+      // Phys Reel Stops : 85
+
+      // Number of visible symbols for reel 1
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F5, quantity ( 1 )                        // stop 0
+      stop = M4, quantity ( 1 )                        // stop 1
+      stop = M1, quantity ( 1 )                        // stop 2
+      stop = F6, quantity ( 1 )                        // stop 3
+      stop = F9, quantity ( 1 )                        // stop 4
+      stop = M2, quantity ( 1 )                        // stop 5
+      stop = F5, quantity ( 1 )                        // stop 6
+      stop = M3, quantity ( 1 )                        // stop 7
+      stop = F8, quantity ( 1 )                        // stop 8
+      stop = F6, quantity ( 1 )                        // stop 9
+      stop = M2, quantity ( 1 )                        // stop 10
+      stop = M3, quantity ( 1 )                        // stop 11
+      stop = F7, quantity ( 1 )                        // stop 12
+      stop = F5, quantity ( 1 )                        // stop 13
+      stop = M4, quantity ( 1 )                        // stop 14
+      stop = M1, quantity ( 1 )                        // stop 15
+      stop = F8, quantity ( 1 )                        // stop 16
+      stop = F7, quantity ( 1 )                        // stop 17
+      stop = F6, quantity ( 1 )                        // stop 18
+      stop = M2, quantity ( 1 )                        // stop 19
+      stop = F9, quantity ( 1 )                        // stop 20
+      stop = M3, quantity ( 1 )                        // stop 21
+      stop = M4, quantity ( 1 )                        // stop 22
+      stop = F5, quantity ( 1 )                        // stop 23
+      stop = F8, quantity ( 1 )                        // stop 24
+      stop = WW, quantity ( 1 )                        // stop 25
+      stop = F6, quantity ( 1 )                        // stop 26
+      stop = M1, quantity ( 1 )                        // stop 27
+      stop = F9, quantity ( 1 )                        // stop 28
+      stop = F7, quantity ( 1 )                        // stop 29
+      stop = M2, quantity ( 1 )                        // stop 30
+      stop = F7, quantity ( 1 )                        // stop 31
+      stop = F6, quantity ( 1 )                        // stop 32
+      stop = M3, quantity ( 1 )                        // stop 33
+      stop = F7, quantity ( 1 )                        // stop 34
+      stop = F6, quantity ( 1 )                        // stop 35
+      stop = M1, quantity ( 1 )                        // stop 36
+      stop = F5, quantity ( 1 )                        // stop 37
+      stop = M3, quantity ( 1 )                        // stop 38
+      stop = F8, quantity ( 1 )                        // stop 39
+      stop = M3, quantity ( 1 )                        // stop 40
+      stop = M4, quantity ( 1 )                        // stop 41
+      stop = F7, quantity ( 1 )                        // stop 42
+      stop = M4, quantity ( 1 )                        // stop 43
+      stop = F8, quantity ( 1 )                        // stop 44
+      stop = M1, quantity ( 1 )                        // stop 45
+      stop = F7, quantity ( 1 )                        // stop 46
+      stop = M3, quantity ( 1 )                        // stop 47
+      stop = M2, quantity ( 1 )                        // stop 48
+      stop = F8, quantity ( 1 )                        // stop 49
+      stop = F6, quantity ( 1 )                        // stop 50
+      stop = M2, quantity ( 1 )                        // stop 51
+      stop = F5, quantity ( 1 )                        // stop 52
+      stop = M1, quantity ( 1 )                        // stop 53
+      stop = F7, quantity ( 1 )                        // stop 54
+      stop = F5, quantity ( 1 )                        // stop 55
+      stop = F8, quantity ( 1 )                        // stop 56
+      stop = M2, quantity ( 1 )                        // stop 57
+      stop = F8, quantity ( 1 )                        // stop 58
+      stop = F7, quantity ( 1 )                        // stop 59
+      stop = M3, quantity ( 1 )                        // stop 60
+      stop = F9, quantity ( 1 )                        // stop 61
+      stop = F5, quantity ( 1 )                        // stop 62
+      stop = M4, quantity ( 1 )                        // stop 63
+      stop = F7, quantity ( 1 )                        // stop 64
+      stop = F6, quantity ( 1 )                        // stop 65
+      stop = M1, quantity ( 1 )                        // stop 66
+      stop = M4, quantity ( 1 )                        // stop 67
+      stop = F8, quantity ( 1 )                        // stop 68
+      stop = M1, quantity ( 1 )                        // stop 69
+      stop = F7, quantity ( 1 )                        // stop 70
+      stop = M2, quantity ( 1 )                        // stop 71
+      stop = F5, quantity ( 1 )                        // stop 72
+      stop = F6, quantity ( 1 )                        // stop 73
+      stop = M3, quantity ( 1 )                        // stop 74
+      stop = F9, quantity ( 1 )                        // stop 75
+      stop = M2, quantity ( 1 )                        // stop 76
+      stop = F8, quantity ( 1 )                        // stop 77
+      stop = F5, quantity ( 1 )                        // stop 78
+      stop = M3, quantity ( 1 )                        // stop 79
+      stop = M4, quantity ( 1 )                        // stop 80
+      stop = F7, quantity ( 1 )                        // stop 81
+      stop = M2, quantity ( 1 )                        // stop 82
+      stop = F6, quantity ( 1 )                        // stop 83
+      stop = F9, quantity ( 1 )                        // stop 84
+   }
+
+   [reel]   // reel 2
+   {
+      // Phys Reel Stops : 70
+
+      // Number of visible symbols for reel 2
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F9, quantity ( 1 )                        // stop 0
+      stop = M1, quantity ( 1 )                        // stop 1
+      stop = M4, quantity ( 1 )                        // stop 2
+      stop = F5, quantity ( 1 )                        // stop 3
+      stop = F9, quantity ( 1 )                        // stop 4
+      stop = M3, quantity ( 1 )                        // stop 5
+      stop = F8, quantity ( 1 )                        // stop 6
+      stop = F6, quantity ( 1 )                        // stop 7
+      stop = WW, quantity ( 1 )                        // stop 8
+      stop = F7, quantity ( 1 )                        // stop 9
+      stop = M2, quantity ( 1 )                        // stop 10
+      stop = F9, quantity ( 1 )                        // stop 11
+      stop = M4, quantity ( 1 )                        // stop 12
+      stop = F8, quantity ( 1 )                        // stop 13
+      stop = F5, quantity ( 1 )                        // stop 14
+      stop = M3, quantity ( 1 )                        // stop 15
+      stop = F9, quantity ( 1 )                        // stop 16
+      stop = M4, quantity ( 1 )                        // stop 17
+      stop = F7, quantity ( 1 )                        // stop 18
+      stop = M1, quantity ( 1 )                        // stop 19
+      stop = B1, quantity ( 1 )                        // stop 20
+      stop = F9, quantity ( 1 )                        // stop 21
+      stop = F6, quantity ( 1 )                        // stop 22
+      stop = M4, quantity ( 1 )                        // stop 23
+      stop = F8, quantity ( 1 )                        // stop 24
+      stop = M1, quantity ( 1 )                        // stop 25
+      stop = F5, quantity ( 1 )                        // stop 26
+      stop = M2, quantity ( 1 )                        // stop 27
+      stop = M3, quantity ( 1 )                        // stop 28
+      stop = F6, quantity ( 1 )                        // stop 29
+      stop = M4, quantity ( 1 )                        // stop 30
+      stop = F5, quantity ( 1 )                        // stop 31
+      stop = M1, quantity ( 1 )                        // stop 32
+      stop = F8, quantity ( 1 )                        // stop 33
+      stop = M2, quantity ( 1 )                        // stop 34
+      stop = F6, quantity ( 1 )                        // stop 35
+      stop = F9, quantity ( 1 )                        // stop 36
+      stop = M3, quantity ( 1 )                        // stop 37
+      stop = M4, quantity ( 1 )                        // stop 38
+      stop = F5, quantity ( 1 )                        // stop 39
+      stop = F7, quantity ( 1 )                        // stop 40
+      stop = B1, quantity ( 1 )                        // stop 41
+      stop = F9, quantity ( 1 )                        // stop 42
+      stop = M1, quantity ( 1 )                        // stop 43
+      stop = F6, quantity ( 1 )                        // stop 44
+      stop = M4, quantity ( 1 )                        // stop 45
+      stop = F9, quantity ( 1 )                        // stop 46
+      stop = M2, quantity ( 1 )                        // stop 47
+      stop = F6, quantity ( 1 )                        // stop 48
+      stop = F7, quantity ( 1 )                        // stop 49
+      stop = M3, quantity ( 1 )                        // stop 50
+      stop = F5, quantity ( 1 )                        // stop 51
+      stop = M1, quantity ( 1 )                        // stop 52
+      stop = F8, quantity ( 1 )                        // stop 53
+      stop = B1, quantity ( 1 )                        // stop 54
+      stop = F6, quantity ( 1 )                        // stop 55
+      stop = M4, quantity ( 1 )                        // stop 56
+      stop = F5, quantity ( 1 )                        // stop 57
+      stop = F7, quantity ( 1 )                        // stop 58
+      stop = M2, quantity ( 1 )                        // stop 59
+      stop = F5, quantity ( 1 )                        // stop 60
+      stop = M3, quantity ( 1 )                        // stop 61
+      stop = F9, quantity ( 1 )                        // stop 62
+      stop = F7, quantity ( 1 )                        // stop 63
+      stop = M2, quantity ( 1 )                        // stop 64
+      stop = F9, quantity ( 1 )                        // stop 65
+      stop = M3, quantity ( 1 )                        // stop 66
+      stop = F8, quantity ( 1 )                        // stop 67
+      stop = M1, quantity ( 1 )                        // stop 68
+      stop = F5, quantity ( 1 )                        // stop 69
+   }
+
+   [reel]   // reel 3
+   {
+      // Phys Reel Stops : 87
+
+      // Number of visible symbols for reel 3
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = M4, quantity ( 1 )                        // stop 0
+      stop = F6, quantity ( 1 )                        // stop 1
+      stop = F9, quantity ( 1 )                        // stop 2
+      stop = M1, quantity ( 1 )                        // stop 3
+      stop = F8, quantity ( 1 )                        // stop 4
+      stop = M2, quantity ( 1 )                        // stop 5
+      stop = M3, quantity ( 1 )                        // stop 6
+      stop = M4, quantity ( 1 )                        // stop 7
+      stop = F5, quantity ( 1 )                        // stop 8
+      stop = F6, quantity ( 1 )                        // stop 9
+      stop = M4, quantity ( 1 )                        // stop 10
+      stop = M1, quantity ( 1 )                        // stop 11
+      stop = F9, quantity ( 1 )                        // stop 12
+      stop = F7, quantity ( 1 )                        // stop 13
+      stop = B1, quantity ( 1 )                        // stop 14
+      stop = M3, quantity ( 1 )                        // stop 15
+      stop = F6, quantity ( 1 )                        // stop 16
+      stop = M2, quantity ( 1 )                        // stop 17
+      stop = F5, quantity ( 1 )                        // stop 18
+      stop = WW, quantity ( 1 )                        // stop 19
+      stop = F9, quantity ( 1 )                        // stop 20
+      stop = M1, quantity ( 1 )                        // stop 21
+      stop = F5, quantity ( 1 )                        // stop 22
+      stop = M2, quantity ( 1 )                        // stop 23
+      stop = F6, quantity ( 1 )                        // stop 24
+      stop = M3, quantity ( 1 )                        // stop 25
+      stop = F8, quantity ( 1 )                        // stop 26
+      stop = F5, quantity ( 1 )                        // stop 27
+      stop = M1, quantity ( 1 )                        // stop 28
+      stop = F6, quantity ( 1 )                        // stop 29
+      stop = F9, quantity ( 1 )                        // stop 30
+      stop = B1, quantity ( 1 )                        // stop 31
+      stop = F5, quantity ( 1 )                        // stop 32
+      stop = M1, quantity ( 1 )                        // stop 33
+      stop = F9, quantity ( 1 )                        // stop 34
+      stop = F7, quantity ( 1 )                        // stop 35
+      stop = M2, quantity ( 1 )                        // stop 36
+      stop = WW, quantity ( 1 )                        // stop 37
+      stop = F8, quantity ( 1 )                        // stop 38
+      stop = F5, quantity ( 1 )                        // stop 39
+      stop = M2, quantity ( 1 )                        // stop 40
+      stop = M3, quantity ( 1 )                        // stop 41
+      stop = F8, quantity ( 1 )                        // stop 42
+      stop = M4, quantity ( 1 )                        // stop 43
+      stop = F9, quantity ( 1 )                        // stop 44
+      stop = F6, quantity ( 1 )                        // stop 45
+      stop = M2, quantity ( 1 )                        // stop 46
+      stop = F8, quantity ( 1 )                        // stop 47
+      stop = M1, quantity ( 1 )                        // stop 48
+      stop = M2, quantity ( 1 )                        // stop 49
+      stop = F7, quantity ( 1 )                        // stop 50
+      stop = F6, quantity ( 1 )                        // stop 51
+      stop = F5, quantity ( 1 )                        // stop 52
+      stop = M4, quantity ( 1 )                        // stop 53
+      stop = F9, quantity ( 1 )                        // stop 54
+      stop = F7, quantity ( 1 )                        // stop 55
+      stop = B1, quantity ( 1 )                        // stop 56
+      stop = M4, quantity ( 1 )                        // stop 57
+      stop = F8, quantity ( 1 )                        // stop 58
+      stop = F6, quantity ( 1 )                        // stop 59
+      stop = M3, quantity ( 1 )                        // stop 60
+      stop = M1, quantity ( 1 )                        // stop 61
+      stop = F8, quantity ( 1 )                        // stop 62
+      stop = M2, quantity ( 1 )                        // stop 63
+      stop = F8, quantity ( 1 )                        // stop 64
+      stop = F5, quantity ( 1 )                        // stop 65
+      stop = M3, quantity ( 1 )                        // stop 66
+      stop = F6, quantity ( 1 )                        // stop 67
+      stop = M1, quantity ( 1 )                        // stop 68
+      stop = F8, quantity ( 1 )                        // stop 69
+      stop = WW, quantity ( 1 )                        // stop 70
+      stop = F9, quantity ( 1 )                        // stop 71
+      stop = M4, quantity ( 1 )                        // stop 72
+      stop = F5, quantity ( 1 )                        // stop 73
+      stop = F9, quantity ( 1 )                        // stop 74
+      stop = M2, quantity ( 1 )                        // stop 75
+      stop = F8, quantity ( 1 )                        // stop 76
+      stop = M4, quantity ( 1 )                        // stop 77
+      stop = F6, quantity ( 1 )                        // stop 78
+      stop = F9, quantity ( 1 )                        // stop 79
+      stop = F5, quantity ( 1 )                        // stop 80
+      stop = M3, quantity ( 1 )                        // stop 81
+      stop = M2, quantity ( 1 )                        // stop 82
+      stop = F8, quantity ( 1 )                        // stop 83
+      stop = F7, quantity ( 1 )                        // stop 84
+      stop = F9, quantity ( 1 )                        // stop 85
+      stop = B1, quantity ( 1 )                        // stop 86
+   }
+
+   [reel]   // reel 4
+   {
+      // Phys Reel Stops : 90
+
+      // Number of visible symbols for reel 4
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F8, quantity ( 1 )                        // stop 0
+      stop = M2, quantity ( 1 )                        // stop 1
+      stop = F5, quantity ( 1 )                        // stop 2
+      stop = F6, quantity ( 1 )                        // stop 3
+      stop = M4, quantity ( 1 )                        // stop 4
+      stop = WW, quantity ( 1 )                        // stop 5
+      stop = F7, quantity ( 1 )                        // stop 6
+      stop = M4, quantity ( 1 )                        // stop 7
+      stop = F8, quantity ( 1 )                        // stop 8
+      stop = M2, quantity ( 1 )                        // stop 9
+      stop = F6, quantity ( 1 )                        // stop 10
+      stop = B1, quantity ( 1 )                        // stop 11
+      stop = M1, quantity ( 1 )                        // stop 12
+      stop = F9, quantity ( 1 )                        // stop 13
+      stop = F5, quantity ( 1 )                        // stop 14
+      stop = M4, quantity ( 1 )                        // stop 15
+      stop = M2, quantity ( 1 )                        // stop 16
+      stop = F7, quantity ( 1 )                        // stop 17
+      stop = M1, quantity ( 1 )                        // stop 18
+      stop = F8, quantity ( 1 )                        // stop 19
+      stop = F5, quantity ( 1 )                        // stop 20
+      stop = M4, quantity ( 1 )                        // stop 21
+      stop = F6, quantity ( 1 )                        // stop 22
+      stop = F9, quantity ( 1 )                        // stop 23
+      stop = M4, quantity ( 1 )                        // stop 24
+      stop = F5, quantity ( 1 )                        // stop 25
+      stop = M2, quantity ( 1 )                        // stop 26
+      stop = B1, quantity ( 1 )                        // stop 27
+      stop = F7, quantity ( 1 )                        // stop 28
+      stop = F8, quantity ( 1 )                        // stop 29
+      stop = M3, quantity ( 1 )                        // stop 30
+      stop = F7, quantity ( 1 )                        // stop 31
+      stop = F6, quantity ( 1 )                        // stop 32
+      stop = M4, quantity ( 1 )                        // stop 33
+      stop = F5, quantity ( 1 )                        // stop 34
+      stop = M1, quantity ( 1 )                        // stop 35
+      stop = M3, quantity ( 1 )                        // stop 36
+      stop = F9, quantity ( 1 )                        // stop 37
+      stop = F7, quantity ( 1 )                        // stop 38
+      stop = WW, quantity ( 1 )                        // stop 39
+      stop = F6, quantity ( 1 )                        // stop 40
+      stop = M3, quantity ( 1 )                        // stop 41
+      stop = F9, quantity ( 1 )                        // stop 42
+      stop = F5, quantity ( 1 )                        // stop 43
+      stop = M3, quantity ( 1 )                        // stop 44
+      stop = F8, quantity ( 1 )                        // stop 45
+      stop = M4, quantity ( 1 )                        // stop 46
+      stop = F9, quantity ( 1 )                        // stop 47
+      stop = F7, quantity ( 1 )                        // stop 48
+      stop = B1, quantity ( 1 )                        // stop 49
+      stop = F8, quantity ( 1 )                        // stop 50
+      stop = M1, quantity ( 1 )                        // stop 51
+      stop = F5, quantity ( 1 )                        // stop 52
+      stop = F6, quantity ( 1 )                        // stop 53
+      stop = M4, quantity ( 1 )                        // stop 54
+      stop = F9, quantity ( 1 )                        // stop 55
+      stop = M2, quantity ( 1 )                        // stop 56
+      stop = F7, quantity ( 1 )                        // stop 57
+      stop = M1, quantity ( 1 )                        // stop 58
+      stop = F8, quantity ( 1 )                        // stop 59
+      stop = M3, quantity ( 1 )                        // stop 60
+      stop = F8, quantity ( 1 )                        // stop 61
+      stop = M1, quantity ( 1 )                        // stop 62
+      stop = F7, quantity ( 1 )                        // stop 63
+      stop = M2, quantity ( 1 )                        // stop 64
+      stop = F8, quantity ( 1 )                        // stop 65
+      stop = WW, quantity ( 1 )                        // stop 66
+      stop = F5, quantity ( 1 )                        // stop 67
+      stop = M1, quantity ( 1 )                        // stop 68
+      stop = F9, quantity ( 1 )                        // stop 69
+      stop = M4, quantity ( 1 )                        // stop 70
+      stop = F6, quantity ( 1 )                        // stop 71
+      stop = M2, quantity ( 1 )                        // stop 72
+      stop = F7, quantity ( 1 )                        // stop 73
+      stop = M3, quantity ( 1 )                        // stop 74
+      stop = F8, quantity ( 1 )                        // stop 75
+      stop = F7, quantity ( 1 )                        // stop 76
+      stop = M3, quantity ( 1 )                        // stop 77
+      stop = M1, quantity ( 1 )                        // stop 78
+      stop = F5, quantity ( 1 )                        // stop 79
+      stop = F6, quantity ( 1 )                        // stop 80
+      stop = M3, quantity ( 1 )                        // stop 81
+      stop = F9, quantity ( 1 )                        // stop 82
+      stop = M4, quantity ( 1 )                        // stop 83
+      stop = F5, quantity ( 1 )                        // stop 84
+      stop = M2, quantity ( 1 )                        // stop 85
+      stop = M3, quantity ( 1 )                        // stop 86
+      stop = F5, quantity ( 1 )                        // stop 87
+      stop = B1, quantity ( 1 )                        // stop 88
+      stop = M3, quantity ( 1 )                        // stop 89
+   }
+
+   [pay lines]
+   {
+      // Pay line coordinates: "reel number"."reel index"
+      line = 0.1, 1.1, 2.1, 3.1, 4.1             // payline 0
+      line = 0.2, 1.2, 2.2, 3.2, 4.2             // payline 1
+      line = 0.0, 1.0, 2.0, 3.0, 4.0             // payline 2
+      line = 0.3, 1.3, 2.3, 3.3, 4.3             // payline 3
+      line = 0.1, 1.2, 2.3, 3.2, 4.1             // payline 4
+      line = 0.2, 1.1, 2.0, 3.1, 4.2             // payline 5
+      line = 0.0, 1.0, 2.1, 3.2, 4.3             // payline 6
+      line = 0.3, 1.3, 2.2, 3.1, 4.0             // payline 7
+      line = 0.1, 1.0, 2.0, 3.0, 4.1             // payline 8
+      line = 0.2, 1.3, 2.3, 3.3, 4.2             // payline 9
+      line = 0.0, 1.1, 2.2, 3.3, 4.3             // payline 10
+      line = 0.3, 1.2, 2.1, 3.0, 4.0             // payline 11
+      line = 0.1, 1.0, 2.1, 3.2, 4.1             // payline 12
+      line = 0.2, 1.3, 2.2, 3.1, 4.2             // payline 13
+      line = 0.0, 1.1, 2.0, 3.1, 4.0             // payline 14
+      line = 0.3, 1.2, 2.3, 3.2, 4.3             // payline 15
+      line = 0.1, 1.2, 2.1, 3.0, 4.1             // payline 16
+      line = 0.2, 1.1, 2.2, 3.3, 4.2             // payline 17
+      line = 0.0, 1.1, 2.1, 3.1, 4.0             // payline 18
+      line = 0.3, 1.2, 2.2, 3.2, 4.3             // payline 19
+      line = 0.1, 1.1, 2.2, 3.3, 4.3             // payline 20
+      line = 0.2, 1.2, 2.1, 3.0, 4.0             // payline 21
+      line = 0.1, 1.1, 2.0, 3.1, 4.1             // payline 22
+      line = 0.2, 1.2, 2.3, 3.2, 4.2             // payline 23
+      line = 0.1, 1.2, 2.2, 3.2, 4.3             // payline 24
+      line = 0.2, 1.1, 2.1, 3.1, 4.0             // payline 25
+      line = 0.0, 1.0, 2.1, 3.0, 4.0             // payline 26
+      line = 0.3, 1.3, 2.2, 3.3, 4.3             // payline 27
+      line = 0.0, 1.1, 2.2, 3.2, 4.3             // payline 28
+      line = 0.3, 1.2, 2.1, 3.1, 4.0             // payline 29
+      line = 0.0, 1.0, 2.0, 3.1, 4.2             // payline 30
+      line = 0.3, 1.3, 2.3, 3.2, 4.1             // payline 31
+      line = 0.1, 1.0, 2.0, 3.1, 4.2             // payline 32
+      line = 0.2, 1.3, 2.3, 3.2, 4.1             // payline 33
+      line = 0.0, 1.1, 2.1, 3.2, 4.3             // payline 34
+      line = 0.3, 1.2, 2.2, 3.1, 4.0             // payline 35
+      line = 0.1, 1.0, 2.1, 3.2, 4.3             // payline 36
+      line = 0.2, 1.3, 2.2, 3.1, 4.0             // payline 37
+      line = 0.0, 1.1, 2.2, 3.3, 4.2             // payline 38
+      line = 0.3, 1.2, 2.1, 3.0, 4.1             // payline 39
+   }
+
+   [masks]
+   {
+   }
+
+   [symbol substitutions]
+   {
+      XX = WW, M1, M2, M3, M4, F5, F6, F7, F8, F9, B1
+      W1 = WW, M1
+      W2 = WW, M2
+      W3 = WW, M3
+      W4 = WW, M4
+      W5 = WW, F5
+      W6 = WW, F6
+      W7 = WW, F7
+      W8 = WW, F8
+      W9 = WW, F9
+   }
+
+   [win evaluation]
+   {
+      // Win category 0
+      {
+         win = bet (all), x500
+         line = W1, W1, W1, W1, W1
+      }
+
+      // Win category 1
+      {
+         win = bet (all), x450
+         line = W2, W2, W2, W2, W2
+      }
+
+      // Win category 2
+      {
+         win = bet (all), x425
+         line = W3, W3, W3, W3, W3
+      }
+
+      // Win category 3
+      {
+         win = bet (all), x400
+         line = W4, W4, W4, W4, W4
+      }
+
+      // Win category 4
+      {
+         win = bet (all), x160
+         line = W1, W1, W1, W1, XX
+      }
+
+      // Win category 5
+      {
+         win = bet (all), x150
+         line = W6, W6, W6, W6, W6
+      }
+
+      // Win category 6
+      {
+         win = bet (all), x150
+         line = W5, W5, W5, W5, W5
+      }
+
+      // Win category 7
+      {
+         win = bet (all), x150
+         line = W2, W2, W2, W2, XX
+      }
+
+      // Win category 8
+      {
+         win = bet (all), x140
+         line = W3, W3, W3, W3, XX
+      }
+
+      // Win category 9
+      {
+         win = bet (all), x130
+         line = W4, W4, W4, W4, XX
+      }
+
+      // Win category 10
+      {
+         win = bet (all), x75
+         line = W9, W9, W9, W9, W9
+      }
+
+      // Win category 11
+      {
+         win = bet (all), x75
+         line = W8, W8, W8, W8, W8
+      }
+
+      // Win category 12
+      {
+         win = bet (all), x75
+         line = W7, W7, W7, W7, W7
+      }
+
+      // Win category 13
+      {
+         win = bet (all), x60
+         line = W1, W1, W1, XX, XX
+      }
+
+      // Win category 14
+      {
+         win = bet (all), x55
+         line = W2, W2, W2, XX, XX
+      }
+
+      // Win category 15
+      {
+         win = bet (all), x50
+         line = W6, W6, W6, W6, XX
+      }
+
+      // Win category 16
+      {
+         win = bet (all), x50
+         line = W5, W5, W5, W5, XX
+      }
+
+      // Win category 17
+      {
+         win = bet (all), x50
+         line = W3, W3, W3, XX, XX
+      }
+
+      // Win category 18
+      {
+         win = bet (all), x45
+         line = W4, W4, W4, XX, XX
+      }
+
+      // Win category 19
+      {
+         win = bet (all), x25
+         line = W9, W9, W9, W9, XX
+      }
+
+      // Win category 20
+      {
+         win = bet (all), x25
+         line = W8, W8, W8, W8, XX
+      }
+
+      // Win category 21
+      {
+         win = bet (all), x25
+         line = W7, W7, W7, W7, XX
+      }
+
+      // Win category 22
+      {
+         win = bet (all), x20
+         line = W6, W6, W6, XX, XX
+      }
+
+      // Win category 23
+      {
+         win = bet (all), x20
+         line = W5, W5, W5, XX, XX
+      }
+
+      // Win category 24
+      {
+         win = bet (all), x10
+         line = W9, W9, W9, XX, XX
+      }
+
+      // Win category 25
+      {
+         win = bet (all), x10
+         line = W8, W8, W8, XX, XX
+      }
+
+      // Win category 26
+      {
+         win = bet (all), x10
+         line = W7, W7, W7, XX, XX
+      }
+
+      // Win category 27
+      {
+         win = bet (all), trigger (Stage1, count(7), max total plays(7)), odds(178)   // Bonus average pay 19.732
+         scatter = 3, B1
+      }
+
+   }
+}
+
+// BN040974
+[Stage1]
+{
+   [slot]
+   {
+      pay highest line = yes
+      winning start position allowed = no
+   }
+
+   [symbol defines]
+   {
+      // Define symbols
+      symbol = WW         // WW
+      symbol = M1         // M1
+      symbol = M2         // M2
+      symbol = M3         // M3
+      symbol = M4         // M4
+      symbol = F5         // F5
+      symbol = F6         // F6
+      symbol = F7         // F7
+      symbol = F8         // F8
+      symbol = F9         // F9
+   }
+
+   [reel]   // reel 0
+   {
+      // Phys Reel Stops : 73
+
+      // Number of visible symbols for reel 0
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 1
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F8, quantity ( 1 )                        // stop 0
+      stop = M3, quantity ( 1 )                        // stop 1
+      stop = F6, quantity ( 1 )                        // stop 2
+      stop = M4, quantity ( 1 )                        // stop 3
+      stop = F7, quantity ( 1 )                        // stop 4
+      stop = F5, quantity ( 1 )                        // stop 5
+      stop = M1, quantity ( 1 )                        // stop 6
+      stop = F7, quantity ( 1 )                        // stop 7
+      stop = M2, quantity ( 1 )                        // stop 8
+      stop = F8, quantity ( 1 )                        // stop 9
+      stop = M3, quantity ( 1 )                        // stop 10
+      stop = M4, quantity ( 1 )                        // stop 11
+      stop = F6, quantity ( 1 )                        // stop 12
+      stop = F7, quantity ( 1 )                        // stop 13
+      stop = M4, quantity ( 1 )                        // stop 14
+      stop = F5, quantity ( 1 )                        // stop 15
+      stop = M1, quantity ( 1 )                        // stop 16
+      stop = F6, quantity ( 1 )                        // stop 17
+      stop = M3, quantity ( 1 )                        // stop 18
+      stop = F8, quantity ( 1 )                        // stop 19
+      stop = M1, quantity ( 1 )                        // stop 20
+      stop = F7, quantity ( 1 )                        // stop 21
+      stop = F9, quantity ( 1 )                        // stop 22
+      stop = M2, quantity ( 1 )                        // stop 23
+      stop = F5, quantity ( 1 )                        // stop 24
+      stop = M4, quantity ( 1 )                        // stop 25
+      stop = F8, quantity ( 1 )                        // stop 26
+      stop = M4, quantity ( 1 )                        // stop 27
+      stop = F5, quantity ( 1 )                        // stop 28
+      stop = M2, quantity ( 1 )                        // stop 29
+      stop = M3, quantity ( 1 )                        // stop 30
+      stop = F9, quantity ( 1 )                        // stop 31
+      stop = F6, quantity ( 1 )                        // stop 32
+      stop = M3, quantity ( 1 )                        // stop 33
+      stop = F7, quantity ( 1 )                        // stop 34
+      stop = F9, quantity ( 1 )                        // stop 35
+      stop = M4, quantity ( 1 )                        // stop 36
+      stop = F5, quantity ( 1 )                        // stop 37
+      stop = M1, quantity ( 1 )                        // stop 38
+      stop = F8, quantity ( 1 )                        // stop 39
+      stop = F7, quantity ( 1 )                        // stop 40
+      stop = M2, quantity ( 1 )                        // stop 41
+      stop = F9, quantity ( 1 )                        // stop 42
+      stop = F6, quantity ( 1 )                        // stop 43
+      stop = M1, quantity ( 1 )                        // stop 44
+      stop = F9, quantity ( 1 )                        // stop 45
+      stop = M3, quantity ( 1 )                        // stop 46
+      stop = F8, quantity ( 1 )                        // stop 47
+      stop = F6, quantity ( 1 )                        // stop 48
+      stop = M2, quantity ( 1 )                        // stop 49
+      stop = F7, quantity ( 1 )                        // stop 50
+      stop = F9, quantity ( 1 )                        // stop 51
+      stop = M1, quantity ( 1 )                        // stop 52
+      stop = F5, quantity ( 1 )                        // stop 53
+      stop = M4, quantity ( 1 )                        // stop 54
+      stop = F8, quantity ( 1 )                        // stop 55
+      stop = M3, quantity ( 1 )                        // stop 56
+      stop = F6, quantity ( 1 )                        // stop 57
+      stop = M1, quantity ( 1 )                        // stop 58
+      stop = F8, quantity ( 1 )                        // stop 59
+      stop = F7, quantity ( 1 )                        // stop 60
+      stop = M2, quantity ( 1 )                        // stop 61
+      stop = M4, quantity ( 1 )                        // stop 62
+      stop = F8, quantity ( 1 )                        // stop 63
+      stop = M1, quantity ( 1 )                        // stop 64
+      stop = F5, quantity ( 1 )                        // stop 65
+      stop = M2, quantity ( 1 )                        // stop 66
+      stop = F6, quantity ( 1 )                        // stop 67
+      stop = M3, quantity ( 1 )                        // stop 68
+      stop = F7, quantity ( 1 )                        // stop 69
+      stop = F9, quantity ( 1 )                        // stop 70
+      stop = M1, quantity ( 1 )                        // stop 71
+      stop = M2, quantity ( 1 )                        // stop 72
+   }
+
+   [reel]   // reel 1
+   {
+      // Phys Reel Stops : 83
+
+      // Number of visible symbols for reel 1
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 1
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F5, quantity ( 1 )                        // stop 0
+      stop = M4, quantity ( 1 )                        // stop 1
+      stop = M1, quantity ( 1 )                        // stop 2
+      stop = F6, quantity ( 1 )                        // stop 3
+      stop = F9, quantity ( 1 )                        // stop 4
+      stop = M2, quantity ( 1 )                        // stop 5
+      stop = F5, quantity ( 1 )                        // stop 6
+      stop = M3, quantity ( 1 )                        // stop 7
+      stop = F8, quantity ( 1 )                        // stop 8
+      stop = F6, quantity ( 1 )                        // stop 9
+      stop = M2, quantity ( 1 )                        // stop 10
+      stop = M3, quantity ( 1 )                        // stop 11
+      stop = F7, quantity ( 1 )                        // stop 12
+      stop = F5, quantity ( 1 )                        // stop 13
+      stop = M4, quantity ( 1 )                        // stop 14
+      stop = M1, quantity ( 1 )                        // stop 15
+      stop = F7, quantity ( 1 )                        // stop 16
+      stop = F6, quantity ( 1 )                        // stop 17
+      stop = M2, quantity ( 1 )                        // stop 18
+      stop = F9, quantity ( 1 )                        // stop 19
+      stop = M3, quantity ( 1 )                        // stop 20
+      stop = M4, quantity ( 1 )                        // stop 21
+      stop = F5, quantity ( 1 )                        // stop 22
+      stop = WW, quantity ( 1 )                        // stop 23
+      stop = F8, quantity ( 1 )                        // stop 24
+      stop = F6, quantity ( 1 )                        // stop 25
+      stop = M1, quantity ( 1 )                        // stop 26
+      stop = F9, quantity ( 1 )                        // stop 27
+      stop = F7, quantity ( 1 )                        // stop 28
+      stop = M2, quantity ( 1 )                        // stop 29
+      stop = F6, quantity ( 1 )                        // stop 30
+      stop = M3, quantity ( 1 )                        // stop 31
+      stop = F7, quantity ( 1 )                        // stop 32
+      stop = M1, quantity ( 1 )                        // stop 33
+      stop = F5, quantity ( 1 )                        // stop 34
+      stop = M3, quantity ( 1 )                        // stop 35
+      stop = F8, quantity ( 1 )                        // stop 36
+      stop = M4, quantity ( 1 )                        // stop 37
+      stop = F8, quantity ( 1 )                        // stop 38
+      stop = M4, quantity ( 1 )                        // stop 39
+      stop = F8, quantity ( 1 )                        // stop 40
+      stop = M1, quantity ( 1 )                        // stop 41
+      stop = F7, quantity ( 1 )                        // stop 42
+      stop = M3, quantity ( 1 )                        // stop 43
+      stop = M2, quantity ( 1 )                        // stop 44
+      stop = F8, quantity ( 1 )                        // stop 45
+      stop = F6, quantity ( 1 )                        // stop 46
+      stop = M2, quantity ( 1 )                        // stop 47
+      stop = F5, quantity ( 1 )                        // stop 48
+      stop = M1, quantity ( 1 )                        // stop 49
+      stop = F7, quantity ( 1 )                        // stop 50
+      stop = F5, quantity ( 1 )                        // stop 51
+      stop = WW, quantity ( 1 )                        // stop 52
+      stop = F8, quantity ( 1 )                        // stop 53
+      stop = M2, quantity ( 1 )                        // stop 54
+      stop = F8, quantity ( 1 )                        // stop 55
+      stop = F7, quantity ( 1 )                        // stop 56
+      stop = M3, quantity ( 1 )                        // stop 57
+      stop = F9, quantity ( 1 )                        // stop 58
+      stop = M4, quantity ( 1 )                        // stop 59
+      stop = F7, quantity ( 1 )                        // stop 60
+      stop = F6, quantity ( 1 )                        // stop 61
+      stop = M1, quantity ( 1 )                        // stop 62
+      stop = M4, quantity ( 1 )                        // stop 63
+      stop = F8, quantity ( 1 )                        // stop 64
+      stop = F7, quantity ( 1 )                        // stop 65
+      stop = M2, quantity ( 1 )                        // stop 66
+      stop = F5, quantity ( 1 )                        // stop 67
+      stop = WW, quantity ( 1 )                        // stop 68
+      stop = F6, quantity ( 1 )                        // stop 69
+      stop = M3, quantity ( 1 )                        // stop 70
+      stop = F9, quantity ( 1 )                        // stop 71
+      stop = M2, quantity ( 1 )                        // stop 72
+      stop = F8, quantity ( 1 )                        // stop 73
+      stop = M1, quantity ( 1 )                        // stop 74
+      stop = F5, quantity ( 1 )                        // stop 75
+      stop = M3, quantity ( 1 )                        // stop 76
+      stop = M4, quantity ( 1 )                        // stop 77
+      stop = F7, quantity ( 1 )                        // stop 78
+      stop = M2, quantity ( 1 )                        // stop 79
+      stop = F6, quantity ( 1 )                        // stop 80
+      stop = F9, quantity ( 1 )                        // stop 81
+      stop = WW, quantity ( 1 )                        // stop 82
+   }
+
+   [reel]   // reel 2
+   {
+      // Phys Reel Stops : 69
+
+      // Number of visible symbols for reel 2
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F9, quantity ( 1 )                        // stop 0
+      stop = M3, quantity ( 1 )                        // stop 1
+      stop = M4, quantity ( 1 )                        // stop 2
+      stop = F5, quantity ( 1 )                        // stop 3
+      stop = F9, quantity ( 1 )                        // stop 4
+      stop = M3, quantity ( 1 )                        // stop 5
+      stop = F8, quantity ( 1 )                        // stop 6
+      stop = M2, quantity ( 1 )                        // stop 7
+      stop = F6, quantity ( 1 )                        // stop 8
+      stop = WW, quantity ( 1 )                        // stop 9
+      stop = F7, quantity ( 1 )                        // stop 10
+      stop = M3, quantity ( 1 )                        // stop 11
+      stop = F9, quantity ( 1 )                        // stop 12
+      stop = M4, quantity ( 1 )                        // stop 13
+      stop = F8, quantity ( 1 )                        // stop 14
+      stop = F5, quantity ( 1 )                        // stop 15
+      stop = M3, quantity ( 1 )                        // stop 16
+      stop = F9, quantity ( 1 )                        // stop 17
+      stop = M4, quantity ( 1 )                        // stop 18
+      stop = F7, quantity ( 1 )                        // stop 19
+      stop = M1, quantity ( 1 )                        // stop 20
+      stop = F9, quantity ( 1 )                        // stop 21
+      stop = M2, quantity ( 1 )                        // stop 22
+      stop = F6, quantity ( 1 )                        // stop 23
+      stop = M4, quantity ( 1 )                        // stop 24
+      stop = F8, quantity ( 1 )                        // stop 25
+      stop = F5, quantity ( 1 )                        // stop 26
+      stop = M2, quantity ( 1 )                        // stop 27
+      stop = M3, quantity ( 1 )                        // stop 28
+      stop = F6, quantity ( 1 )                        // stop 29
+      stop = WW, quantity ( 1 )                        // stop 30
+      stop = F5, quantity ( 1 )                        // stop 31
+      stop = M1, quantity ( 1 )                        // stop 32
+      stop = F8, quantity ( 1 )                        // stop 33
+      stop = M2, quantity ( 1 )                        // stop 34
+      stop = F6, quantity ( 1 )                        // stop 35
+      stop = F9, quantity ( 1 )                        // stop 36
+      stop = M3, quantity ( 1 )                        // stop 37
+      stop = M4, quantity ( 1 )                        // stop 38
+      stop = F7, quantity ( 1 )                        // stop 39
+      stop = F9, quantity ( 1 )                        // stop 40
+      stop = M1, quantity ( 1 )                        // stop 41
+      stop = F6, quantity ( 1 )                        // stop 42
+      stop = M4, quantity ( 1 )                        // stop 43
+      stop = F9, quantity ( 1 )                        // stop 44
+      stop = M2, quantity ( 1 )                        // stop 45
+      stop = F7, quantity ( 1 )                        // stop 46
+      stop = WW, quantity ( 1 )                        // stop 47
+      stop = F5, quantity ( 1 )                        // stop 48
+      stop = M1, quantity ( 1 )                        // stop 49
+      stop = F8, quantity ( 1 )                        // stop 50
+      stop = M2, quantity ( 1 )                        // stop 51
+      stop = F6, quantity ( 1 )                        // stop 52
+      stop = M4, quantity ( 1 )                        // stop 53
+      stop = F5, quantity ( 1 )                        // stop 54
+      stop = M1, quantity ( 1 )                        // stop 55
+      stop = F7, quantity ( 1 )                        // stop 56
+      stop = M4, quantity ( 1 )                        // stop 57
+      stop = M3, quantity ( 1 )                        // stop 58
+      stop = F9, quantity ( 1 )                        // stop 59
+      stop = M1, quantity ( 1 )                        // stop 60
+      stop = F7, quantity ( 1 )                        // stop 61
+      stop = M2, quantity ( 1 )                        // stop 62
+      stop = F9, quantity ( 1 )                        // stop 63
+      stop = M3, quantity ( 1 )                        // stop 64
+      stop = F8, quantity ( 1 )                        // stop 65
+      stop = M1, quantity ( 1 )                        // stop 66
+      stop = M4, quantity ( 1 )                        // stop 67
+      stop = WW, quantity ( 1 )                        // stop 68
+   }
+
+   [reel]   // reel 3
+   {
+      // Phys Reel Stops : 82
+
+      // Number of visible symbols for reel 3
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = M4, quantity ( 1 )                        // stop 0
+      stop = F6, quantity ( 1 )                        // stop 1
+      stop = F9, quantity ( 1 )                        // stop 2
+      stop = M1, quantity ( 1 )                        // stop 3
+      stop = F8, quantity ( 1 )                        // stop 4
+      stop = M3, quantity ( 1 )                        // stop 5
+      stop = WW, quantity ( 1 )                        // stop 6
+      stop = F5, quantity ( 1 )                        // stop 7
+      stop = F6, quantity ( 1 )                        // stop 8
+      stop = M1, quantity ( 1 )                        // stop 9
+      stop = F9, quantity ( 1 )                        // stop 10
+      stop = F7, quantity ( 1 )                        // stop 11
+      stop = M3, quantity ( 1 )                        // stop 12
+      stop = F6, quantity ( 1 )                        // stop 13
+      stop = M2, quantity ( 1 )                        // stop 14
+      stop = F5, quantity ( 1 )                        // stop 15
+      stop = WW, quantity ( 1 )                        // stop 16
+      stop = F9, quantity ( 1 )                        // stop 17
+      stop = F8, quantity ( 1 )                        // stop 18
+      stop = M2, quantity ( 1 )                        // stop 19
+      stop = F6, quantity ( 1 )                        // stop 20
+      stop = F8, quantity ( 1 )                        // stop 21
+      stop = M4, quantity ( 1 )                        // stop 22
+      stop = M1, quantity ( 1 )                        // stop 23
+      stop = F6, quantity ( 1 )                        // stop 24
+      stop = F9, quantity ( 1 )                        // stop 25
+      stop = M4, quantity ( 1 )                        // stop 26
+      stop = F5, quantity ( 1 )                        // stop 27
+      stop = M1, quantity ( 1 )                        // stop 28
+      stop = F9, quantity ( 1 )                        // stop 29
+      stop = F7, quantity ( 1 )                        // stop 30
+      stop = M2, quantity ( 1 )                        // stop 31
+      stop = WW, quantity ( 1 )                        // stop 32
+      stop = F8, quantity ( 1 )                        // stop 33
+      stop = F5, quantity ( 1 )                        // stop 34
+      stop = M2, quantity ( 1 )                        // stop 35
+      stop = F8, quantity ( 1 )                        // stop 36
+      stop = M4, quantity ( 1 )                        // stop 37
+      stop = F9, quantity ( 1 )                        // stop 38
+      stop = M2, quantity ( 1 )                        // stop 39
+      stop = F8, quantity ( 1 )                        // stop 40
+      stop = M1, quantity ( 1 )                        // stop 41
+      stop = F5, quantity ( 1 )                        // stop 42
+      stop = M4, quantity ( 1 )                        // stop 43
+      stop = F9, quantity ( 1 )                        // stop 44
+      stop = M3, quantity ( 1 )                        // stop 45
+      stop = F7, quantity ( 1 )                        // stop 46
+      stop = M1, quantity ( 1 )                        // stop 47
+      stop = WW, quantity ( 1 )                        // stop 48
+      stop = F8, quantity ( 1 )                        // stop 49
+      stop = F6, quantity ( 1 )                        // stop 50
+      stop = M3, quantity ( 1 )                        // stop 51
+      stop = F9, quantity ( 1 )                        // stop 52
+      stop = M4, quantity ( 1 )                        // stop 53
+      stop = F8, quantity ( 1 )                        // stop 54
+      stop = M2, quantity ( 1 )                        // stop 55
+      stop = F8, quantity ( 1 )                        // stop 56
+      stop = M3, quantity ( 1 )                        // stop 57
+      stop = F5, quantity ( 1 )                        // stop 58
+      stop = M4, quantity ( 1 )                        // stop 59
+      stop = F8, quantity ( 1 )                        // stop 60
+      stop = WW, quantity ( 1 )                        // stop 61
+      stop = F9, quantity ( 1 )                        // stop 62
+      stop = M4, quantity ( 1 )                        // stop 63
+      stop = F5, quantity ( 1 )                        // stop 64
+      stop = F9, quantity ( 1 )                        // stop 65
+      stop = M3, quantity ( 1 )                        // stop 66
+      stop = M2, quantity ( 1 )                        // stop 67
+      stop = F8, quantity ( 1 )                        // stop 68
+      stop = M4, quantity ( 1 )                        // stop 69
+      stop = F6, quantity ( 1 )                        // stop 70
+      stop = F9, quantity ( 1 )                        // stop 71
+      stop = M1, quantity ( 1 )                        // stop 72
+      stop = F5, quantity ( 1 )                        // stop 73
+      stop = M3, quantity ( 1 )                        // stop 74
+      stop = WW, quantity ( 1 )                        // stop 75
+      stop = M2, quantity ( 1 )                        // stop 76
+      stop = F8, quantity ( 1 )                        // stop 77
+      stop = F7, quantity ( 1 )                        // stop 78
+      stop = M1, quantity ( 1 )                        // stop 79
+      stop = F9, quantity ( 1 )                        // stop 80
+      stop = M3, quantity ( 1 )                        // stop 81
+   }
+
+   [reel]   // reel 4
+   {
+      // Phys Reel Stops : 85
+
+      // Number of visible symbols for reel 4
+      number of visible symbols = 4
+
+      // Start up reel position
+      start reel = 0
+
+      // Reel offset
+      reel offset = 1
+
+      // Real reel map
+      stop = F8, quantity ( 1 )                        // stop 0
+      stop = M2, quantity ( 1 )                        // stop 1
+      stop = F5, quantity ( 1 )                        // stop 2
+      stop = M1, quantity ( 1 )                        // stop 3
+      stop = M3, quantity ( 1 )                        // stop 4
+      stop = F6, quantity ( 1 )                        // stop 5
+      stop = M4, quantity ( 1 )                        // stop 6
+      stop = WW, quantity ( 1 )                        // stop 7
+      stop = F7, quantity ( 1 )                        // stop 8
+      stop = M4, quantity ( 1 )                        // stop 9
+      stop = F8, quantity ( 1 )                        // stop 10
+      stop = F6, quantity ( 1 )                        // stop 11
+      stop = M1, quantity ( 1 )                        // stop 12
+      stop = F9, quantity ( 1 )                        // stop 13
+      stop = F5, quantity ( 1 )                        // stop 14
+      stop = M2, quantity ( 1 )                        // stop 15
+      stop = F7, quantity ( 1 )                        // stop 16
+      stop = M1, quantity ( 1 )                        // stop 17
+      stop = F8, quantity ( 1 )                        // stop 18
+      stop = M3, quantity ( 1 )                        // stop 19
+      stop = F5, quantity ( 1 )                        // stop 20
+      stop = M4, quantity ( 1 )                        // stop 21
+      stop = WW, quantity ( 1 )                        // stop 22
+      stop = F6, quantity ( 1 )                        // stop 23
+      stop = M2, quantity ( 1 )                        // stop 24
+      stop = F9, quantity ( 1 )                        // stop 25
+      stop = M4, quantity ( 1 )                        // stop 26
+      stop = F5, quantity ( 1 )                        // stop 27
+      stop = M2, quantity ( 1 )                        // stop 28
+      stop = F7, quantity ( 1 )                        // stop 29
+      stop = M1, quantity ( 1 )                        // stop 30
+      stop = F8, quantity ( 1 )                        // stop 31
+      stop = M3, quantity ( 1 )                        // stop 32
+      stop = F7, quantity ( 1 )                        // stop 33
+      stop = WW, quantity ( 1 )                        // stop 34
+      stop = F6, quantity ( 1 )                        // stop 35
+      stop = M4, quantity ( 1 )                        // stop 36
+      stop = F5, quantity ( 1 )                        // stop 37
+      stop = M1, quantity ( 1 )                        // stop 38
+      stop = M3, quantity ( 1 )                        // stop 39
+      stop = F9, quantity ( 1 )                        // stop 40
+      stop = F7, quantity ( 1 )                        // stop 41
+      stop = M4, quantity ( 1 )                        // stop 42
+      stop = WW, quantity ( 1 )                        // stop 43
+      stop = F6, quantity ( 1 )                        // stop 44
+      stop = M2, quantity ( 1 )                        // stop 45
+      stop = F9, quantity ( 1 )                        // stop 46
+      stop = F5, quantity ( 1 )                        // stop 47
+      stop = M3, quantity ( 1 )                        // stop 48
+      stop = F8, quantity ( 1 )                        // stop 49
+      stop = M4, quantity ( 1 )                        // stop 50
+      stop = F9, quantity ( 1 )                        // stop 51
+      stop = F7, quantity ( 1 )                        // stop 52
+      stop = WW, quantity ( 1 )                        // stop 53
+      stop = F8, quantity ( 1 )                        // stop 54
+      stop = M1, quantity ( 1 )                        // stop 55
+      stop = F5, quantity ( 1 )                        // stop 56
+      stop = M3, quantity ( 1 )                        // stop 57
+      stop = F6, quantity ( 1 )                        // stop 58
+      stop = F9, quantity ( 1 )                        // stop 59
+      stop = M2, quantity ( 1 )                        // stop 60
+      stop = F8, quantity ( 1 )                        // stop 61
+      stop = M3, quantity ( 1 )                        // stop 62
+      stop = F8, quantity ( 1 )                        // stop 63
+      stop = M1, quantity ( 1 )                        // stop 64
+      stop = F7, quantity ( 1 )                        // stop 65
+      stop = M2, quantity ( 1 )                        // stop 66
+      stop = F8, quantity ( 1 )                        // stop 67
+      stop = WW, quantity ( 1 )                        // stop 68
+      stop = F5, quantity ( 1 )                        // stop 69
+      stop = M1, quantity ( 1 )                        // stop 70
+      stop = F9, quantity ( 1 )                        // stop 71
+      stop = M4, quantity ( 1 )                        // stop 72
+      stop = F6, quantity ( 1 )                        // stop 73
+      stop = F7, quantity ( 1 )                        // stop 74
+      stop = M3, quantity ( 1 )                        // stop 75
+      stop = F8, quantity ( 1 )                        // stop 76
+      stop = M3, quantity ( 1 )                        // stop 77
+      stop = F5, quantity ( 1 )                        // stop 78
+      stop = F6, quantity ( 1 )                        // stop 79
+      stop = M4, quantity ( 1 )                        // stop 80
+      stop = F9, quantity ( 1 )                        // stop 81
+      stop = M2, quantity ( 1 )                        // stop 82
+      stop = M3, quantity ( 1 )                        // stop 83
+      stop = F5, quantity ( 1 )                        // stop 84
+   }
+
+   [pay lines]
+   {
+      // Pay line coordinates: "reel number"."reel index"
+      line = 0.1, 1.1, 2.1, 3.1, 4.1             // payline 0
+      line = 0.2, 1.2, 2.2, 3.2, 4.2             // payline 1
+      line = 0.0, 1.0, 2.0, 3.0, 4.0             // payline 2
+      line = 0.3, 1.3, 2.3, 3.3, 4.3             // payline 3
+      line = 0.1, 1.2, 2.3, 3.2, 4.1             // payline 4
+      line = 0.2, 1.1, 2.0, 3.1, 4.2             // payline 5
+      line = 0.0, 1.0, 2.1, 3.2, 4.3             // payline 6
+      line = 0.3, 1.3, 2.2, 3.1, 4.0             // payline 7
+      line = 0.1, 1.0, 2.0, 3.0, 4.1             // payline 8
+      line = 0.2, 1.3, 2.3, 3.3, 4.2             // payline 9
+      line = 0.0, 1.1, 2.2, 3.3, 4.3             // payline 10
+      line = 0.3, 1.2, 2.1, 3.0, 4.0             // payline 11
+      line = 0.1, 1.0, 2.1, 3.2, 4.1             // payline 12
+      line = 0.2, 1.3, 2.2, 3.1, 4.2             // payline 13
+      line = 0.0, 1.1, 2.0, 3.1, 4.0             // payline 14
+      line = 0.3, 1.2, 2.3, 3.2, 4.3             // payline 15
+      line = 0.1, 1.2, 2.1, 3.0, 4.1             // payline 16
+      line = 0.2, 1.1, 2.2, 3.3, 4.2             // payline 17
+      line = 0.0, 1.1, 2.1, 3.1, 4.0             // payline 18
+      line = 0.3, 1.2, 2.2, 3.2, 4.3             // payline 19
+      line = 0.1, 1.1, 2.2, 3.3, 4.3             // payline 20
+      line = 0.2, 1.2, 2.1, 3.0, 4.0             // payline 21
+      line = 0.1, 1.1, 2.0, 3.1, 4.1             // payline 22
+      line = 0.2, 1.2, 2.3, 3.2, 4.2             // payline 23
+      line = 0.1, 1.2, 2.2, 3.2, 4.3             // payline 24
+      line = 0.2, 1.1, 2.1, 3.1, 4.0             // payline 25
+      line = 0.0, 1.0, 2.1, 3.0, 4.0             // payline 26
+      line = 0.3, 1.3, 2.2, 3.3, 4.3             // payline 27
+      line = 0.0, 1.1, 2.2, 3.2, 4.3             // payline 28
+      line = 0.3, 1.2, 2.1, 3.1, 4.0             // payline 29
+      line = 0.0, 1.0, 2.0, 3.1, 4.2             // payline 30
+      line = 0.3, 1.3, 2.3, 3.2, 4.1             // payline 31
+      line = 0.1, 1.0, 2.0, 3.1, 4.2             // payline 32
+      line = 0.2, 1.3, 2.3, 3.2, 4.1             // payline 33
+      line = 0.0, 1.1, 2.1, 3.2, 4.3             // payline 34
+      line = 0.3, 1.2, 2.2, 3.1, 4.0             // payline 35
+      line = 0.1, 1.0, 2.1, 3.2, 4.3             // payline 36
+      line = 0.2, 1.3, 2.2, 3.1, 4.0             // payline 37
+      line = 0.0, 1.1, 2.2, 3.3, 4.2             // payline 38
+      line = 0.3, 1.2, 2.1, 3.0, 4.1             // payline 39
+   }
+
+   [masks]
+   {
+   }
+
+   [symbol substitutions]
+   {
+      XX = WW, M1, M2, M3, M4, F5, F6, F7, F8, F9
+      W1 = WW, M1
+      W2 = WW, M2
+      W3 = WW, M3
+      W4 = WW, M4
+      W5 = WW, F5
+      W6 = WW, F6
+      W7 = WW, F7
+      W8 = WW, F8
+      W9 = WW, F9
+   }
+
+   [win evaluation]
+   {
+      // Win category 0
+      {
+         win = bet (all), x500
+         line = W1, W1, W1, W1, W1
+      }
+
+      // Win category 1
+      {
+         win = bet (all), x450
+         line = W2, W2, W2, W2, W2
+      }
+
+      // Win category 2
+      {
+         win = bet (all), x425
+         line = W3, W3, W3, W3, W3
+      }
+
+      // Win category 3
+      {
+         win = bet (all), x400
+         line = W4, W4, W4, W4, W4
+      }
+
+      // Win category 4
+      {
+         win = bet (all), x160
+         line = W1, W1, W1, W1, XX
+      }
+
+      // Win category 5
+      {
+         win = bet (all), x150
+         line = W6, W6, W6, W6, W6
+      }
+
+      // Win category 6
+      {
+         win = bet (all), x150
+         line = W5, W5, W5, W5, W5
+      }
+
+      // Win category 7
+      {
+         win = bet (all), x150
+         line = W2, W2, W2, W2, XX
+      }
+
+      // Win category 8
+      {
+         win = bet (all), x140
+         line = W3, W3, W3, W3, XX
+      }
+
+      // Win category 9
+      {
+         win = bet (all), x130
+         line = W4, W4, W4, W4, XX
+      }
+
+      // Win category 10
+      {
+         win = bet (all), x75
+         line = W9, W9, W9, W9, W9
+      }
+
+      // Win category 11
+      {
+         win = bet (all), x75
+         line = W8, W8, W8, W8, W8
+      }
+
+      // Win category 12
+      {
+         win = bet (all), x75
+         line = W7, W7, W7, W7, W7
+      }
+
+      // Win category 13
+      {
+         win = bet (all), x60
+         line = W1, W1, W1, XX, XX
+      }
+
+      // Win category 14
+      {
+         win = bet (all), x55
+         line = W2, W2, W2, XX, XX
+      }
+
+      // Win category 15
+      {
+         win = bet (all), x50
+         line = W6, W6, W6, W6, XX
+      }
+
+      // Win category 16
+      {
+         win = bet (all), x50
+         line = W5, W5, W5, W5, XX
+      }
+
+      // Win category 17
+      {
+         win = bet (all), x50
+         line = W3, W3, W3, XX, XX
+      }
+
+      // Win category 18
+      {
+         win = bet (all), x45
+         line = W4, W4, W4, XX, XX
+      }
+
+      // Win category 19
+      {
+         win = bet (all), x25
+         line = W9, W9, W9, W9, XX
+      }
+
+      // Win category 20
+      {
+         win = bet (all), x25
+         line = W8, W8, W8, W8, XX
+      }
+
+      // Win category 21
+      {
+         win = bet (all), x25
+         line = W7, W7, W7, W7, XX
+      }
+
+      // Win category 22
+      {
+         win = bet (all), x20
+         line = W6, W6, W6, XX, XX
+      }
+
+      // Win category 23
+      {
+         win = bet (all), x20
+         line = W5, W5, W5, XX, XX
+      }
+
+      // Win category 24
+      {
+         win = bet (all), x10
+         line = W9, W9, W9, XX, XX
+      }
+
+      // Win category 25
+      {
+         win = bet (all), x10
+         line = W8, W8, W8, XX, XX
+      }
+
+      // Win category 26
+      {
+         win = bet (all), x10
+         line = W7, W7, W7, XX, XX
+      }
+
+   }
+}
+
+// DoubleUp
+[Stage2]
+{
+   [bonus]
+   {
+      replacement method = weighted without replacement
+   }
+
+   [win evaluation]
+   {
+      // Win Category 0
+      {
+         win = bet (all), trigger (Stage2, count(1))
+         weight = 1
+      }
+   }
+}
+
+// RMLPFlash
+[RMLPFlash]
+{
+   [bonus]
+   {
+      replacement method = weighted without replacement
+   }
+
+   [win evaluation]
+   {
+      // Win Category 0
+      {
+         win = bet (all), trigger (Stage3, count(1))
+         weight = 1
+      }
+   }
+}
+
+// ---------------------------------------------------
+// Start of Schema weights
+// ---------------------------------------------------
+
+// ---------------------------------------------------
+// Base
+// ---------------------------------------------------
+
+// The selective replacement method to use.
+[Base-LuckySymbol]
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+
+   [win evaluation]
+   {
+      //             Symbol  M1 M2 M3 M4 All
+      // Win category 0
+      {
+         win = bet (all), 0, M1      //M1
+         weight = 19
+      }
+      // Win category 1
+      {
+         win = bet (all), 0, M2      //M2
+         weight = 15
+      }
+      // Win category 2
+      {
+         win = bet (all), 0, M3      //M3
+         weight = 16
+      }
+      // Win category 3
+      {
+         win = bet (all), 0, M4      //M4
+         weight = 17
+      }
+      // Win category 4
+      {
+         win = bet (all), 0, ALL      //ALL
+         weight = 10
+      }
+   }
+}   
+  
+[Base-Multiplier-M1]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+
+      //             Symbol multiplier: M1 ; 2x 3x 4x 5x 6x 7x 8x 9x
+      // Win category 0
+      {
+         win = bet (all), 2      //2x
+         weight = 30
+      }
+      // Win category 1
+      {
+         win = bet (all), 3      //3x
+         weight = 25
+      }
+      // Win category 2
+      {
+         win = bet (all), 4      //4x
+         weight = 15
+      }
+      // Win category 3
+      {
+         win = bet (all), 5      //5x
+         weight = 9
+      }
+      // Win category 4
+      {
+         win = bet (all), 6      //6x
+         weight = 5
+      }
+      // Win category 5
+      {
+         win = bet (all), 7      //7x
+         weight = 2
+      }
+      // Win category 6
+      {
+         win = bet (all), 8      //8x
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9      //9x
+         weight = 2
+      }
+   }
+}
+[Base-Multiplier-M2]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+
+      //             Symbol multiplier: M2 ; 2x 3x 4x 5x 6x 7x 8x 9x
+      // Win category 0
+      {
+         win = bet (all), 2
+         weight = 33
+      }
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 25
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 15
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 9
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 8
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 4
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+
+[Base-Multiplier-M3]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+
+      //             Symbol multiplier: M3 ; 2x 3x 4x 5x 6x 7x 8x 9x
+      // Win category 0
+      {
+         win = bet (all), 2
+         weight = 32
+      }
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 25
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 15
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 8
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 5
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 3
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+
+[Base-Multiplier-M4]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+      //             Symbol multiplier:  M4  ; 2x 3x 4x 5x 6x 7x 8x 9x
+      // Win category 0
+      {
+         win = bet (all), 2
+         weight = 29
+      }
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 25
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 12
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 6
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 5
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 3
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+
+[Base-Multiplier-ALL]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+      //             Symbol multiplier: All ; 2x 3x 4x 5x 6x 7x 8x 9x
+      // Win category 0
+      {
+         win = bet (all), 2
+         weight = 24
+      }
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 18
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 10
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 5
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 3
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 2
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 0
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 2
+      }
+   }
+}
+
+
+// ---------------------------------------------------
+// FreeSpin
+// ---------------------------------------------------
+
+// The selective replacement method to use.
+[FreeSpin-LuckySymbol]
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+
+   [win evaluation]
+   {
+      //             Symbol  M1 M2 M3 M4 All
+      // Win category 0
+      {
+         win = bet (all), 0, M1      //M1
+         weight = 4
+      }
+      // Win category 1
+      {
+         win = bet (all), 0, M2      //M2
+         weight = 5
+      }
+      // Win category 2
+      {
+         win = bet (all), 0, M3      //M3
+         weight = 6
+      }
+      // Win category 3
+      {
+         win = bet (all), 0, M4      //M4
+         weight = 7
+      }
+      // Win category 4
+      {
+         win = bet (all), 0, ALL      //ALL
+         weight = 11
+      }
+   }
+}   
+  
+[FreeSpin-Multiplier-M1]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+
+      //Symbol multiplier: M1 ; 3x 4x 5x 6x 7x 8x 9x
+      // Win category 1
+      {
+         win = bet (all), 3      //3x
+         weight = 9
+      }
+      // Win category 2
+      {
+         win = bet (all), 4      //4x
+         weight = 9
+      }
+      // Win category 3
+      {
+         win = bet (all), 5      //5x
+         weight = 4
+      }
+      // Win category 4
+      {
+         win = bet (all), 6      //6x
+         weight = 3
+      }
+      // Win category 5
+      {
+         win = bet (all), 7      //7x
+         weight = 2
+      }
+      // Win category 6
+      {
+         win = bet (all), 8      //8x
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9      //9x
+         weight = 1
+      }
+   }
+}
+[FreeSpin-Multiplier-M2]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+
+      // Symbol multiplier: M2 ; 3x 4x 5x 6x 7x 8x 9x
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 9
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 9
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 4
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 3
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 2
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+
+[FreeSpin-Multiplier-M3]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+
+      // Symbol multiplier: M3 ;  3x 4x 5x 6x 7x 8x 9x
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 5
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 6
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 4
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 4
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 2
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+
+[FreeSpin-Multiplier-M4]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+      //Symbol multiplier:  M4  ; 2x 3x 4x 5x 6x 7x 8x 9x
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 4
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 6
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 4
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 5
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 3
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+
+[FreeSpin-Multiplier-ALL]  
+{
+   [bonus]
+   {
+      replacement method = weighted
+   }
+   [win evaluation]
+   {
+      // Symbol multiplier: All ; 3x 4x 5x 6x 7x 8x 9x
+
+      // Win category 1
+      {
+         win = bet (all), 3
+         weight = 7
+      }
+      // Win category 2
+      {
+         win = bet (all), 4
+         weight = 6
+      }
+      // Win category 3
+      {
+         win = bet (all), 5
+         weight = 3
+      }
+      // Win category 4
+      {
+         win = bet (all), 6
+         weight = 2
+      }
+      // Win category 5
+      {
+         win = bet (all), 7
+         weight = 1
+      }
+      // Win category 6
+      {
+         win = bet (all), 8
+         weight = 1
+      }
+      // Win category 7
+      {
+         win = bet (all), 9
+         weight = 1
+      }
+   }
+}
+// ---------------------------------------------------
+// End of Schema weights
+// ---------------------------------------------------

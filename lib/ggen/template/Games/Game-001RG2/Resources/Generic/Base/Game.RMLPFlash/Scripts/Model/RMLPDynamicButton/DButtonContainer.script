@@ -1,0 +1,398 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2001 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Script for the main container in the model
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------  ------------
+      Nicole Beaulieu   05 Jul 2001 Created.
+*/
+ 
+ 
+//This is identical to the FKDynamicButtons  script in the RMLPFlash stage
+ActorContainer()
+{
+   string blank_button_id = "0+65535";
+    setPositionY (-1.2f);
+    //show(false);   
+    new ActorButton ()
+    {
+      setName ("RmlpButton1");
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_1");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_1_LAMP");
+         // Set the animation id for this button
+         setAnimationId (4, "FortKnoxButtonPanel");    // Return To Game
+      }
+
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // 'Exit' button.
+   new ActorButton ()
+   {
+      setName ("RmlpButton2");
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_2");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_2_LAMP");
+         // Set the animation id for this button
+         setAnimationId (5, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // 'Previous' button.
+   new ActorButton ()
+   {
+      setName ("RmlpButton3");
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_3");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_3_LAMP");
+         setAnimationId (1, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Bet N coins button 2
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton4");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_4");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_4_LAMP");
+         setAnimationId (6, "FortKnoxButtonPanel");    // Return To Game
+
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Bet N coins button 3
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton5");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_5");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_5_LAMP");
+         setAnimationId (7, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Play N lines button 1
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton11");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_11");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_11_LAMP");
+         setAnimationId (7, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Play N lines button 2
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton12");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_12");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_12_LAMP");
+         setAnimationId (0, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Play N lines button 3
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton13");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_13");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_13_LAMP");
+         setAnimationId (1, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Play N lines button 4
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton14");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_14");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_14_LAMP");
+         setAnimationId (2, "FortKnoxButtonPanel");    // Return To Game
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }
+
+   // Play N lines button 5
+   new ActorButton ()
+   {
+      // Set the name of this actor
+      setName ("RmlpButton15");
+      // Set the context
+      show (false);
+      enable (false);
+      new ActorSwitch ()
+      {
+         // Set the name of this actor
+         setName ("PrimarySwitch");
+         // Set the physical index of this button
+         setIndex ("PANEL_BUTTON_15");
+         // Set the id of the lamp on this button
+         setLampId ("PANEL_BUTTON_15_LAMP");
+         setAnimationId (3, "FortKnoxButtonPanel");    // Return To Game
+
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Show");
+         show (true);
+         enable (true);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Dim");
+         show (true);
+         enable (false);
+      }
+      new Actuator ()
+      {
+         addStartEvent ("Rmlp:DButtons:Hide");
+         show (false);
+         enable (false);
+      }
+   }  
+} 

@@ -1,0 +1,26 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2003 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Defines the automatic conversions between sequence events and multimedia events for this bonus presentation.
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------- ------------
+      jnolz             08/26/04    New.
+*/
+
+SequenceEventTranslator ()
+{
+/*
+   new SequenceEventToMultimediaEvent ()
+   {
+      // Configure the SequenceEvents that will be translated into the MultimediaEvents below.
+      new SequenceEvent ("DOUBLE_UP_SEQUENCE_EVENT", "DOUBLE_UP_STATUS", 1, "CARD_SELECTED_SUCCESS") {}
+      // Configure the MultimediaEvents that will be posted when any of the above defined SequenceEvents are received.
+      addEventToPost ("PlayerSelection:SelectionSuccess");
+   }
+*/
+}

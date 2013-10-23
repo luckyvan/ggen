@@ -1,0 +1,1 @@
+ggen -A --paytable paytable/AVV040073.paytable --paytable-config paytable/AVV040073.config --trace --output /mnt/Development/temp/ggentest/ --game-id 1DR6 --resource-paths /mnt/Development/Games/Game-005PD7
