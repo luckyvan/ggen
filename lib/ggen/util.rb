@@ -29,7 +29,7 @@ module Ggen
     end
 
     # Use ERB to generate output file
-    def generate_by_template(template, output)
+    def generate_by_template(template, output, binding)
       erb = ERB.new(File.open(template).read)
       content = erb.result( binding )
 
@@ -39,13 +39,16 @@ module Ggen
     end
 
     # Use template file name as keys to generate files
-    def generate_by_template_file_names(names, src_root, dst_root)
+    def generate_by_template_file_names(names, src_root, dst_root, binding)
       template_files = templates(options.template_game).select do |t|
         names.include?(t.basename.sub(".template", "").to_s)
       end
       template_files.each do |t|
-        dst_file = get_dst_dir(t, src_root, dst_root) + t.basename.sub(".template", "")
-        generate_by_template(t, dst_file)
+        dst_dir = get_dst_dir(t, src_root, dst_root)
+        FileUtils.mkdir_p dst_dir
+        dst_file = dst_dir + t.basename.sub(".template", "")
+        p dst_file
+        generate_by_template(t, dst_file, binding)
       end
     end
 
@@ -62,11 +65,6 @@ module Ggen
       raise "No values for #{key}" unless options[key]
     end
 
-    def scope_door(a, b, c, binding)
-      puts "#{a}, #{b}, #{c}"
-      puts binding.eval("bonus_resources")
-      puts base_resouces
-    end
 
     def resources(path)
       ["tga", "movie", "sound"].inject([]) do |r, s|
@@ -187,30 +185,5 @@ module Ggen
         projects + @id
       end
     end
-
-    # class AVPGame
-      # attr_accessor :game_path
-      # attr_accessor :base_symbols
-      # attr_accessor :bonus_symbols
-      # attr_accessor :paylines
-      # attr_accessor :paytable
-    # end
-
-    # class TemplateGame
-      # attr_accessor :game_path
-      # attr_accessor :symbol_scripts
-      # attr_accessor :proj_configs
-      # attr_accessor :game_configs
-    # end
-
-    # class TemplatePath < Pathname
-      # def initialize(pn)
-        # super(pn)
-      # end
-
-      # def to_output_path(output_root)
-        # Pathname.new(output_root) + basename().sub('.template','')
-      # end
-    # end
   end
 end
