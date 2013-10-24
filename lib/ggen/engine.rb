@@ -26,60 +26,55 @@ module Ggen
 
     def initialize(options={})
       @options = Options.new(options)
-    end
 
-    def new_game
       check_game_id(@options.game_id)
       check_rgame_id(@options.reference_game_id)
 
-      reference_game = GamePath.new(@options.reference_root,
-                                   @options.reference_game_id)
-      check_dir(reference_game)
+      # game path for reference game, output game, and template game
+      check_dir(@options.reference_root)
+      @options.reference_game = GamePath.new(@options.reference_root, @options.reference_game_id)
+      check_dir(@options.output_root)
+      @options.output_game = GamePath.new(@options.output_root, @options.game_id)
+      @options.template_game = GamePath.new(@options.template_root, @options.reference_game_id)
+      check_dir(@options.template_game.game_path)
+      check_dir(@options.template_game.proj_path)
 
-      output_game = GamePath.new(@options.output_root,
-                                @options.game_id)
+    end
 
-      tp = TemplatePath.new(@options.template+'new_game.sh.template')
-      erb = ERB.new(File.open(tp).read)
-      content = erb.result( binding )
+    def new_game
+      reference_game = options.reference_game
+      output_game = options.output_game
+      template_game = options.template_game
 
-      script = tp.to_output_path("./")
-      script.dirname.mkpath
-      print "Creating #{tp}\n"
-      File.open(script, "w") do |f|
-        f.write( content )
+      sh_template = options.template_root + 'new_game.sh.template'
+
+      script = "ng.sh"
+      begin
+        print "Creating #{script}\n"
+        generate_by_template(sh_template, script)
+
+        # system("sh -x ./#{script}")
+      ensure
+        FileUtils.rm script
       end
-
-      system("sh -x ./#{script}")
 
       #libShared
-      config_scripts_root = options.template + "projects/Game-00#{options.reference_game_id}"
-      config_scripts_templates = templates(config_scripts_root).select do |t|
-        proj_specific_configurations(options.reference_game_id).include?(t.basename.sub(".template", "").to_s)
-      end
-      game = GamePath.new(@options.output_root,
-                               @options.game_id)
-      proj_path = game.proj_path
-      check_dir(proj_path)
-      config_scripts_templates.each do |t|
-        dst = proj_path+Pathname.new(t).relative_path_from(config_scripts_root).sub(".template","")
-        FileUtils.cp t, dst
-      end
-
+      names = proj_specific_configurations(options.reference_game_id)
+      generate_by_template_file_names(names, options.template_game.proj_path,
+                                     options.output_game.proj_path)
+      puts "Done creation of new game: #{options.output_game.game_path}"
     end
 
     def merge
       puts "merge resources"
-      check_game_id(options[:game_id])
-      output_game = GamePath.new(@options.output_root,
-                                @options.game_id)
-      check_dir(output_game)
+      output_game = options.output_game
+      check_dir(output_game.game_path)
 
       #delete existing Symbol tgas and movies
+      puts "remove original symbol resources"
       symbol_resouces = resources(output_game).select {|f| f =~ /Symbols/}
       symbol_resouces.each do |f|
-        puts "rm #{f}"
-        FileUtils.rm(f)
+        FileUtils.rm(f, :verbose => true)
       end
 
       exclusion = ["Messages.movie", "TransitionMessages.movie", "OverReelsMessages.movie", "MathBoxMessages.movie", "RetriggerMessages.movie"]
@@ -98,11 +93,11 @@ module Ggen
           end
         end
       end
+      puts "Done Merge Resources"
     end
 
     def generate_symbol_scripts
       puts "generate symbol scripts"
-      check_game_id(options[:game_id])
       game_path = GamePath.new(@options.output_root,
                                @options.game_id).game_path
       base_path = game_path + "Resources/Generic/Base"
@@ -113,7 +108,6 @@ module Ggen
 
       base_resources, bonus_resources = nil, nil
       # collect resources
-      p options.base_symbols
       if options.base_symbols
         base_resources = find_resources_by_symbols(base_path+"Game.Main", options.base_symbols)
       end
@@ -121,19 +115,22 @@ module Ggen
         bonus_resources = find_resources_by_symbols(base_path+"Game.FreeSpinBonus", options.bonus_symbols)
       end
 
-      symbol_scripts = symbol_scripts(options.reference_game_id)
-      symbol_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}/Resources/Generic/Base"
-      symbol_script_templates = templates(symbol_scripts_root).select do |t|
-        symbol_scripts.include?(t.basename.sub(".template", "").to_s)
-      end
+      # scope_door("haha", "hehe", "gaga")
+      self.send(:scope_door, "haha", "hehe", "gaga", binding())
 
-      symbol_script_templates.each do |t|
-        dst = base_path + t.relative_path_from(symbol_scripts_root)
-        dst = dst.sub(".template", "")
+      # symbol_scripts = symbol_scripts(options.reference_game_id)
+      # symbol_scripts_root = options.template_root + "Games/Game-00#{options.reference_game_id}/Resources/Generic/Base"
+      # symbol_script_templates = templates(symbol_scripts_root).select do |t|
+        # symbol_scripts.include?(t.basename.sub(".template", "").to_s)
+      # end
 
-        erb = ERB.new(File.open(t).read).result(binding)
-        File.open(dst, "w").write(erb)
-      end
+      # symbol_script_templates.each do |t|
+        # dst = base_path + t.relative_path_from(symbol_scripts_root)
+        # dst = dst.sub(".template", "")
+
+        # erb = ERB.new(File.open(t).read).result(binding)
+        # File.open(dst, "w").write(erb)
+      # end
     end
 
     def parse_paytable
@@ -163,12 +160,12 @@ module Ggen
       game_path = game.game_path
       proj_path = game.proj_path
 
-      reference_game = GamePath.new(options.template, options.reference_game_id)
+      reference_game = GamePath.new(options.template_root, options.reference_game_id)
       check_dir(game_path)
 
       # get config files templates
       config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
-      config_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}"
+      config_scripts_root = options.template_root + "Games/Game-00#{options.reference_game_id}"
       config_scripts_templates = templates(config_scripts_root).select do |t|
         config_scripts_basenames.include?(t.basename.sub(".template", "").to_s)
       end
