@@ -19,36 +19,89 @@ module Ggen
 
     # Return destination directory for following copy command
     # @param :path, source file path
-    # @param :src_root, source workspace root
-    # @param :dst_root, destination workspace root
-    def get_dst_dir(file, src_root, dst_root)
-      dst_root_pn = Pathname.new(dst_root)
-      src_root_pn = Pathname.new(src_root)
+    def get_dst_dir(file)
+      src_base, dst_base = get_base_directories(file)
+      # dst_root_pn = Pathname.new(dst_root)
+      # src_root_pn = Pathname.new(src_root)
       file_pn = Pathname.new(file)
-      (dst_root_pn + file_pn.relative_path_from(src_root_pn)).dirname
+      (dst_base + file_pn.relative_path_from(src_base)).dirname
     end
 
     # Use ERB to generate output file
-    def generate_by_template(template, output, binding)
+    def generate_by_template(template, binding)
+      pn = Pathname.new(template)
+      dst = get_dst_dir(pn) + pn.basename.sub(".template", "")
+
       erb = ERB.new(File.open(template).read)
       content = erb.result( binding )
 
-      File.open(output, "w") do |f|
+      FileUtils.mkdir_p dst.dirname unless dst.dirname.exist?
+
+      File.open(dst, "w") do |f|
         f.write(content)
       end
     end
 
-    # Use template file name as keys to generate files
-    def generate_by_template_file_names(names, src_root, dst_root, binding)
-      template_files = templates(options.template_game).select do |t|
-        names.include?(t.basename.sub(".template", "").to_s)
+    def modify_file_contents(base_directory, from_pattern, to_pattern)
+       Dir.glob(File.join(base_directory, "**", "*")).each do |f|
+        begin
+          if File.file?(f)
+            text = File.read(f)
+            File.open(f, "w"){|file| file.puts text.gsub(from_pattern, to_pattern)}
+          end
+        rescue ArgumentError
+        end
       end
-      template_files.each do |t|
-        dst_dir = get_dst_dir(t, src_root, dst_root)
-        FileUtils.mkdir_p dst_dir
-        dst_file = dst_dir + t.basename.sub(".template", "")
-        p dst_file
-        generate_by_template(t, dst_file, binding)
+   end
+
+    def modify_file_names(base_directory, from_pattern, to_pattern)
+      Dir.glob(File.join(base_directory, "**", "*#{from_pattern}*")).each do |src|
+        dst = src.gsub("#{from_pattern}", "#{to_pattern}")
+        if (src != dst and File.file?(src))
+          dirname = Pathname.new(dst).dirname
+          if not dirname.exist?
+            FileUtils.mkdir_p dirname, :verbose => true
+          end
+          FileUtils.mv src, dst, :verbose => true
+        end
+      end
+    end
+
+    # @param :path, source file path should be under template game directory
+    # @return src and dst base directories.
+    def get_base_directories(path)
+      game_path = @options.template_game.game_path
+      proj_path = @options.template_game.proj_path
+
+      case path.to_s
+      when /#{game_path}/
+        return game_path, (@options.output_game.game_path)
+      when /#{proj_path}/
+        return proj_path, (@options.output_game.proj_path)
+      else
+        raise "Invalid Template File path: #{path}"
+      end
+    end
+
+    def generate_by_names(names, binding = nil)
+      src_paths = [@options.template_game.game_path,
+                   @options.template_game.proj_path]
+
+      paths = names.inject([]) do |re, n|
+        src_paths.inject(re) do |re, p|
+          re << Dir.glob(File.join(p, "**", "#{n}"))
+          re << Dir.glob(File.join(p, "**", "#{n}.template"))
+        end
+      end
+
+      paths.flatten.each do |path|
+        pn = Pathname.new(path)
+        dst_dir = get_dst_dir(path)
+        if path.end_with?(".template") then
+          generate_by_template(path, binding)
+        else
+          FileUtils.cp_r pn, dst_dir
+        end
       end
     end
 
@@ -72,10 +125,6 @@ module Ggen
           r << Dir.glob(pattern)
           r.flatten
       end
-    end
-
-    def templates(root)
-      Dir.glob(File.join(root, "**", "*.template")).map {|d| Pathname.new(d)}
     end
 
     def symbol_scripts(rgid)
@@ -123,7 +172,7 @@ module Ggen
           if symbols.include?(symbol)
             (result[k][symbol] ||= []) << Pathname.new(res).basename
           else
-            puts"Warning: Redundant Symbol Resources: #{res}"
+            # puts"Warning: Redundant Symbol Resources: #{res}"
           end
         end
       end
@@ -177,8 +226,12 @@ module Ggen
         configuration + "Themes"
       end
 
-      def Bins
+      def bins
         configuration + "Bins"
+      end
+
+      def registries
+        configuration + "Registries"
       end
 
       def proj_path
