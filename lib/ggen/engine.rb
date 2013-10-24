@@ -52,6 +52,7 @@ module Ggen
       begin
         print "Creating #{script}\n"
         generate_by_template(sh_template, script, binding())
+
       ensure
         FileUtils.rm script
       end
@@ -59,7 +60,7 @@ module Ggen
       #libShared
       names = proj_specific_configurations(options.reference_game_id)
       generate_by_template_file_names(names, options.template_game.proj_path,
-                                     options.output_game.proj_path)
+                                     options.output_game.proj_path, binding())
       puts "Done creation of new game: #{options.output_game.game_path}"
     end
 
@@ -146,12 +147,6 @@ module Ggen
       reference_game = GamePath.new(options.template_root, options.reference_game_id)
       check_dir(game_path)
 
-      # get config files templates
-      config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
-      config_scripts_root = options.template_root + "Games/Game-00#{options.reference_game_id}"
-      config_scripts_templates = templates(config_scripts_root).select do |t|
-        config_scripts_basenames.include?(t.basename.sub(".template", "").to_s)
-      end
 
       # rm game original config files
       ["Registries", "Themes", "Bins"].each do |dir|
@@ -176,15 +171,24 @@ module Ggen
       theme_config = "#{payline_num}L#{gid}-000.config"
       binreg = "G00#{gid}.binreg"
 
-      config_scripts_templates.each do |t|
-        dst = game_path + t.relative_path_from(config_scripts_root)
-        FileUtils.mkdir_p dst.dirname
+      # get config files templates
+      config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
+      generate_by_template_file_names(config_scripts_basenames, options.template_game.game_path,
+                                      options.output_game.game_path, binding())
+      # config_scripts_root = options.template_root + "Games/Game-00#{options.reference_game_id}"
+      # config_scripts_templates = templates(config_scripts_root).select do |t|
+        # config_scripts_basenames.include?(t.basename.sub(".template", "").to_s)
+      # end
 
-        dst = dst.to_s.sub(".template", "").gsub(rgid, gid).gsub("100L", "#{payline_num}L")
+      # config_scripts_templates.each do |t|
+        # dst = game_path + t.relative_path_from(config_scripts_root)
+        # FileUtils.mkdir_p dst.dirname
 
-        erb = ERB.new(File.open(t).read).result(binding)
-        File.open(dst, "w").write(erb)
-      end
+        # dst = dst.to_s.sub(".template", "").gsub(rgid, gid).gsub("100L", "#{payline_num}L")
+
+        # erb = ERB.new(File.open(t).read).result(binding)
+        # File.open(dst, "w").write(erb)
+      # end
 
       #payline file name modification
       payline_num_r = reference_game_payline_num(rgid)
@@ -194,6 +198,14 @@ module Ggen
         FileUtils.mv src, dst if (src != dst)
       end
 
+      #game id file name modification
+      Dir.glob(File.join(game_path, "**", "*#{rgid}*")).each do |src|
+        p src
+        dst = src.gsub("#{rgid}", "#{gid}")
+        p dst
+
+        FileUtils.mv src, dst if (src != dst)
+      end
       #paytable
       paytable_dir = game_path + "Resources/Generic/Base/Configuration/Paytables"
       FileUtils.cp options.paytable, paytable_dir
@@ -201,12 +213,12 @@ module Ggen
 
       #rmlp
       if rmlp then
-        ebgreg_src = Pathname.new(Dir.glob(File.join(config_scripts_root, "**", "*.ebgreg"))[0])
-        ebgreg_dst = game_path + ebgreg_src.relative_path_from(config_scripts_root)
+        ebgreg_src = Pathname.new(Dir.glob(File.join(options.template_game.game_path, "**", "*.ebgreg"))[0])
+        ebgreg_dst = game_path + ebgreg_src.relative_path_from(options.template_game.game_path)
         ["Resources/Generic/Base/Game.RMLPFlash",
          "../../projects/Game-00#{rgid}/RMLPFlashFlow",
          "../../projects/Game-00#{rgid}/RMLPFlashPresentation"].each do |path|
-           FileUtils.cp_r config_scripts_root + path, game_path + path.sub(rgid, gid)
+           FileUtils.cp_r options.template_game.game_path + path, game_path + path.sub(rgid, gid)
          end
 
         FileUtils.cp ebgreg_src, ebgreg_dst
