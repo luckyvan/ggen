@@ -53,6 +53,8 @@ module Ggen
         print "Creating #{script}\n"
         generate_by_template(sh_template, script, binding())
 
+        system("sh -x ./#{script}")
+
       ensure
         FileUtils.rm script
       end
