@@ -14,8 +14,7 @@ module Ggen
   #     2. engine.parse_paytable
   #     3. engine.merge_resource
   #     4. engine.generate_symbol_scripts
-  #     5. engine.generate_config_scripts
-  #     6. engine.generate_#{feature}
+  #     5. engine.generate_stages
   class Engine
     include Ggen::Util
     # The Ggen::Options instance.
@@ -61,12 +60,9 @@ module Ggen
       modify_file_contents(output_game.configuration, "#{rgid}", "#{gid}")
       modify_file_contents(output_game.proj_path, "#{rgid}", "#{gid}")
 
-
-
       #libShared
-      # names = proj_specific_configurations(options.reference_game_id)
-      # generate_by_template_file_names(names, options.template_game.proj_path,
-                                     # options.output_game.proj_path, binding())
+      names = proj_specific_configurations(options.reference_game_id)
+      generate_by_names(names, binding())
       puts "Done creation of new game: #{options.output_game.game_path}"
     end
 
