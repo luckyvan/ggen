@@ -202,6 +202,10 @@ END
           @options[:for_engine][:paytable_config] = config
         end
 
+        opts.on('-v', '--verbose', "Perform all files on verbose mode") do
+          @options[:for_engine][:verbose] = true
+        end
+
         opts.on('-A', '--All', "Perform all generation tasks sequentially") do
           @options[:new_game] = true
           @options[:parse_paytable] = true
@@ -237,13 +241,14 @@ END
             engine.generate_stages
           end
         rescue Exception => e
-          raise e if @options[:trace]
+          # raise e if @options[:trace]
+          raise e
 
-          case e
-          when ::Ggen::SyntaxError; raise "Syntax error on line #{get_line e}: #{e.message}"
-          when ::Ggen::Error;       raise "Ggen error on line #{get_line e}: #{e.message}"
-          else raise "Exception on line #{get_line e}: #{e.message}"
-          end
+          # case e
+          # # when ::Ggen::SyntaxError; raise "Syntax error on line #{get_line e}: #{e.message}"
+          # # when ::Ggen::Error;       raise "Ggen error on line #{get_line e}: #{e.message}"
+          # else raise "Exception on line #{get_line e}: #{e.message}"
+          # end
         end
       end
     end

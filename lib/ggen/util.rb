@@ -52,15 +52,15 @@ module Ggen
       end
    end
 
-    def modify_file_names(base_directory, from_pattern, to_pattern)
+    def modify_file_names(base_directory, from_pattern, to_pattern, verbose = false)
       Dir.glob(File.join(base_directory, "**", "*#{from_pattern}*")).each do |src|
         dst = src.gsub("#{from_pattern}", "#{to_pattern}")
         if (src != dst and File.file?(src))
           dirname = Pathname.new(dst).dirname
           if not dirname.exist?
-            FileUtils.mkdir_p dirname, :verbose => true
+            FileUtils.mkdir_p dirname, :verbose => verbose
           end
-          FileUtils.mv src, dst, :verbose => true
+          FileUtils.mv src, dst, :verbose => verbose
         end
       end
     end

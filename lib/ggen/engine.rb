@@ -42,21 +42,22 @@ module Ggen
     end
 
     def new_game
+      verbose = options.verbose
       reference_game = options.reference_game
       output_game = options.output_game
       gid = options.game_id
       rgid = options.reference_game_id
 
-      FileUtils.rm_rf output_game.game_path, :verbose => true
-      FileUtils.rm_rf output_game.proj_path, :verbose => true
+      FileUtils.rm_rf output_game.game_path, :verbose => verbose
+      FileUtils.rm_rf output_game.proj_path, :verbose => verbose
       FileUtils.mkdir_p output_game.games
       FileUtils.mkdir_p output_game.projects
 
-      FileUtils.cp_r reference_game.game_path, output_game.game_path, :verbose => true
-      FileUtils.cp_r reference_game.proj_path, output_game.proj_path, :verbose => true
+      FileUtils.cp_r reference_game.game_path, output_game.game_path, :verbose => verbose
+      FileUtils.cp_r reference_game.proj_path, output_game.proj_path, :verbose => verbose
 
-      modify_file_names(output_game.configuration, "#{rgid}", "#{gid}")
-      modify_file_names(output_game.proj_path, "#{rgid}", "#{gid}")
+      modify_file_names(output_game.configuration, "#{rgid}", "#{gid}", verbose)
+      modify_file_names(output_game.proj_path, "#{rgid}", "#{gid}", verbose)
 
       modify_file_contents(output_game.configuration, "#{rgid}", "#{gid}")
       modify_file_contents(output_game.proj_path, "#{rgid}", "#{gid}")
@@ -69,6 +70,7 @@ module Ggen
 
     def merge
       puts "merge resources"
+      verbose = options.verbose
       output_game = options.output_game
       check_dir(output_game.game_path)
 
@@ -76,7 +78,7 @@ module Ggen
       puts "remove original symbol resources"
       symbol_resouces = resources(output_game).select {|f| f =~ /Symbols/}
       symbol_resouces.each do |f|
-        FileUtils.rm(f, :verbose => true)
+        FileUtils.rm(f, :verbose => verbose)
       end
 
       exclusion = ["Messages.movie", "TransitionMessages.movie", "OverReelsMessages.movie", "MathBoxMessages.movie", "RetriggerMessages.movie"]
@@ -91,7 +93,7 @@ module Ggen
             src = pn
             dst = output_game.game_path + pn.relative_path_from(root_pn)
             FileUtils.mkdir_p dst.dirname.to_s unless dst.dirname.directory?
-            FileUtils.cp src, dst, :verbose => true
+            FileUtils.cp src, dst, :verbose => verbose
           end
         end
       end
@@ -141,6 +143,7 @@ module Ggen
       output_game = @options.output_game
       game_path = @options.output_game.game_path
       proj_path = @options.output_game.proj_path
+      verbose = options.verbose
 
       # rm game original config files
       [output_game.themes, output_game.bins, output_game.registries ].each do |dir|
@@ -171,9 +174,9 @@ module Ggen
 
       #payline file name modification
       payline_num_r = @tg.payline_num(rgid)
-      modify_file_names(game_path, "#{payline_num_r}L", "#{payline_num}L")
+      modify_file_names(game_path, "#{payline_num_r}L", "#{payline_num}L", verbose)
       #game id file name modification
-      modify_file_names(game_path, "#{rgid}", "#{gid}")
+      modify_file_names(game_path, "#{rgid}", "#{gid}", verbose)
 
       #paytable
       paytable_dir = @options.output_game.paytables
