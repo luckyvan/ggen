@@ -21,8 +21,6 @@ module Ggen
     # @param :path, source file path
     def get_dst_dir(file)
       src_base, dst_base = get_base_directories(file)
-      # dst_root_pn = Pathname.new(dst_root)
-      # src_root_pn = Pathname.new(src_root)
       file_pn = Pathname.new(file)
       (dst_base + file_pn.relative_path_from(src_base)).dirname
     end
@@ -127,32 +125,6 @@ module Ggen
       end
     end
 
-    def symbol_scripts(rgid)
-      {'1RG2' => ["SymbolVariables.lua", "CustomSymbolFunctions.lua", "BaseGameSymbolImageTranslations.lua", "FreeSpinSymbolImageTranslations.lua", "DynamicActorTextureList.lua", "SymbolInfoValuesTable.lua", "SymbolInfoImageTranslations.lua", "SymbolInfoTableTranslations.lua"]}[rgid]
-    end
-
-    def proj_specific_configurations(rgid)
-      {
-        '1RG2' => [ "CommonConfigProps.props",
-        ]
-      }[rgid]
-    end
-
-    def config_scripts_basenames(rgid)
-      {
-        '1RG2' => ["G001RG2.binreg", "Dev00.registry",
-                   "100L1RG2.themereg", "100L1RG2-000.config",
-                   "100L1RG2-00-000.config",
-                   "100L1RG2-01-000.config",
-                   "100L1RG2-02-000.config",
-                   "100L1RG2-03-000.config",
-                   "RuleBasedGameBetConfig.xml",
-                   "RuleBasedGameBetLoaderConfig.xml",
-                   "GameVariables.lua",
-                  ],
-      }[rgid]
-    end
-
     def reference_game_payline_num(rgid)
       {
         '1RG2' => "100"
@@ -237,6 +209,66 @@ module Ggen
       def proj_path
         projects + @id
       end
+    end
+
+    class TemplateGame < BasicObject
+      def method_missing(name, *args)
+        super unless @hash.has_key?(name)
+        @hash[name]
+      end
+
+      def self.get_game(id)
+        case id
+        when "1RG2" then
+          return GAME001RG2
+        when "4RG4" then
+          return GAME004RG4
+        end
+      end
+
+      private
+      def initialize(h = {})
+        @hash = ::Hash.new.merge(h)
+      end
+
+      GAME004RG4 = TemplateGame.new(
+        :payline_num => 100,
+        :config_scripts => ["100L4RG4.themereg",
+                            "100L4RG4-000.config",
+                            "100L4RG4-00-000.config",
+                            "RuleBasedGameBetConfig.xml",
+                            "RuleBasedGameBetLoaderConfig.xml",
+                            "Dev03.registry",
+                            "G004RG4.binreg",],
+        :symbol_scripts => ["SymbolVariables.lua",
+                            "CustomSymbolFunctions.lua"],
+        :proj_configs => ["CommonConfigProps.props",],
+      )
+      GAME001RG2 = TemplateGame.new(
+        :payline_num => 100,
+        :config_scripts => ["G001RG2.binreg", "Dev00.registry",
+                   "100L1RG2.themereg", "100L1RG2-000.config",
+                   "100L1RG2-00-000.config",
+                   "100L1RG2-01-000.config",
+                   "100L1RG2-02-000.config",
+                   "100L1RG2-03-000.config",
+                   "RuleBasedGameBetConfig.xml",
+                   "RuleBasedGameBetLoaderConfig.xml",
+                   "GameVariables.lua",
+                  ],
+        :symbol_scripts =>  ["SymbolVariables.lua", "CustomSymbolFunctions.lua",
+                             "BaseGameSymbolImageTranslations.lua",
+                             "FreeSpinSymbolImageTranslations.lua",
+                             "DynamicActorTextureList.lua",
+                             "SymbolInfoValuesTable.lua",
+                             "SymbolInfoImageTranslations.lua",
+                             "SymbolInfoTableTranslations.lua"],
+        :proj_configs => ["CommonConfigProps.props",],
+        :rmlp => ["EBG.ebgreg", "Game.RMLPFlash",
+                  "RMLPFlashFlow", "RMLPFlashPresentation",
+                  "LibPresentation", "LibSlotPresentation",
+                  "LibSys", "WinCycleLite"]
+      )
     end
   end
 end

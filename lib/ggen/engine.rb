@@ -38,6 +38,7 @@ module Ggen
       check_dir(@options.template_game.game_path)
       check_dir(@options.template_game.proj_path)
 
+      @tg = TemplateGame.get_game(@options.reference_game_id) #template game
     end
 
     def new_game
@@ -61,7 +62,7 @@ module Ggen
       modify_file_contents(output_game.proj_path, "#{rgid}", "#{gid}")
 
       #libShared
-      names = proj_specific_configurations(options.reference_game_id)
+      names = @tg.proj_configs
       generate_by_names(names, binding())
       puts "Done creation of new game: #{options.output_game.game_path}"
     end
@@ -113,9 +114,7 @@ module Ggen
         bonus_resources = find_resources_by_symbols(base_path+"Game.FreeSpinBonus", options.bonus_symbols)
       end
 
-
-      symbol_scripts = symbol_scripts(options.reference_game_id)
-      generate_by_names(symbol_scripts, binding)
+      generate_by_names(@tg.symbol_scripts, binding)
     end
 
     def parse_paytable
@@ -167,11 +166,11 @@ module Ggen
       binreg = "G00#{gid}.binreg"
 
       # get config files templates
-      config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
-      generate_by_names(config_scripts_basenames, binding)
+      # config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
+      generate_by_names(@tg.config_scripts, binding)
 
       #payline file name modification
-      payline_num_r = reference_game_payline_num(rgid)
+      payline_num_r = @tg.payline_num(rgid)
       modify_file_names(game_path, "#{payline_num_r}L", "#{payline_num}L")
       #game id file name modification
       modify_file_names(game_path, "#{rgid}", "#{gid}")
@@ -185,7 +184,7 @@ module Ggen
       if rmlp then
         names = ["EBG.ebgreg", "Game.RMLPFlash", "RMLPFlashFlow", "RMLPFlashPresentation",
          "LibPresentation", "LibSlotPresentation", "LibSys", "WinCycleLite"]
-        generate_by_names(names)
+        generate_by_names(@tg.rmlp)
       end
     end
   end
