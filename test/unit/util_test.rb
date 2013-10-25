@@ -21,7 +21,7 @@ module Ggen
     must "reference game id only has 1RG2, 1RG4" do
       assert_nothing_raised do
         check_rgame_id('1RG2')
-        check_rgame_id('1RG4')
+        check_rgame_id('4RG4')
       end
 
       assert_raise RuntimeError do
@@ -42,6 +42,11 @@ module Ggen
                    "GameVariables.lua",
                   ]
 
+    end
+
+    must "RG4 has no need to modify config scripts" do
+       assert_equal false, @rg4.respond_to?(:config_scripts)
+       assert_equal true, @rg2.respond_to?(:config_scripts)
     end
   end
 end

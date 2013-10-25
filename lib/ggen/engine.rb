@@ -131,9 +131,9 @@ module Ggen
       scanner = PaytableScanner.new()
       scanner.parse(tokenizer.tokens)
 
-      options.base_symbols = scanner.base.symbols if scanner.respond_to?(:base)
-      options.bonus_symbols = scanner.bonus.symbols if scanner.respond_to?(:bonus)
-      options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.respond_to?(:bonus_symbol)
+      options.base_symbols = scanner.base.symbols if scanner.base
+      options.bonus_symbols = scanner.bonus.symbols if scanner.bonus
+      options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.bonus_symbol
       options.paytable_scanner = scanner
       options.wild = scanner.base.symbols[0]
     end
@@ -145,38 +145,41 @@ module Ggen
       proj_path = @options.output_game.proj_path
       verbose = options.verbose
 
-      # rm game original config files
-      [output_game.themes, output_game.bins, output_game.registries ].each do |dir|
-        FileUtils.rm_rf dir
-        FileUtils.mkdir_p dir
-      end
-
-      # generate config files
-      rgid    = options.reference_game_id
-      gid     = options.game_id
-      scanner = options.paytable_scanner
-      stages = scanner.stages
-      stage_count = stages.length
       rmlp = options.paytable_scanner.respond_to?(:rmlp)
-      paylines = scanner.base.paylines
-      bonus_trigger = scanner.base.trigger_index
-      visible_symbols = scanner.base.visible_symbols
-      payline_num = (paylines)? paylines.length : 100
-      paytable = Pathname.new(options.paytable).basename
-      paytable_config = Pathname.new(options.paytable_config).basename
-      themereg = "#{payline_num}L#{gid}.themereg"
-      theme_config = "#{payline_num}L#{gid}-000.config"
-      binreg = "G00#{gid}.binreg"
 
-      # get config files templates
-      # config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
-      generate_by_names(@tg.config_scripts, binding)
+      # rm game original config files
+      if @tg.respond_to?(:config_scripts)
+        [output_game.themes, output_game.bins, output_game.registries ].each do |dir|
+          FileUtils.rm_rf dir
+          FileUtils.mkdir_p dir
+        end
 
-      #payline file name modification
-      payline_num_r = @tg.payline_num(rgid)
-      modify_file_names(game_path, "#{payline_num_r}L", "#{payline_num}L", verbose)
-      #game id file name modification
-      modify_file_names(game_path, "#{rgid}", "#{gid}", verbose)
+        # generate config files
+        rgid    = options.reference_game_id
+        gid     = options.game_id
+        scanner = options.paytable_scanner
+        stages = scanner.stages
+        stage_count = stages.length
+        paylines = scanner.base.paylines
+        bonus_trigger = scanner.base.trigger_index
+        visible_symbols = scanner.base.visible_symbols
+        payline_num = (paylines)? paylines.length : 100
+        paytable = Pathname.new(options.paytable).basename
+        paytable_config = Pathname.new(options.paytable_config).basename
+        themereg = "#{payline_num}L#{gid}.themereg"
+        theme_config = "#{payline_num}L#{gid}-000.config"
+        binreg = "G00#{gid}.binreg"
+
+        # get config files templates
+        # config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
+        generate_by_names(@tg.config_scripts, binding)
+
+        #payline file name modification
+        payline_num_r = @tg.payline_num(rgid)
+        modify_file_names(game_path, "#{payline_num_r}L", "#{payline_num}L", verbose)
+        #game id file name modification
+        modify_file_names(game_path, "#{rgid}", "#{gid}", verbose)
+      end
 
       #paytable
       paytable_dir = @options.output_game.paytables

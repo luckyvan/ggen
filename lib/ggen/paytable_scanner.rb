@@ -200,6 +200,8 @@ module Ggen
     end
 
     def bonus_symbol
+      return nil unless trigger_index
+
       scatters = wins[trigger_index].values[1].split(/\s*,\s*/)
       substitutions = symbol_substitutions
 

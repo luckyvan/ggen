@@ -11,7 +11,7 @@ module Ggen
     end
 
     def check_rgame_id(rgid)
-      [/1RG2/, /1RG4/].each do |r|
+      [/1RG2/, /4RG4/].each do |r|
         return if r.match(rgid)
       end
       raise "Invalid Reference Game Id: #{rgid}"
@@ -211,9 +211,13 @@ module Ggen
       end
     end
 
-    class TemplateGame < BasicObject
+    class TemplateGame
+      def respond_to?(method)
+        @hash.has_key?(method) || super
+      end
+
       def method_missing(name, *args)
-        super unless @hash.has_key?(name)
+        super unless respond_to?(name)
         @hash[name]
       end
 
@@ -233,13 +237,6 @@ module Ggen
 
       GAME004RG4 = TemplateGame.new(
         :payline_num => 100,
-        :config_scripts => ["100L4RG4.themereg",
-                            "100L4RG4-000.config",
-                            "100L4RG4-00-000.config",
-                            "RuleBasedGameBetConfig.xml",
-                            "RuleBasedGameBetLoaderConfig.xml",
-                            "Dev03.registry",
-                            "G004RG4.binreg",],
         :symbol_scripts => ["SymbolVariables.lua",
                             "CustomSymbolFunctions.lua"],
         :proj_configs => ["CommonConfigProps.props",],
