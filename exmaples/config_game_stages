@@ -1,0 +1,1 @@
+ggen -g --paytable paytable/AVV040999.paytable --paytable-config paytable/AVV040999.config --trace --output /mnt/Development/temp/ggentest/ --game-id 1DR3

@@ -1,0 +1,45 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2002 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Bonus game configuration script for WOF Super Spin Bonus.
+
+   Modifications:
+      Author          Date       Explanation
+      --------------- ---------- ------------
+      Jason Kremer    Aug 08, 04 New
+      Brian Gardner   Jan 28, 08 Changed game name.
+*/
+
+RMLPFlashPresentation ()
+{
+   string stage_name = "RMLPFlash";
+   string game_name = "Game." + stage_name;
+
+   // Add images for dynamic button panel
+  // ResourceList (game_name + "/Scripts/Presentation/FKDynamicButtonResourceList.script") {}
+
+   ResourceList (game_name + "/Scripts/Presentation/PluginResourceList.script") {}
+   ResourceList (game_name + "/Scripts/Presentation/RMLPFlash.Scene.script") {}
+
+   // Register a stage to the presentation.
+   registerStage ("Stage." + stage_name);
+   // Add a stage to it's context.
+   addStageToContext ("Stage." + stage_name);
+
+   // Configure the scriptable resources created through the resource manager for this game.
+   // The control panels must be configured after the stage and models containing the control
+   // panel pieces have been loaded and configured.
+
+   // Register the control panels supported by this game.
+   //registerControlPanel ("GameControlPanel", "GameControlPanel." + stage_name);
+
+   // Configure the state machine for this game.
+   StateMachine (game_name + "/Scripts/Presentation/StateMachine.script") {}
+
+   // Configure the SequenceEventTranslators for this game.
+   SequenceEventTranslator (game_name + "/Scripts/Presentation/SETranslator.script", "Stage." + stage_name, resource_key) {}
+   supportPaytableSection ("RMLPFlash");
+}

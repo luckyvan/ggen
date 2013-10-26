@@ -1,0 +1,101 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2002 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Configure the stage resources used by this game.
+
+   Modifications:
+      Author              Date               Explanation
+      ------------------  -----------------  ------------
+      AVP Exporter                           Created
+*/
+
+ResourceList ()
+{
+   // Create a new context for this presentation.
+   new ActorContext ("Context.RMLPFlash")
+   {
+      // Set the draw priority for this guy.
+      setDrawPriority (251.0f);
+
+      // Create ambient light for this context (params R, G, B and Lightwave equivalent - light color x light intensity)
+      setAmbientLight (0.05f, 0.05f, 0.05f);
+
+      new ActorCamera ("Camera")
+      {
+         CameraAttribute ()
+         {
+            // Set the video mode for the camera. ("Perspective" or "Orthographic")
+            setCameraMode ("Perspective");
+            // Set the field of view in degrees
+            setFieldOfView (22.7283f);
+            // Set Clipping planes (near, far).
+            setClippingPlanes (0.1f, 100f);
+            // Set Aspect Ratio
+            setAspectRatio (1.25f);
+            // Set the axis scale that matches LightWave's Camera.
+            setAxisScale (1.0f, 1.0f, -0.8f);
+            // Set position (x, y, z)
+            setPosition (0f, 0f, -6.2194f);
+            // Set rotation (x, y, z)
+            setRotation (0f, 0f, 0f);
+            // set Default viewport
+            setViewport (0.0f, 0.0f, 1.0f, 1.0f, 0);
+            // set Default viewport
+            new Actuator ()
+            {
+               addStartEvent ("SetDefaultViewport");
+               // set the view port  (x, y, width, height) in percentages
+               setViewport (0.0f, 0.0f, 1.0f, 1.0f, 0);
+            }
+            // set History and Utility viewport
+            new Actuator ()
+            {
+               addStartEvent ("SetHistoryViewport");
+               addStartEvent ("SetUtilityViewport");
+               // set the view port  (x, y, width, height) in percentages
+               setViewport (0.01875f, 0.025f, 0.81625f, 0.81625f);
+            }
+         }
+      }
+
+
+      //**************************************************************************
+      // The init () function must be the last function called on ActorContext.
+      //   It must be called after the context is completely configured so that all
+      //   child elements can be synchronized  before update is called on them.
+      //**************************************************************************
+      init ();
+   }
+
+   // Create a new stage
+   new ActorStage ("Stage.RMLPFlash")
+   {
+      // Set the context for the stage.
+      setContext ("Context.RMLPFlash");
+      // Set the active camera for the stage.
+      setActiveCamera ("Camera");
+
+      // Add the script to configure multiple monitors
+      configureFromScript ("Game.RMLPFlash/Scripts/Presentation/FlashStageRL.script", resource_key);
+
+      // Ensure the correct viewport is used in history mode. Post to context so the event is heard within the context resource list.
+      new Actuator ()
+      {
+         addStartEvent ("GamePresentation:enterGameMode:History");
+         addEventToPostContext ("SetHistoryViewport", "Context.RMLPFlash");
+      }
+      // Ensure the correct viewport is used in game play mode. Post to context so the event is heard within the context resource list.
+      new Actuator ()
+      {
+         addStartEvent ("GamePresentation:enterGameMode:Play");
+         addEventToPostContext ("SetDefaultViewport", "Context.RMLPFlash");
+      }
+
+
+      // Add the stage to its context.  This should be done after all configuration is complete
+      addToContext ();
+   }
+}

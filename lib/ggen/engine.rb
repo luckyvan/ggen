@@ -26,44 +26,53 @@ module Ggen
 
     def initialize(options={})
       @options = Options.new(options)
-    end
 
-    def new_game
       check_game_id(@options.game_id)
       check_rgame_id(@options.reference_game_id)
 
-      reference_game = GamePath.new(@options.reference_root,
-                                   @options.reference_game_id)
-      check_dir(reference_game)
+      # game path for reference game, output game, and template game
+      check_dir(@options.reference_root)
+      @options.reference_game = GamePath.new(@options.reference_root, @options.reference_game_id)
+      check_dir(@options.output_root)
+      @options.output_game = GamePath.new(@options.output_root, @options.game_id)
+      @options.template_game = GamePath.new(@options.template_root, @options.reference_game_id)
+      check_dir(@options.template_game.game_path)
+      check_dir(@options.template_game.proj_path)
 
-      output_game = GamePath.new(@options.output_root,
-                                @options.game_id)
+    end
 
-      tp = TemplatePath.new(@options.template+'new_game.sh.template')
-      erb = ERB.new(File.open(tp).read)
-      content = erb.result( binding )
+    def new_game
+      reference_game = options.reference_game
+      output_game = options.output_game
+      template_game = options.template_game
 
-      script = tp.to_output_path("./")
-      script.dirname.mkpath
-      print "Creating #{tp}\n"
-      File.open(script, "w") do |f|
-        f.write( content )
+      sh_template = options.template_root + 'new_game.sh.template'
+
+      script = "ng.sh"
+      begin
+        print "Creating #{script}\n"
+        generate_by_template(sh_template, script, binding())
+      ensure
+        FileUtils.rm script
       end
 
-      system("sh -x ./#{script}")
+      #libShared
+      names = proj_specific_configurations(options.reference_game_id)
+      generate_by_template_file_names(names, options.template_game.proj_path,
+                                     options.output_game.proj_path)
+      puts "Done creation of new game: #{options.output_game.game_path}"
     end
 
     def merge
-      check_game_id(options[:game_id])
-      output_game = GamePath.new(@options.output_root,
-                                @options.game_id)
-      check_dir(output_game)
+      puts "merge resources"
+      output_game = options.output_game
+      check_dir(output_game.game_path)
 
       #delete existing Symbol tgas and movies
+      puts "remove original symbol resources"
       symbol_resouces = resources(output_game).select {|f| f =~ /Symbols/}
       symbol_resouces.each do |f|
-        puts "rm #{f}"
-        FileUtils.rm(f)
+        FileUtils.rm(f, :verbose => true)
       end
 
       exclusion = ["Messages.movie", "TransitionMessages.movie", "OverReelsMessages.movie", "MathBoxMessages.movie", "RetriggerMessages.movie"]
@@ -82,14 +91,12 @@ module Ggen
           end
         end
       end
+      puts "Done Merge Resources"
     end
 
     def generate_symbol_scripts
-      check_game_id(options[:game_id])
-      game_path = GamePath.new(@options.output_root,
-                               @options.game_id).game_path
-      base_path = game_path + "Resources/Generic/Base"
-      check_dir(base_path)
+      puts "generate symbol scripts"
+      base_path = options.output_game.game_base
 
       check_nil(:base_symbols, options)
       check_nil(:bonus_symbols, options) unless options.reference_game_id == '1RG4'
@@ -103,23 +110,108 @@ module Ggen
         bonus_resources = find_resources_by_symbols(base_path+"Game.FreeSpinBonus", options.bonus_symbols)
       end
 
+
       symbol_scripts = symbol_scripts(options.reference_game_id)
-      symbol_scripts_root = options.template + "Games/Game-00#{options.reference_game_id}/Resources/Generic/Base"
-      symbol_script_templates = templates(symbol_scripts_root).select do |t|
-        symbol_scripts.include?(t.basename.sub(".template", "").to_s)
+      generate_by_template_file_names(symbol_scripts, options.template_game.game_path,
+                                      options.output_game.game_path, binding())
+    end
+
+    def parse_paytable
+      puts "parse paytable"
+      check_nil(:paytable, options)
+      paytable_path = Pathname.new(options.paytable)
+      check_file(paytable_path)
+
+
+      tokenizer = PaytableTokenizer.new()
+      tokenizer.parse(File.open(paytable_path).read)
+      scanner = PaytableScanner.new()
+      scanner.parse(tokenizer.tokens)
+
+      options.base_symbols = scanner.base.symbols if scanner.respond_to?(:base)
+      options.bonus_symbols = scanner.bonus.symbols if scanner.respond_to?(:bonus)
+      options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.respond_to?(:bonus_symbol)
+      options.paytable_scanner = scanner
+      options.wild = scanner.base.symbols[0]
+    end
+
+    def generate_stages
+      puts "generate stages"
+      check_game_id(options[:game_id])
+      game = GamePath.new(@options.output_root,
+                               @options.game_id)
+      game_path = game.game_path
+      proj_path = game.proj_path
+
+      reference_game = GamePath.new(options.template_root, options.reference_game_id)
+      check_dir(game_path)
+
+      # get config files templates
+      config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
+      config_scripts_root = options.template_root + "Games/Game-00#{options.reference_game_id}"
+      config_scripts_templates = templates(config_scripts_root).select do |t|
+        config_scripts_basenames.include?(t.basename.sub(".template", "").to_s)
       end
 
-      symbol_script_templates.each do |t|
-        dst = base_path + t.relative_path_from(symbol_scripts_root)
-        dst = dst.sub(".template", "")
+      # rm game original config files
+      ["Registries", "Themes", "Bins"].each do |dir|
+        output_dir = game_path + "Resources/Generic/Base/Configuration" + dir
+        FileUtils.rm_rf output_dir
+      end
 
-        p dst
+      # generate config files
+      rgid    = options.reference_game_id
+      gid     = options.game_id
+      scanner = options.paytable_scanner
+      stages = scanner.stages
+      stage_count = stages.length
+      rmlp = options.paytable_scanner.respond_to?(:rmlp)
+      paylines = scanner.base.paylines
+      bonus_trigger = scanner.base.trigger_index
+      visible_symbols = scanner.base.visible_symbols
+      payline_num = (paylines)? paylines.length : 100
+      paytable = Pathname.new(options.paytable).basename
+      paytable_config = Pathname.new(options.paytable_config).basename
+      themereg = "#{payline_num}L#{gid}.themereg"
+      theme_config = "#{payline_num}L#{gid}-000.config"
+      binreg = "G00#{gid}.binreg"
+
+      config_scripts_templates.each do |t|
+        dst = game_path + t.relative_path_from(config_scripts_root)
+        FileUtils.mkdir_p dst.dirname
+
+        dst = dst.to_s.sub(".template", "").gsub(rgid, gid).gsub("100L", "#{payline_num}L")
+
         erb = ERB.new(File.open(t).read).result(binding)
         File.open(dst, "w").write(erb)
       end
-    end
 
-    def generate_config_scripts
+      #payline file name modification
+      payline_num_r = reference_game_payline_num(rgid)
+      Dir.glob(File.join(game_path, "**", "#{payline_num_r}L*")).each do |src|
+        dst = src.gsub("#{payline_num_r}", "#{payline_num}")
+
+        FileUtils.mv src, dst if (src != dst)
+      end
+
+      #paytable
+      paytable_dir = game_path + "Resources/Generic/Base/Configuration/Paytables"
+      FileUtils.cp options.paytable, paytable_dir
+      FileUtils.cp options.paytable_config, paytable_dir
+
+      #rmlp
+      if rmlp then
+        ebgreg_src = Pathname.new(Dir.glob(File.join(config_scripts_root, "**", "*.ebgreg"))[0])
+        ebgreg_dst = game_path + ebgreg_src.relative_path_from(config_scripts_root)
+        ["Resources/Generic/Base/Game.RMLPFlash",
+         "../../projects/Game-00#{rgid}/RMLPFlashFlow",
+         "../../projects/Game-00#{rgid}/RMLPFlashPresentation"].each do |path|
+           FileUtils.cp_r config_scripts_root + path, game_path + path.sub(rgid, gid)
+         end
+
+        FileUtils.cp ebgreg_src, ebgreg_dst
+      end
+
     end
   end
 end

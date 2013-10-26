@@ -1,0 +1,62 @@
+## (c) Copyright 2003 International Game Technology */
+##
+##   $Revision: $
+##
+##   Purpose:
+##      Theme configuration file.
+##
+##   Modifications:
+##      Author            Date          Explanation
+##      ---------------   ------------  ------------
+##      Paul W Bolton     May 15, 2006  Created
+##
+
+[General]
+Name=Lua Ref Game 2
+ThemeID=Game01400<%= gid %>001
+Type=Slot
+Config=Resources/Generic/Base/Configuration/Themes/<%= theme_config %>
+Menu=Resources/Generic/Base/System.Menu/Scripts/GameRulesMenu.lua
+Bin=Resources/Generic/Base/Configuration/Bins/<%= binreg %>
+Attract=Resources/Generic/Base/Game.Attract/Scripts/Presentation/Template.attract.lua
+StageCount=<%= stage_count %>
+RuleBasedBetLoaderConfig=Resources/Generic/Base/Configuration/Themes/RuleBasedGameBetLoaderConfig.xml
+
+[SystemMainMenu]
+ThemeIcon=Game.MainMenu/Images/ThemeIcon/ThemeIcon.tga
+Logo=Game.MainMenu/Images/Logo/Logo.tga
+ThemeAttributes=Slot
+ThemeControlledDenominationSelection=true
+
+[Stage0]
+Name=Lua Ref Game 2
+Type=Slot
+Description=Lua Ref Game 2, Main
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-00-000.config
+
+[Stage1]
+Name=Free Games Feature
+Type=Slot
+Description=Lua Ref Game 2, Free Games Feature
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-01-000.config
+
+[Stage2]
+Name=INTERNATIONAL
+Type=DoubleUp
+Description=INTERNATIONAL
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-02-000.config
+
+<% if rmlp then %>
+[Stage3]
+Name=RMLPFlash Bonus
+Type=Bonus
+Description=RMLPFlash
+Config=Resources/Generic/Base/Configuration/Themes/<%= payline_num %>L<%= gid %>-03-000.config
+<% end %>
+
+[OptionalFeatures]
+<% if rmlp then %>
+FeatureDescriptor=EBG
+<% end %>
+FeatureDescriptor=GameAnalysis
+

@@ -185,19 +185,29 @@ END
           @options[:for_engine][:scatter] = symbol
         end
 
-        opts.on('-c', '--configuation-scripts', "Generate Configuration Files based on Stage Information") do
-          @options[:configuration_files] = true
+        opts.on('-g', '--add-stages', "Generate stage-specific configuration and source code") do
+          @options[:add_stages] = true
+          @options[:parse_paytable] = true
         end
 
-        opts.on('--rmlp', "Add rmlp feature to the game") do
-          @options[:for_engine][:rmlp] = true
+        opts.on('-p', '--parse-paytable', "") do
+          @options[:parse_paytable] = true
+        end
+
+        opts.on('--paytable PAYTABLE')  do |paytable|
+          @options[:for_engine][:paytable] = paytable
+        end
+
+        opts.on('--paytable-config CONFIG')  do |config|
+          @options[:for_engine][:paytable_config] = config
         end
 
         opts.on('-A', '--All', "Perform all generation tasks sequentially") do
           @options[:new_game] = true
+          @options[:parse_paytable] = true
           @options[:merge_resource] = true
           @options[:symbol_scripts] = true
-          @options[:configuration_files] = true
+          @options[:add_stages] = true
         end
       end
 
@@ -211,6 +221,10 @@ END
             engine.new_game
           end
 
+          if @options[:parse_paytable]
+            engine.parse_paytable
+          end
+
           if @options[:merge_resource]
             engine.merge
           end
@@ -219,6 +233,9 @@ END
             engine.generate_symbol_scripts
           end
 
+          if @options[:add_stages]
+            engine.generate_stages
+          end
         rescue Exception => e
           raise e if @options[:trace]
 

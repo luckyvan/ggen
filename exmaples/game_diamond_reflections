@@ -1,0 +1,1 @@
+ggen -A --paytable paytable/AVV040999.paytable --paytable-config paytable/AVV040999.config --trace --output /mnt/Development/temp/ggentest/ --game-id 1DR3 --resource-paths /mnt/Development/Download/DiamondReflections/Game-REFLCT,/mnt/Development/Download/DiamondReflections/RequiredUpdates

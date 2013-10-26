@@ -1,0 +1,52 @@
+## (c) Copyright 2006 International Game Technology */
+##
+##   $Revision: $
+##
+##   Purpose:
+##      Game bin registry file.
+##
+##   Modifications:
+##      Author            Date          Explanation
+##      ---------------   ------------  ------------
+##      Paul W Bolton     Oct 25, 2006  Created
+##
+[General]
+Name=Lua Ref Game 2
+StageControlCount=<%= stage_count %>
+
+Award=Evaluator.so
+PaytableParser=Evaluator.so
+Evaluator=Evaluator.so
+
+##################################
+[StageControl0]
+Name=Lua Ref Game 2
+Flow=SlotFlow.so
+Presentation=SlotPresentationWG.so
+Bet=RuleBasedGameBetLoader.so
+Type=Slot
+
+##################################
+[StageControl1]
+Name=Free Games Feature
+Flow=FreeSpinSlotFlow.so
+Presentation=SlotPresentationWG.so
+Bet=RuleBasedGameBetLoader.so
+Type=Slot
+
+##################################
+[StageControl2]
+Name=INTERNATIONAL
+Flow=DoubleUpIntlFlow.so
+Presentation=DoubleUpIntlPresentation.so
+Bet=RuleBasedGameBetLoader.so
+Type=DoubleUp
+
+<% if rmlp then %>
+##################################
+[StageControl3]
+Name=RMLPFlash
+Flow=RMLPFlashFlow.so
+Presentation=RMLPFlashPresentation.so
+Type=Bonus
+<% end %>

@@ -51,7 +51,7 @@ symbols.special =
 --   if ommited, the defaults used are simply the symbol name with .script/.sound/.tga/.movie appended respectively
 symbols.list =
 {
-   symbols.special.wild =
+   <%= options.wild %> =
    {
       image = "<%= base_resources[:tga][options.wild][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
@@ -61,12 +61,12 @@ symbols.list =
       {
          intro          = {image = "<%= base_resources[:movie][options.wild][0] %>", loops = 1 , pop = false},
          win_cycle      = {image = "<%= base_resources[:movie][options.wild][1] %>", pop = true},
-         -- pure_win_cycle = {image = },
+         pure_win_cycle      = {image = "<%= base_resources[:movie][options.wild][1] %>"},
       },
       -- Set the sound member for this symbol to have a symbol sound configured
       sound = true,
    },
-   symbols.special.bonus =
+   <%= options.bonus_symbol %> =
    {
       image = "<%= base_resources[:tga][options.bonus_symbol][-1]%>",
       -- Set tbe background member to false if you don't want any background to be loaded
@@ -78,7 +78,7 @@ symbols.list =
       {
          bonus_init           = {image = "<%= base_resources[:movie][options.bonus_symbol][0] %>",} ,
          bonus_init_win_cycle = {image = "<%= base_resources[:movie][options.bonus_symbol][1] %>",} ,
-         -- bonus_in_idle        = {image = },
+         bonus_in_idle = {image = "<%= base_resources[:movie][options.bonus_symbol][1] %>",} ,
       },
       sound = true,
    },

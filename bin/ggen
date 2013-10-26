@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # The command line Haml parser.
 
-$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
+path = File.dirname(File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__) + '/../lib'
+$LOAD_PATH.unshift path
 require 'ggen'
 require 'ggen/exec'
 

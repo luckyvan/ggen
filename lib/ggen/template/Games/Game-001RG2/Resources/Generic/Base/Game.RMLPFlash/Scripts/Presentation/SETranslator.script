@@ -1,0 +1,21 @@
+//AVP_SCRIPT_FILE 1.0
+/* (c) Copyright 2004 International Game Technology */
+/*
+   $Revision: 1$
+
+   Purpose:
+      Defines the script file used to define the SequenceEventTranslators for this game.
+
+   Modifications:
+      Author            Date        Explanation
+      ---------------   ----------- ------------
+      Nicole Beaulieu   04 Mar 2004 Created
+*/
+
+SequenceEventTranslator ()
+{
+   // Include the system-specific translators.
+   parseScript ("System.Miscellaneous/Scripts/SystemSET.script");
+   // Include the game-specific translators.
+   parseScript (game_name + "/Scripts/Presentation/RMLPFlashSET.script");
+}
