@@ -26,14 +26,10 @@ module Ggen
     end
 
     # Use ERB to generate output file
-<<<<<<< HEAD
-    def generate_by_template(template, output, binding)
-=======
     def generate_by_template(template, binding)
       pn = Pathname.new(template)
       dst = get_dst_dir(pn) + pn.basename.sub(".template", "")
 
->>>>>>> usb/develop
       erb = ERB.new(File.open(template).read)
       content = erb.result( binding )
 
@@ -44,19 +40,6 @@ module Ggen
       end
     end
 
-<<<<<<< HEAD
-    # Use template file name as keys to generate files
-    def generate_by_template_file_names(names, src_root, dst_root, binding)
-      template_files = templates(options.template_game).select do |t|
-        names.include?(t.basename.sub(".template", "").to_s)
-      end
-      template_files.each do |t|
-        dst_dir = get_dst_dir(t, src_root, dst_root)
-        FileUtils.mkdir_p dst_dir
-        dst_file = dst_dir + t.basename.sub(".template", "")
-        p dst_file
-        generate_by_template(t, dst_file, binding)
-=======
     def modify_file_contents(base_directory, from_pattern, to_pattern)
        Dir.glob(File.join(base_directory, "**", "*")).each do |f|
         begin
@@ -117,7 +100,6 @@ module Ggen
         else
           FileUtils.cp_r pn, dst_dir
         end
->>>>>>> usb/develop
       end
     end
 
@@ -228,8 +210,6 @@ module Ggen
         projects + @id
       end
     end
-<<<<<<< HEAD
-=======
 
     class TemplateGame
       def respond_to?(method)
@@ -287,6 +267,5 @@ module Ggen
                   "LibSys", "WinCycleLite"]
       )
     end
->>>>>>> usb/develop
   end
 end

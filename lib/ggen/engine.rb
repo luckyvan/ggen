@@ -53,15 +53,6 @@ module Ggen
       FileUtils.mkdir_p output_game.games
       FileUtils.mkdir_p output_game.projects
 
-<<<<<<< HEAD
-      script = "ng.sh"
-      begin
-        print "Creating #{script}\n"
-        generate_by_template(sh_template, script, binding())
-      ensure
-        FileUtils.rm script
-      end
-=======
       FileUtils.cp_r reference_game.game_path, output_game.game_path, :verbose => verbose
       FileUtils.cp_r reference_game.proj_path, output_game.proj_path, :verbose => verbose
 
@@ -70,7 +61,6 @@ module Ggen
 
       modify_file_contents(output_game.configuration, "#{rgid}", "#{gid}")
       modify_file_contents(output_game.proj_path, "#{rgid}", "#{gid}")
->>>>>>> usb/develop
 
       #libShared
       names = @tg.proj_configs
@@ -126,14 +116,7 @@ module Ggen
         bonus_resources = find_resources_by_symbols(base_path+"Game.FreeSpinBonus", options.bonus_symbols)
       end
 
-<<<<<<< HEAD
-
-      symbol_scripts = symbol_scripts(options.reference_game_id)
-      generate_by_template_file_names(symbol_scripts, options.template_game.game_path,
-                                      options.output_game.game_path, binding())
-=======
       generate_by_names(@tg.symbol_scripts, binding)
->>>>>>> usb/develop
     end
 
     def parse_paytable
