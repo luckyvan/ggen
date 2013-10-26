@@ -14,6 +14,10 @@ module Ggen
       @base = nil
     end
 
+    def has_stage?(key)
+      nil != stages.find {|s| s.name == key}
+    end
+
     def insert(h, k, v)
       if(h[k])
         h[k] = ([h[k]] << v).flatten
@@ -28,6 +32,7 @@ module Ggen
       while (!tokens.empty?) do
         tokens = element( tokens, @elements )
       end
+
     end
 
     private
@@ -120,6 +125,7 @@ module Ggen
       case id
       when /base game/ then
         hash.extend(Stage).extend(SlotGame).extend(Base)
+        hash.name = :base_game
         hash.index = 0
         @base = hash
         stages << hash
@@ -129,8 +135,10 @@ module Ggen
         if (hash.has_key?("slot")) then
           hash.extend(SlotGame)
           @bonus = hash
+          hash.name = :free_spin
         else
           @doubleup = hash
+          hash.name = :doubleup
         end
         hash.index = index
         @stages << hash
@@ -138,6 +146,7 @@ module Ggen
         hash.extend(Stage)
         @rmlp = hash; stages << @rmlp
         @rmlp.index = stages.length - 1
+        hash.name = :rmlp
       end
       hash
     end
@@ -172,6 +181,7 @@ module Ggen
 
   module Stage
     attr_accessor :index
+    attr_accessor :name
   end
 
   module SlotGame

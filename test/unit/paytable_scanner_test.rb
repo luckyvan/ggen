@@ -37,6 +37,11 @@ module Ggen
       assert_equal 4, @scanner1.stages.length
       assert_equal 4, @scanner2.stages.length
       assert_equal 4, @scanner3.stages.length
+      assert_equal [:base_game, :free_spin, :doubleup, :rmlp], @scanner3.stages.map {|s| s.name}
+      assert_equal false, @scanner.has_stage?(:doubleup)
+      assert_equal false, @scanner.has_stage?(:rmlp)
+      assert_equal true, @scanner.has_stage?(:base_game)
+      assert_equal true, @scanner.has_stage?(:free_spin)
     end
 
     must "include RMLP" do

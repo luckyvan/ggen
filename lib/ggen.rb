@@ -11,5 +11,6 @@
 # Also see the {file:REFERENCE.md full Ggen reference}.
 
 require 'ggen/util'
+require 'ggen/helper'
 require 'ggen/engine'
 require 'ggen/version'

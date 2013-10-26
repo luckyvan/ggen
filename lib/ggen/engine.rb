@@ -17,6 +17,7 @@ module Ggen
   #     5. engine.generate_stages
   class Engine
     include Ggen::Util
+    include Ggen::Helper
     # The Ggen::Options instance.
     # See {file:REFERENCE.md#options the Ggen options documentation}.
     #
@@ -147,8 +148,8 @@ module Ggen
 
       rmlp = options.paytable_scanner.respond_to?(:rmlp)
 
-      # rm game original config files
-      if @tg.respond_to?(:config_scripts)
+      if @tg.respond_to?(:config_scripts) #RG4 no need to change config scripts for now
+        # rm game original config files
         [output_game.themes, output_game.bins, output_game.registries ].each do |dir|
           FileUtils.rm_rf dir
           FileUtils.mkdir_p dir
