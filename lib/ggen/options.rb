@@ -32,6 +32,7 @@ module Ggen
       :stages               => nil,                      #Object handle which contains all stage related information, normally retrieved from a PaytableScanner
       :paytable             => nil,                      #Paytable
       :paytable_config      => nil,                      #Configure file for specific paytable
+      :verbose              => false,
     }
 
     # The default option values.
@@ -40,6 +41,7 @@ module Ggen
       @defaults
     end
 
+    attr_accessor :verbose
     attr_accessor :reference_game
     attr_accessor :output_game
     attr_accessor :template_game
