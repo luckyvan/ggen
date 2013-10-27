@@ -90,6 +90,16 @@ module Ggen
         :symbol_scripts => ["SymbolVariables.lua",
                             "CustomSymbolFunctions.lua"],
         :proj_configs => ["CommonConfigProps.props",],
+        :config_scripts => ["G004RG4.binreg", "Dev00.registry",
+                   "100L4RG4.themereg", "100L4RG4-000.config",
+                   "100L4RG4-00-000.config",
+                   "100L4RG4-01-000.config",
+                   "100L4RG4-02-000.config",
+                   "100L4RG4-03-000.config",
+                   "RuleBasedGameBetConfig.xml",
+                   "RuleBasedGameBetLoaderConfig.xml",
+                   "GameVariables.lua",
+                  ],
       )
       GAME001RG2 = TemplateGame.new(
         :payline_num => 100,

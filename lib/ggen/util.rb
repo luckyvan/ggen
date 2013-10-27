@@ -18,6 +18,7 @@ module Ggen
     end
 
     # Return destination directory for following copy command
+    #
     # @param :path, source file path
     def get_dst_dir(file)
       src_base, dst_base = get_base_directories(file)
@@ -40,8 +41,9 @@ module Ggen
       end
     end
 
+    # Modify file by line replacement
     def modify_file_contents(base_directory, from_pattern, to_pattern)
-       Dir.glob(File.join(base_directory, "**", "*")).each do |f|
+      Dir.glob(File.join(base_directory, "**", "*")).each do |f|
         begin
           if File.file?(f)
             text = File.read(f)
@@ -50,8 +52,9 @@ module Ggen
         rescue ArgumentError
         end
       end
-   end
+    end
 
+    # modify file names
     def modify_file_names(base_directory, from_pattern, to_pattern, verbose = false)
       Dir.glob(File.join(base_directory, "**", "*#{from_pattern}*")).each do |src|
         dst = src.gsub("#{from_pattern}", "#{to_pattern}")
@@ -65,6 +68,8 @@ module Ggen
       end
     end
 
+    # Choose between game path and proj path
+    #
     # @param :path, source file path should be under template game directory
     # @return src and dst base directories.
     def get_base_directories(path)
@@ -81,6 +86,13 @@ module Ggen
       end
     end
 
+    # Generate files based on file names
+    #   1. if file ends with '.template', use erb to generate it.
+    #   2. copy it directly
+    #
+    # @param names
+    # @param template_game
+    # @param binding
     def generate_by_names(names, binding = nil)
       src_paths = [@options.template_game.game_path,
                    @options.template_game.proj_path]
@@ -103,7 +115,6 @@ module Ggen
       end
     end
 
-
     def check_dir(pn)
       raise "Invalid Path: #{pn}" unless Pathname.new(pn).directory?
     end
@@ -116,7 +127,6 @@ module Ggen
       raise "No values for #{key}" unless options[key]
     end
 
-
     def resources(path)
       ["tga", "movie", "sound"].inject([]) do |r, s|
           pattern = File.join(path, "**", "*.#{s}")
@@ -125,17 +135,20 @@ module Ggen
       end
     end
 
-    def reference_game_payline_num(rgid)
-      {
-        '1RG2' => "100"
-      }[rgid]
-    end
 
+    # Collect resource informations
+    #    1. tga
+    #    2. movie
+    #    3. sound
+    #
+    # @param output_game
+    # @param symbols (symbol names)
     def find_resources_by_symbols(stage_path, symbols)
       hash = {:tga => "Images/Symbols/*.tga",
               :movie => "Images/Symbols/*.movie",
               :sound => "Sounds/Symbols/*.sound"}
       result = {}
+
       hash.each_pair do |k,suffix|
         result[k] = {}
         Dir.glob(stage_path + suffix).each do |res|
@@ -144,10 +157,11 @@ module Ggen
           if symbols.include?(symbol)
             (result[k][symbol] ||= []) << Pathname.new(res).basename
           else
-            # puts"Warning: Redundant Symbol Resources: #{res}"
+            puts"Warning: Redundant Symbol Resources: #{res}"
           end
         end
       end
+
       result[:tga].each_pair do |s,r|
         raise "symbol #{s} has no image resources" unless r
       end
