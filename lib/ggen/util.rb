@@ -30,7 +30,7 @@ module Ggen
       pn = Pathname.new(template)
       dst = get_dst_dir(pn) + pn.basename.sub(".template", "")
 
-      erb = ERB.new(File.open(template).read)
+      erb = ERB.new(File.open(template).read, nil, '>' )
       content = erb.result( binding )
 
       FileUtils.mkdir_p dst.dirname unless dst.dirname.exist?

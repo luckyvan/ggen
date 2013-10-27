@@ -146,8 +146,6 @@ module Ggen
       proj_path = @options.output_game.proj_path
       verbose = options.verbose
 
-      rmlp = options.paytable_scanner.respond_to?(:rmlp)
-
       if @tg.respond_to?(:config_scripts) #RG4 no need to change config scripts for now
         # rm game original config files
         [output_game.themes, output_game.bins, output_game.registries ].each do |dir|
@@ -188,10 +186,9 @@ module Ggen
       FileUtils.cp options.paytable_config, paytable_dir
 
       #rmlp
-      if rmlp then
-        names = ["EBG.ebgreg", "Game.RMLPFlash", "RMLPFlashFlow", "RMLPFlashPresentation",
-         "LibPresentation", "LibSlotPresentation", "LibSys", "WinCycleLite"]
-        generate_by_names(@tg.rmlp)
+      scanner.stages.each do |stage|
+        config = StageConfig.config(stage.name)
+        generate_by_names(config.files) if config.files
       end
     end
   end

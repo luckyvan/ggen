@@ -5,7 +5,7 @@ module Ggen
     include Ggen::Helper
 
     must "base stage has correct configurations" do
-      p  StageConfig.stage(:base_game){ type }
+       assert_equal "Slot", StageConfig.config(:base_game).type
     end
 
   end

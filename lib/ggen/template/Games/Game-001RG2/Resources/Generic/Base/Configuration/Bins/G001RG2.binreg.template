@@ -18,35 +18,14 @@ Award=Evaluator.so
 PaytableParser=Evaluator.so
 Evaluator=Evaluator.so
 
+<% scanner.stages.each do |stage| %>
+<%   StageConfig.config(stage.name) do %>
 ##################################
-[StageControl0]
-Name=Lua Ref Game 2
-Flow=SlotFlow.so
-Presentation=SlotPresentationWG.so
-Bet=RuleBasedGameBetLoader.so
-Type=Slot
-
-##################################
-[StageControl1]
-Name=Free Games Feature
-Flow=FreeSpinSlotFlow.so
-Presentation=SlotPresentationWG.so
-Bet=RuleBasedGameBetLoader.so
-Type=Slot
-
-##################################
-[StageControl2]
-Name=INTERNATIONAL
-Flow=DoubleUpIntlFlow.so
-Presentation=DoubleUpIntlPresentation.so
-Bet=RuleBasedGameBetLoader.so
-Type=DoubleUp
-
-<% if rmlp then %>
-##################################
-[StageControl3]
-Name=RMLPFlash
-Flow=RMLPFlashFlow.so
-Presentation=RMLPFlashPresentation.so
-Type=Bonus
+[StageControl<%= stage.index %>]
+Name=<%= name %>
+Flow=<%= flow_bin %>
+Presentation=<%= presentation_bin %>
+Bet=<%= bet_bin %>
+Type=<%= type%>
+<%   end  %>
 <% end %>

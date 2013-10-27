@@ -17,69 +17,22 @@ StageCount=<%= stage_count %>
 Paytable=Resources/Generic/Base/Configuration/Paytables/<%= paytable %>
 Config=Resources/Generic/Base/Configuration/Paytables/<%= paytable_config %>
 
-## The first stage is always the base game
-[Stage0]
-Name=Lua Ref Game 2
-Description=Lua Ref Game 2, Main
-UtilityMode=enable
+<% scanner.stages.each do |stage| %>
+<%   StageConfig.config(stage.name) do %>
+## #######################
+## stage definition.
+## #######################
+[Stage<%= stage.index %>]
+Name=<%= name %>
+Description=<%= description %>
+UtilityMode=<%= utility_mode %>
+Type=<%= type%>
 
 ## Presentation specific items
-PresentationScript=Game.Main/Scripts/Presentation/Main.lua
-
-## Presentation game switch script
-##PresentationGameSwitchScript=Game.Main/Scripts/Presentation/PresentationGameSwitch.lua
+PresentationScript=<%= root_dir %>/Scripts/Presentation/<%= presentation_script %>
 
 ## Flow-specific items
 ## add your game specific file here if needed
-FlowScript=Game.Main/Scripts/Flow/FlowMain.lua
-
-## #######################
-## Bonus stage definition.
-## #######################
-[Stage1]
-Name=Free Games Feature
-Description=Lua Ref Game 2, Free Games Feature
-UtilityMode=enable
-
-## Flow-specific items
-## add your game specific file here if needed
-FlowScript=Game.FreeSpinBonus/Scripts/Flow/FlowMain.lua
-
-## Presentation specific items
-PresentationScript=Game.FreeSpinBonus/Scripts/Presentation/FreeSpinBonus.lua
-
-## Presentation game switch script
-##PresentationGameSwitchScript=Game.FreeSpinBonus/Scripts/Presentation/PresentationGameSwitch.script
-
-
-## #######################
-## DoubleUp stage definition.
-## #######################
-[Stage2]
-Name=INTERNATIONAL
-Description=INTERNATIONAL
-UtilityMode=disable
-Type=DoubleUp
-
-## Flow-specific items
-FlowScript=Game.DoubleUp/Scripts/Flow/FlowMain.lua
-
-## Presentation specific items
-PresentationScript=Game.DoubleUp/Scripts/Presentation/DoubleUp.lua
-
-<% if rmlp then %>
-## #######################
-## RMLP stage definition.
-## #######################
-[Stage3]
-Name=RMLPFlash Bonus
-Description=RMLPFlash
-UtilityMode=disable
-Type=Bonus
-
-## Flow-specific items
-FlowScript=Game.RMLPFlash/Scripts/Flow/FlowMain.script
-
-## Presentation specific items
-PresentationScript=Game.RMLPFlash/Scripts/Presentation/RMLPFlashSetResourceKey.script
+FlowScript=<%= root_dir %>/Scripts/Flow/<%= flow_script %>
+<%   end  %>
 <% end %>

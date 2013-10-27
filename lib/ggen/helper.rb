@@ -111,10 +111,6 @@ module Ggen
                              "SymbolInfoImageTranslations.lua",
                              "SymbolInfoTableTranslations.lua"],
         :proj_configs => ["CommonConfigProps.props",],
-        :rmlp => ["EBG.ebgreg", "Game.RMLPFlash",
-                  "RMLPFlashFlow", "RMLPFlashPresentation",
-                  "LibPresentation", "LibSlotPresentation",
-                  "LibSys", "WinCycleLite"]
       )
     end
 
@@ -122,7 +118,8 @@ module Ggen
       attr_accessor :name, :flow_bin, :presentation_bin, :bet_bin, :type
       attr_accessor :description, :feature_descriptor
       attr_accessor :utility_mode
-      attr_accessor :root_dir, :flow_script, :presentaion_script
+      attr_accessor :root_dir, :flow_script, :presentation_script
+      attr_accessor :files
 
       def initialize(h)
         h.each {|k, v| send("#{k}=", v)}
@@ -132,10 +129,10 @@ module Ggen
         :base_game => StageConfig.new(
           :name => "Lua Ref Game 2",
           :description => "Lua Ref Game 2, Main",
-          :utility_mode => "enabled",
+          :utility_mode => "enable",
           :root_dir => "Game.Main",
           :flow_script => "FlowMain.lua",
-          :presentaion_script => "Main.lua",
+          :presentation_script => "Main.lua",
           :type => "Slot",
           :bet_bin => "RuleBasedGameBetLoader.so",
           :flow_bin => "SlotFlow.so",
@@ -144,10 +141,10 @@ module Ggen
         :free_spin => StageConfig.new(
           :name => "Free Games Feature",
           :description => "Lua Ref Game 2, Free Games Feature",
-          :utility_mode => "enabled",
+          :utility_mode => "enable",
           :root_dir => "Game.FreeSpinBonus",
           :flow_script => "FlowMain.lua",
-          :presentaion_script => "FreeSpinBonus.lua",
+          :presentation_script => "FreeSpinBonus.lua",
           :type => "Slot",
           :bet_bin => "RuleBasedGameBetLoader.so",
           :flow_bin => "FreeSpinSlotFlow.so",
@@ -156,10 +153,10 @@ module Ggen
         :doubleup => StageConfig.new(
           :name => "INTERNATIONAL",
           :description => "INTERNATIONAL",
-          :utility_mode => "disabled",
+          :utility_mode => "disable",
           :root_dir => "Game.Doubleup",
           :flow_script => "FlowMain.lua",
-          :presentaion_script => "DoubleUp.lua",
+          :presentation_script => "DoubleUp.lua",
           :type => "DoubleUp",
           :bet_bin => "RuleBasedGameBetLoader.so",
           :flow_bin => "DoubleUpIntlFlow.so",
@@ -168,21 +165,28 @@ module Ggen
         :rmlp => StageConfig.new(
           :name => "RMLPFlash Bonus",
           :description => "RMLPFlash",
-          :utility_mode => "disabled",
+          :utility_mode => "disable",
           :root_dir => "Game.RMLPFlash",
           :flow_script => "FlowMain.lua",
-          :presentaion_script => "RMLPFlashSetResourceKey.script",
+          :presentation_script => "RMLPFlashSetResourceKey.script",
           :type => "Bonus",
           :bet_bin => "RuleBasedGameBetLoader.so",
           :flow_bin => "RMLPFlashFlow.so",
           :presentation_bin => "RMLPFlashPresentation.so",
           :feature_descriptor => "EBG",
+          :files => [
+            "EBG.ebgreg", "Game.RMLPFlash",
+            "RMLPFlashFlow", "RMLPFlashPresentation",
+            "LibPresentation", "LibSlotPresentation",
+            "LibSys", "WinCycleLite"
+          ]
         ),
       }
 
-      def self.stage(key, &block)
+      def self.config(key, &block)
         stage = @@stages[key]
-        stage.instance_eval(&block)
+        stage.instance_eval(&block) if block
+        stage
       end
 
     end
