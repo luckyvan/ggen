@@ -12,12 +12,13 @@ module Ggen
   #     engine = Ggen::Engine.new(options)
   #     1. engine.new_game
   #     2. engine.parse_paytable
-  #     3. engine.merge_resource
+  #     3. engine.merge
   #     4. engine.generate_symbol_scripts
   #     5. engine.generate_stages
   class Engine
     include Ggen::Util
     include Ggen::Helper
+
     # The Ggen::Options instance.
     # See {file:REFERENCE.md#options the Ggen options documentation}.
     #
@@ -34,14 +35,20 @@ module Ggen
       check_dir(@options.reference_root)
       @options.reference_game = GamePath.new(@options.reference_root, @options.reference_game_id)
       check_dir(@options.output_root)
+
       @options.output_game = GamePath.new(@options.output_root, @options.game_id)
       @options.template_game = GamePath.new(@options.template_root, @options.reference_game_id)
-      check_dir(@options.template_game.game_path)
-      check_dir(@options.template_game.proj_path)
 
       @tg = TemplateGame.get_game(@options.reference_game_id) #template game
     end
 
+    # Use RG game and game id to generate a new game
+    #
+    # @param reference_game
+    # @param rgid (reference game id)
+    # @param output_game
+    # @param gid  (game id)
+    # @param verbose
     def new_game
       verbose = options.verbose
       reference_game = options.reference_game
@@ -49,17 +56,19 @@ module Ggen
       gid = options.game_id
       rgid = options.reference_game_id
 
+      # clear
       FileUtils.rm_rf output_game.game_path, :verbose => verbose
       FileUtils.rm_rf output_game.proj_path, :verbose => verbose
       FileUtils.mkdir_p output_game.games
       FileUtils.mkdir_p output_game.projects
 
+      # copy
       FileUtils.cp_r reference_game.game_path, output_game.game_path, :verbose => verbose
       FileUtils.cp_r reference_game.proj_path, output_game.proj_path, :verbose => verbose
 
+      # modify file names and contents
       modify_file_names(output_game.configuration, "#{rgid}", "#{gid}", verbose)
       modify_file_names(output_game.proj_path, "#{rgid}", "#{gid}", verbose)
-
       modify_file_contents(output_game.configuration, "#{rgid}", "#{gid}")
       modify_file_contents(output_game.proj_path, "#{rgid}", "#{gid}")
 
@@ -69,6 +78,11 @@ module Ggen
       puts "Done creation of new game: #{options.output_game.game_path}"
     end
 
+    # Merge Resources files to output game
+    #
+    # @param resource_path
+    # @param output_game
+    # @param verbose
     def merge
       puts "merge resources"
       verbose = options.verbose
@@ -98,9 +112,16 @@ module Ggen
           end
         end
       end
+
       puts "Done Merge Resources"
     end
 
+    # Generate scripts referencing Symbol Resources
+    #
+    # @param output_game
+    # @param base_symbols
+    # @param bonus_symbols (optional)
+    # @param template_game_config (template scripts are reference game related)
     def generate_symbol_scripts
       puts "generate symbol scripts"
       base_path = options.output_game.game_base
@@ -109,6 +130,7 @@ module Ggen
       check_nil(:bonus_symbols, options) unless options.reference_game_id == '1RG4'
 
       base_resources, bonus_resources = nil, nil
+
       # collect resources
       if options.base_symbols
         base_resources = find_resources_by_symbols(base_path+"Game.Main", options.base_symbols)
@@ -120,12 +142,14 @@ module Ggen
       generate_by_names(@tg.symbol_scripts, binding)
     end
 
+    # Parse paytable
+    #
+    # @param paytable
     def parse_paytable
       puts "parse paytable"
       check_nil(:paytable, options)
       paytable_path = Pathname.new(options.paytable)
       check_file(paytable_path)
-
 
       tokenizer = PaytableTokenizer.new()
       tokenizer.parse(File.open(paytable_path).read)
@@ -137,8 +161,17 @@ module Ggen
       options.bonus_symbol = scanner.base.bonus_symbol if scanner.base.bonus_symbol
       options.paytable_scanner = scanner
       options.wild = scanner.base.symbols[0]
+      puts "Done Parse paytable"
     end
 
+
+    # Generate Stage related files:
+    #  1. config files
+    #  2. components
+    #
+    #  @param output_game
+    #  @param paytable_scanner (scanner provides information like: stages, pay lines,
+    #  @param reference_game_id
     def generate_stages
       puts "generate stages"
       output_game = @options.output_game
@@ -153,7 +186,6 @@ module Ggen
           FileUtils.mkdir_p dir
         end
 
-        # generate config files
         rgid    = options.reference_game_id
         gid     = options.game_id
         scanner = options.paytable_scanner
@@ -169,8 +201,7 @@ module Ggen
         theme_config = "#{payline_num}L#{gid}-000.config"
         binreg = "G00#{gid}.binreg"
 
-        # get config files templates
-        # config_scripts_basenames = config_scripts_basenames(options.reference_game_id)
+        # generate config files
         generate_by_names(@tg.config_scripts, binding)
 
         #payline file name modification
@@ -180,12 +211,12 @@ module Ggen
         modify_file_names(game_path, "#{rgid}", "#{gid}", verbose)
       end
 
-      #paytable
+      #copy paytable
       paytable_dir = @options.output_game.paytables
       FileUtils.cp options.paytable, paytable_dir
       FileUtils.cp options.paytable_config, paytable_dir
 
-      #rmlp
+      #generate stage components
       scanner.stages.each do |stage|
         config = StageConfig.config(stage.name)
         generate_by_names(config.files) if config.files

@@ -243,12 +243,6 @@ END
         rescue Exception => e
           # raise e if @options[:trace]
           raise e
-
-          # case e
-          # # when ::Ggen::SyntaxError; raise "Syntax error on line #{get_line e}: #{e.message}"
-          # # when ::Ggen::Error;       raise "Ggen error on line #{get_line e}: #{e.message}"
-          # else raise "Exception on line #{get_line e}: #{e.message}"
-          # end
         end
       end
     end
